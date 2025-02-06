@@ -1,7 +1,7 @@
 
 <div class="menu" id="menu">
-        <div class="logo"><img src="./assets/minirojiverde.png" class="logo"></div>
-        <div class="containerUser"><img src="./assets/user.png" class="userLogo">Usuario
+        <div class="logo"><img src="./assets/img/mininaranjiverdeTrayecto.svg" class="logo"></div>
+        <div class="containerUser"><img src="./assets/img/user.svg" class="userLogo">Usuario
         </div>
         <ul class="sidebarUl">
             <li class="nav-item sidebarLi">
