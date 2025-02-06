@@ -1,0 +1,16 @@
+:root {
+    --cognac-100: #FFDA9F;
+    --cognac-500: #FF7300;
+    --cognac-700: #DA3B00;
+    --cognac-800: #AB2E00;
+    --puerto-rico-200: #9FF0DA;
+    --puerto-rico-400: #37C8AB;
+}
+
+.carta {
+    border: 1px solid #DA3B00;
+}
+
+.cartaFooter {
+    background-color: #FFDA9F;
+}

@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OpticaController;
@@ -7,6 +8,16 @@ use App\Http\Controllers\HorarioController;
 
 
 
+Route::get('home', function() {
+    return view('app');
+});
+
+
+Route::get('home/citas', function(){
+    return view('citas');
+});
+
+/* 
 
 Route::get('/', function () {
     return '¡Bienvenido a Laravel en Windows!';
@@ -14,22 +25,17 @@ Route::get('/', function () {
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
-Route::get('home', function() {
-    return view('app');
-});
 
 Route::get('propietario', function() {
     return view('app');
 });
 
-Route::get('home/citas', function(){
-    return view('citas');
-});
+ */
 
 /* Route::get('propietario/citas', function(){
     return view('citas');
 }); */
-
+/* 
 Route::get('propietario/opticas', function(){
     return view('opticas');
 });
@@ -51,7 +57,7 @@ Route::get('propietario/configCalendar', function(){
 Route::get('propietario/configEmpleado', function(){
     return view('configEmpleado');
 })->name('configEmpleado');
-
+ */
 
 
 /*
@@ -66,7 +72,7 @@ ningun error
 */
 
 //Route::get('opticas', [OpticaController::class, 'index']);
-
+/* 
 Route::get('' , [OpticaController::class, 'guardar']);
 
 Route::get('/propietario/opticas', [OpticaController::class, 'mostrar']);
@@ -81,3 +87,4 @@ Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion
 Route::get('opticas/mostrar' , [OpticaController::class, 'index']);
 
 
+ */
