@@ -1,8 +1,6 @@
-
 <div class="menu" id="menu">
-    <div class="logo"><img src="./assets/minirojiverde.png" class="logo"></div>
-    <div class="containerUser"><img src="./assets/user.png" class="userLogo">Usuario
-    </div>
+    <div class="logo"><img src="./assets/img/mininaranjiverdeTrayecto.svg" class="logo"></div>
+    <div class="containerUser"><img src="./assets/img/user.svg" class="userLogo">Usuario</div>
     <ul class="sidebarUl">
         <li class="nav-item sidebarLi">
             <div class="optionText">
@@ -13,12 +11,12 @@
         </li>
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#clienteSublist"  role="button" aria-expanded="false" aria-controls="clienteSublist">Clientes</a>
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#clienteSublist" role="button" aria-expanded="false" aria-controls="clienteSublist">Clientes</a>
             </div>
             <ul class="collapse list-unstyled" id="clienteSublist">
                 <div class="submenu">
-                    <li><a  data-bs-toggle="modal" data-bs-target="#buscarCliModal">Buscar Cliente</a></li>
-                    <li><a  data-bs-toggle="modal" data-bs-target="#crearCliModal">Crear Cliente</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#buscarCliModal">Buscar Cliente</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#crearCliModal">Crear Cliente</a></li>
                     <li><a>Ver Todo Cliente</a></li>
                 </div>
             </ul>
@@ -29,8 +27,8 @@
             </div>
             <ul class="collapse list-unstyled" id="empleadoSublist">
                 <div class="submenu">
-                    <li><a  data-bs-toggle="modal" data-bs-target="#buscarEmpModal">Buscar Empleado</a></li>
-                    <li><a  data-bs-toggle="modal" data-bs-target="#crearEmpModal">Crear Empleado</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#buscarEmpModal">Buscar Empleado</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#crearEmpModal">Crear Empleado</a></li>
                     <li><a>Ver todos</a></li>
                 </div>
             </ul>
@@ -225,9 +223,9 @@
                             <div class="col">
                                 <label class="col-form-label" for="rol">Rol</label>
                                 <select class="form-select" id="rol">
-                <option value="aux">Auxiliar</option>
-                <option value="opt">Optometrista</option>
-              </select>
+                                    <option value="aux">Auxiliar</option>
+                                    <option value="opt">Optometrista</option>
+                                </select>
                             </div>
                         </div>
 
