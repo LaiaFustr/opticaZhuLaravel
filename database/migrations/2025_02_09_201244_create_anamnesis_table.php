@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('anamnesis', function (Blueprint $table) {
+            $table->unsignedInteger('id_ficha');
+            $table->increments('id');
+            $table->string('compensacion');
+            $table->date('ultima_revision');
+            $table->int('edad');
+            $table->string('profesion');
+            $table->string('horas_pantalla');
+            
+            $table->primary('idFicha');
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('anamnesis');
+    }
+};
