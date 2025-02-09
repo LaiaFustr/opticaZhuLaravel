@@ -6,7 +6,7 @@ use App\Http\Controllers\OpticaController;
 use App\Http\Controllers\HorarioController;
 
 
-
+//Hola
 
 Route::get('home', function() {
     return view('app');
