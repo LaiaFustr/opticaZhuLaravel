@@ -12,8 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('avsincorreccion', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('idFicha');
+            $table->increments('id');
+
+            $table->string('esfera_od');
+            $table->string('ejecilindro_od');
+            $table->string('agudezavisual_od');
+
+            $table->string('esfera_oi');
+            $table->string('ejecilindro_oi');
+            $table->string('agudezavisual_oi');
+            
+            $table->primary('idFicha');
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

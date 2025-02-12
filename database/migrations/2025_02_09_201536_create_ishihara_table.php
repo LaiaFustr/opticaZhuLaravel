@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ishihara', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('idFicha');
+            $table->increments('id');
+           
+            $table->string('ishihara');
+            
+            $table->primary('idFicha');
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
