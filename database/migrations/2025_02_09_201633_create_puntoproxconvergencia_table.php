@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('puntoproxconvergencia', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('idFicha');
+            $table->increments('id');
+
+            $table->boolean('correcto');
+            $table->float('ppc');
+            
+            $table->primary('idFicha');
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

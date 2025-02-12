@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('musculosextraoculares', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('idFicha');
+            $table->increments('id');
+           
+            $table->boolean('suaves');
+            $table->boolean('precisos');
+            $table->boolean('extensos');
+            $table->boolean('completos');
+            
+            $table->primary('idFicha');
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

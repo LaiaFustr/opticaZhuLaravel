@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('forias', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('idFicha');
+            $table->increments('id');
+
+            $table->string('vl');
+            $table->string('ac_a');
+            $table->string('arm_arp');
+            
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
