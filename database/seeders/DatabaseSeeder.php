@@ -19,8 +19,7 @@ class DatabaseSeeder extends Seeder
             HorarioSeeder::class,
             OpticaSeeder::class,
             CitaSeeder::class,
-            AsignarOpticaSeeder::class, 
-            FichaSeeder::class
+            AsignarOpticaSeeder::class
         ]);
     }
 }

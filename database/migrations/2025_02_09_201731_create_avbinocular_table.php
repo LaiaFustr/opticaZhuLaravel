@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('ejecilindro_oi');
             $table->string('correccion_oi');
             
-            $table->primary('idFicha');
+            //$table->primary('idFicha');
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

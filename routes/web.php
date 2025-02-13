@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OpticaController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\ClienteController;
+
 
 
 //Hola
@@ -25,7 +27,7 @@ Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('
 
 Route::get('propietario/citas', function(){
     return view('citas');
-}); 
+});
 
 Route::get('propietario/opticas', function(){
     return view('opticas');
@@ -64,6 +66,8 @@ Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar']
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 
 Route::get('opticas/mostrar' , [OpticaController::class, 'index']);
+
+Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 
 /*
 Tienes mal esto necesitas crear lo de passport y luego dentro del archivo api.php que se crea automaticamente en el /routes poner lo de abajo, luego de eso si quieres acceder a  la api debes hacer poner localhost/api/opticas... y   asi accederas a las rutas de la api

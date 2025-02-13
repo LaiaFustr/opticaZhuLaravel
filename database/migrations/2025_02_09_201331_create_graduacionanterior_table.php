@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('esfera_oi');
             $table->string('ejecilindro_oi');
             $table->string('agudezavisual_oi');
-            
-            $table->primary('idFicha');
+
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

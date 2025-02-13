@@ -16,11 +16,10 @@ return new class extends Migration
             $table->increments('id');
             $table->string('compensacion');
             $table->date('ultima_revision');
-            $table->int('edad');
+            $table->unsignedInteger('edad');
             $table->string('profesion');
             $table->string('horas_pantalla');
             
-            $table->primary('idFicha');
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
