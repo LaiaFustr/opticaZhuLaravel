@@ -17,5 +17,9 @@ class Optica extends Model
     public function horario(){
         return $this->belongsTo(Horario::class, 'idHorario');
     }
+    public function empleados(){
+        return $this->belongsToMany(Empleado::class, 'asignaropticas', 'idOptica', 'idEmpleado');
+    }
+    
 
 }

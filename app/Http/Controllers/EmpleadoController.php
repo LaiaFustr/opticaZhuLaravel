@@ -19,6 +19,11 @@ class EmpleadoController extends Controller
         return response()->json($empleados);
     }
 
+    public function empleadoID($id){
+        $empleado = Empleado::where("id", $id)->get();
+        return response()->json($empleado);
+    }
+
    /*  public function mostrar(Request $request)
     {
         $empleados = Empleado::all();

@@ -21,6 +21,12 @@ class OpticaController extends Controller
         return response()->json($optica);
     }
 
+    public function empleadosOptica($id){
+        $optica = Optica::find($id);
+        $empleados = $optica->empleados;
+        return response()->json($empleados);
+    }
+
     public function mostrar(Request $request)
     {
         $opticas = Optica::all();
@@ -28,12 +34,12 @@ class OpticaController extends Controller
         return view('opticas', compact('opticas'));
     }
 
-    public function mostrarIDAdmin(Request $request, $idAdmin){
+    public function mostrarIDAdmin($idAdmin){
         $optica = Optica::where('idAdmin', $idAdmin)->get();
         return response()->json($optica);
     }
 
-    public function mostrarIDHorario(Request $request, $idHorario){
+    public function mostrarIDHorario($idHorario){
         $optica = Optica::where('idHorario', $idHorario)->get();
         return response()->json($optica);
     }
