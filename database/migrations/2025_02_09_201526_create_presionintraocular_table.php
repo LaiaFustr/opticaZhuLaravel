@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('presionintraocular', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('idFicha');
+            $table->increments('id');
+           //revisar apuntes optica
+            $table->string('od');
+            $table->string('oi');
+            
+            $table->primary('idFicha');
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
