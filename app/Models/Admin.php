@@ -12,7 +12,4 @@ class Admin extends Model
     public $timestamps = false;  //indicamos que no queremos usar update_at y create_at en la base de datos.
 
 
-    public function opticas(){
-        return $this->hasMany(Optica::class);
-    }
 }
