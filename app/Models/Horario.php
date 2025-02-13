@@ -12,6 +12,6 @@ class Horario extends Model
     protected $hidden= ['created_at', 'updated_at'];
 
     public function admin(){
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class, 'idAdmin');
     }
 }

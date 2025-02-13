@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('od');
             $table->string('oi');
             
-            $table->primary('idFicha');
+
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

@@ -24,6 +24,7 @@ class CitaSeeder extends Seeder
                 'idOptometrista'=> '1',
                 'idCliente'=> '2',
                 'idAdmin'=> '9',
+                'idOptica'=> '1',
             ],
             [
                 'fecha' => '2025-03-06',
@@ -32,6 +33,7 @@ class CitaSeeder extends Seeder
                 'idOptometrista'=> '3',
                 'idCliente'=> '6',
                 'idAdmin'=> '11',
+                'idOptica'=> '2',
             ],
             [
                 'fecha' => '2025-03-06',
@@ -40,6 +42,7 @@ class CitaSeeder extends Seeder
                 'idOptometrista'=> '2',
                 'idCliente'=> '6',
                 'idAdmin'=> '11',
+                'idOptica'=> '2',
             ],
             [
                 'fecha' => '2025-03-07',
@@ -48,6 +51,7 @@ class CitaSeeder extends Seeder
                 'idOptometrista'=> '2',
                 'idCliente'=> '1',
                 'idAdmin'=> '10',
+                'idOptica'=> '3',
             ],
             [
                 'fecha' => '2025-03-07',
@@ -56,30 +60,34 @@ class CitaSeeder extends Seeder
                 'idOptometrista'=> '1',
                 'idCliente'=> '5',
                 'idAdmin'=> '10',
-            ],
-            [
-                'fecha' => '2025-03-07',
-                'hora'=> '11:00:00',
-                'descripcion'=> 'Primera revision de ojos',
-                'idOptometrista'=> '2',
-                'idCliente'=> '3',
-                'idAdmin'=> '12',
-            ],
-            [
-                'fecha' => '2025-03-07',
-                'hora'=> '12:00:00',
-                'descripcion'=> 'Primera revision de ojos',
-                'idOptometrista'=> '3',
-                'idCliente'=> '3',
-                'idAdmin'=> '11',
+                'idOptica'=> '3',
             ],
             [
                 'fecha' => '2025-03-07',
                 'hora'=> '13:00:00',
                 'descripcion'=> 'Primera revision de ojos',
+                'idOptometrista'=> '2',
+                'idCliente'=> '3',
+                'idAdmin'=> '12',
+                'idOptica'=> '2',
+            ],
+            [
+                'fecha' => '2025-03-07',
+                'hora'=> '16:00:00',
+                'descripcion'=> 'Segunda revision de ojos por problemas en la maquina ',
+                'idOptometrista'=> '3',
+                'idCliente'=> '2',
+                'idAdmin'=> '11',
+                'idOptica'=> '1',
+            ],
+            [
+                'fecha' => '2025-03-07',
+                'hora'=> '17:00:00',
+                'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '1',
                 'idCliente'=> '4',
                 'idAdmin'=> '9',
+                'idOptica'=> '3',
             ]
         ];
 
@@ -90,9 +98,9 @@ class CitaSeeder extends Seeder
             'descripcion'=> $cita['descripcion'],
             'idOptometrista'=> $cita['idOptometrista'],
             'idCliente'=> $cita['idCliente'],
-            'idAdmin'=> $cita['idAdmin'],    
+            'idAdmin'=> $cita['idAdmin'],
+            'idOptica'=>$cita['idOptica'],    
         ]);
         }
     }
 }
-

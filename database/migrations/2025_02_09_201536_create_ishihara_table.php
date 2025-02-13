@@ -17,7 +17,7 @@ return new class extends Migration
            
             $table->string('ishihara');
             
-            $table->primary('idFicha');
+
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

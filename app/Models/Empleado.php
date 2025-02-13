@@ -11,6 +11,14 @@ class Empleado extends Model
     //protected $hidden= ['created_at', 'updated_at'];
 
     public function optica(){
-        return $this->belongsTo(Optica::class);
+        return $this->belongsTo(Optica::class, 'idOptica');
+    }
+
+    public function admin(){
+        return $this->belongsTo(Admin::class,'idAdmin');
+    }
+
+    public function cita(){
+        return $this->belongsTo(Cita::class,'idCita');
     }
 }

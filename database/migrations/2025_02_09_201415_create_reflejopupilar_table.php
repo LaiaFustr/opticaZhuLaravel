@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('reaccLuz');
             $table->boolean('acomodacion');
             
-            $table->primary('idFicha');
+
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('correcto');
             $table->float('ppc');
             
-            $table->primary('idFicha');
+            //$table->primary('idFicha');
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
