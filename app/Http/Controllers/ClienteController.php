@@ -37,7 +37,7 @@ class ClienteController extends Controller
             'dni' => 'required|string|max:255',
         ]);
 
-        $dni= $request->input('dni');
+        $dni= $request->query('dni');
 
         $cliente= DB::table('clientes')->where('dni', $dni)->first();
 

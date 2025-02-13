@@ -68,7 +68,7 @@
                     <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
-                                @csrf
+                                
                                 <div class="input-group px-3">
                                     <input class="form-control" type="text" placeholder="Búsqueda por Nombre, Apellidos o DNI" id="dni" name="dni">
                                     <button class="btn btn-primary botonInputModal" type="submit"><i class="fa-solid fa-angle-right fa-2x"></i></button>
