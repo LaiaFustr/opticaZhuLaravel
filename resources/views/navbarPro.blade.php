@@ -11,6 +11,13 @@
         </li>
         <li class="nav-item sidebarLi">
             <div class="optionText">
+                <a class="sidebar-optionA" href="{{url('propietario/citas')}}">Citas</a>
+            </div>
+            <ul class="dropdown-menu">
+            </ul>
+        </li>
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
                 <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#clienteSublist" role="button" aria-expanded="false" aria-controls="clienteSublist">Clientes</a>
             </div>
             <ul class="collapse list-unstyled" id="clienteSublist">
@@ -50,7 +57,7 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form class="form-cli row">
+                <form class="form-cli row" method="POST" action="{{url('')}}">
                     <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
@@ -140,7 +147,7 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form class="form-cli row">
+                <form class="form-cli row" method="POST" action="">
                     <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
@@ -152,11 +159,8 @@
                             </div>
                         </div>
                     </div>
-
                 </form>
-
             </div>
-
             <div class="modal-footer border-0">
                 <button type="button" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Buscar</button>
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
