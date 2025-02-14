@@ -10,12 +10,13 @@
     <!-- todos los links locales (para quefuncione sin internet) -->
      <!-- coreui -->
     <link href="/coreui/coreui.min.css" rel="stylesheet" >
-    <script src="/coreui/bundle.min.css"></script>
+    <!-- <script src="/coreui/bundle.min.css"></script> -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/bootstrap.min.css"/>
     <script defer src="/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
+   
     <!-- nuestros estilos -->
     <link rel="stylesheet" href="./css/styles.css"/>
     <link rel="stylesheet" href="./css/navbar.css"/>
@@ -44,3 +45,4 @@
 </body>
 
 </html>
+<!-- <script src="{{ asset('resources/js/app.js') }}"></script> -->
