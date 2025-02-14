@@ -16,4 +16,8 @@ class Cita extends Model
     public function cita(){
         return $this->belongsTo(Cita::class);
     }
+
+    public function optica(){
+        return $this->belongsTo(Optica::class);
+    }
 }
