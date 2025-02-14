@@ -31,6 +31,8 @@ class EmpleadoController extends Controller
         return view('opticas', compact('opticas'));
     }
  */
+
+
     public function guardar(Request $request)
     {
 

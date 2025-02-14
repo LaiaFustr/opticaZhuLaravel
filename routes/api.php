@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OpticaController;
 use App\Http\Controllers\HorarioController;
-use App\Http\Controllers\CitasController;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AuxiliarController;
+use App\Http\Controllers\OptometristaController;
 
 
 Route::get('/user', function (Request $request) {
@@ -16,7 +18,8 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::get('/citas', [CitasController::class, 'index']);
+Route::get('/citas', [CitaController::class, 'index']);
+Route::get('citas/{optica}', [CitaController::class, 'citaOptica']);
 
 Route::get('/admin', [AdminController::class, 'index']);
 Route::put('/admin/actualizar/{id}', [AdminController::class, 'actualizar']);
@@ -29,7 +32,7 @@ Route::get('opticas/guardar' , [OpticaController::class, 'guardar']);
 Route::get('/opticas/{id}', [OpticaController::class,'mostrarID']);
 Route::get('/opticasporadmin/{idAdmin}', [OpticaController::class,'mostrarIDAdmin']);
 Route::get('/opticasporhorario/{idHorario}', [OpticaController::class,'mostrarIDHorario']);
-Route::get('/empleadosOptica/{id}',[OpticaController::class,'empleadosOptica']);
+Route::get('/empleadosoptica/{id}',[OpticaController::class,'empleadosOptica']);
 
 Route::get('/horarios', [HorarioController::class,'index']);
 Route::get('/horarios/{id}', [HorarioController::class,'mostrarID']);
@@ -40,6 +43,11 @@ Route::post('/propietario/insertarHorario', [HorarioController::class, 'guardar'
 
 Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
 Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
+
+Route::get('/auxiliares', [AuxiliarController::class, 'listado']);
+Route::get('/auxiliaresoptica/{id}', [AuxiliarController::class,'listadoOptica']);
+Route::get('/optometristas', [OptometristaController::class, 'listado']);
+Route::get('/optometristasoptica/{id}', [OptometristaController::class,'listadoOptica']);
 
 Route::get('/clientes', [ClienteController::class,'index'])->name('clientes');
 

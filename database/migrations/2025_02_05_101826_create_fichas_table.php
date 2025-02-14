@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedInteger('idAdmin');//pendiente hablar con gema
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -21,5 +21,6 @@ class Optica extends Model
         return $this->belongsToMany(Empleado::class, 'asignaropticas', 'idOptica', 'idEmpleado');
     }
     
+    
 
 }
