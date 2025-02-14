@@ -13,4 +13,6 @@ class CitaController extends Controller
 
         return response()->json($citas);
     }
+
+    
 }
