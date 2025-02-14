@@ -436,5 +436,5 @@
 
 </div>
 
-
+<script src="{{ asset('/js/ficha.js') }}"></script>
 @endsection
