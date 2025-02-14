@@ -80,3 +80,7 @@ revisa tambien tema cors, porque no se exactmente el error a mi no me ha dado
 ningun error
 */
 
+// Ruta provisional de ficha (borrar cuando tenga enlace con citas)
+Route::get('home/ficha', function(){
+    return view('ficha');
+});
