@@ -71,12 +71,12 @@
                             <div class="row my-5">
                                 <div class="col mr-5">
                                     <label class="col-form label" for="horaAO">Hora Apertura</label>
-                                    <input class="form-control form-control-lg" type="text" name="horaApertura" id="horaAO">
+                                    <input class="form-control form-control-lg" type="time" name="horaApertura" id="horaAO">
                                 </div>
 
                                 <div class="col">
                                     <label class="col-form label" for="horaCO">Hora Cierre</label>
-                                    <input class="form-control form-control-lg" type="text" name="horaCierre" id="horaCO" max="9">
+                                    <input class="form-control form-control-lg" type="time" name="horaCierre" id="horaCO" max="9">
                                 </div>
                             </div>
                         </div>

@@ -51,8 +51,8 @@ Route::get('propietario/configEmpleado', function(){
     return view('configEmpleado');
 })->name('configEmpleado');
 
-Route::get('/propietario/opticas', [OpticaController::class, 'mostrar']);
-Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard']);
+Route::get('/propietario/opticas', [OpticaController::class, 'mostrar'])->name('opticas');
+Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard'])->name('opticasC');
 
 
 //Route::get('opticas', [OpticaController::class, 'index']);
@@ -69,14 +69,5 @@ Route::get('opticas/mostrar' , [OpticaController::class, 'index']);
 
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 
-/*
-Tienes mal esto necesitas crear lo de passport y luego dentro del archivo api.php que se crea automaticamente en el /routes poner lo de abajo, luego de eso si quieres acceder a  la api debes hacer poner localhost/api/opticas... y   asi accederas a las rutas de la api
-*/
-
-
-
-/*
-revisa tambien tema cors, porque no se exactmente el error a mi no me ha dado
-ningun error
-*/
+Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
 

@@ -93,42 +93,46 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli row">
+                <form id="form-cli row" method="POST" action="{{url('propietario/insertarCliente')}}">
                     <div class="col px-2">
                         <div class="row my-2">
+                            @csrf
                             <div class="col">
                                 <label class="col-form-label" for="nombre">Nombre</label>
-                                <input class="form-control" type="text" id="nombre" max="20">
+                                <input class="form-control" type="text" name="nombre" id="nombre" max="20">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="" apellido>Apellidos</label>
-                                <input class="form-control" type="text" id="apellido" max="30">
+                                <input class="form-control" type="text" name="apellido" id="apellido" max="30">
                             </div>
 
                         </div>
                         <div class="row my-2">
                             <div class="col">
-                                <label class="col-form-label" for="telf">Num. Telf</label>
-                                <input class="form-control" type="number" id="telf" max="9">
-                            </div>
-                            <div class="col">
                                 <label class="col-form-label" for="dni">DNI</label>
-                                <input class="form-control" type="text" id="dni" max="9">
+                                <input class="form-control" type="text" name="dni" id="dni" max="9">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
 
-                                <input class="form-control" type="number" id="cp">
+                                <input class="form-control" type="number" name="codPostal" pattern= /^\d{5}$/ id="cp">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="telf">Num. Telf</label>
+                                <input class="form-control" type="text" name="telefono" id="telf" max="9">
+
+                                <input type="hidden" name="idAdmin" value="11">
                             </div>
                         </div>
                     </div>
-                </form>
+               
 
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
+                <button type="submit" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal" onclick="location.href='{{ url('propietario/opticas') }}'">Crear</button>
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
+            </form>
         </div>
     </div>
 </div>

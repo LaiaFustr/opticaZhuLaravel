@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OpticaController;
 use App\Http\Controllers\HorarioController;
-use App\Http\Controllers\CitasController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CitaController;
+
 
 
 Route::get('/user', function (Request $request) {
@@ -16,7 +17,7 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::get('/citas', [CitasController::class, 'index']);
+//Route::get('/citas', [CitasController::class, 'index']);
 
 Route::get('/admin', [AdminController::class, 'index']);
 Route::put('/admin/actualizar/{id}', [AdminController::class, 'actualizar']);
@@ -44,5 +45,6 @@ Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
 Route::get('/clientes', [ClienteController::class,'index'])->name('clientes');
 
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
+Route::get('/citas', [CitaController::class, 'index'])->name('citas');
 
 //Route::get('/horarios', [HorarioController::class, 'index']->name('horarios'));

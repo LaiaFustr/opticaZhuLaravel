@@ -9,7 +9,7 @@ class CitaController extends Controller
 {
     public function index(Request $request)
     {
-        $citas = Cita::select('hora', 'descripcion');
+        $citas = Cita::select('fecha','hora', 'descripcion');
 
         return response()->json($citas);
     }
