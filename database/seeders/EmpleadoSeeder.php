@@ -61,6 +61,24 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'sophii63@gmail.com',
                 'rol'=> 'optometrista',
             ],
+            [   
+                'nombre' => 'Hernan',
+                'apellido'=> 'Mendez',
+                'dni'=> '22221989R',
+                'direccion'=> 'Calle Estatica 25',
+                'telefono'=> '690134235',
+                'correo'=> 'herteve12@gmail.com',
+                'rol'=> 'auxiliar',
+            ],
+            [
+                'nombre' => 'Cristina',
+                'apellido'=> 'Martinez',
+                'dni'=> '294565321K',
+                'direccion'=> 'Calle Cristobal',
+                'telefono'=> '647153654',
+                'correo'=> 'crizilla@gmail.com',
+                'rol'=> 'optometrista',
+            ],
         ];
 
         $empleID = [];

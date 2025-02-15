@@ -25,4 +25,8 @@ class Empleado extends Model
     public function opticas(){
         return $this->belongsToMany(Optica::class, 'asignaropticas', 'idEmpleado', 'idOptica');
     }
+
+    public function auxiliar(){
+        return $this->belongsToMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
+    }
 }

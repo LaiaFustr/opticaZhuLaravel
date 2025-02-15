@@ -71,3 +71,7 @@ Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->nam
 
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
 
+// Ruta provisional de ficha (borrar cuando tenga enlace con citas)
+Route::get('home/ficha', function(){
+    return view('ficha');
+});
