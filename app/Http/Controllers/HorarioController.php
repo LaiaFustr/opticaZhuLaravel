@@ -53,7 +53,7 @@ class HorarioController extends Controller
     public function guardarSesion(Request $request){
         $datos= $request->validate([
              'nombreH' => 'required|string|max:255',
-             'horaApertura' => 'required|date_format:H:i',
+             'horaApertura' => 'required|date_format:H:i|max:255',
              'horaCierre' => 'required|date_format:H:i|max:255',
          ]);
 

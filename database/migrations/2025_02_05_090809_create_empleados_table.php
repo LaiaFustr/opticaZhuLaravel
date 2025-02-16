@@ -22,8 +22,16 @@ return new class extends Migration
             $table->string('nombreUsuario',15);
             $table->enum('rol', ['auxiliar','optometrista']);
             $table->string('contrasenia');
+            
+            $table->unsignedInteger('idOptica')->nullable();
+
+            $table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
+
+
             $table->primary('id');
             $table->unique('dni');
+
+
         });
     }
 

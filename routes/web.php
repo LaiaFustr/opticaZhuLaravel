@@ -5,14 +5,16 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OpticaController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EmpleadoController;
 
 
 
-//Hola
 
-Route::get('/', function(){
+
+/*Route::get('/', function(){
     redirect()->route('home/');
-});
+});*/
+//Rutas de la vista
 
 Route::get('home', function() {
     return view('app');
@@ -39,7 +41,6 @@ Route::get('propietario/opticas', function(){
 Route::get('propietario/opticasC', function(){
     return view('opticasCard');
 });
-Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
 Route::get('propietario/configInfo', function(){
     return view('configInfo');
@@ -54,34 +55,32 @@ Route::get('propietario/configEmpleado', function(){
     return view('configEmpleado');
 })->name('configEmpleado');
 
-Route::get('/propietario/opticas', [OpticaController::class, 'mostrar']);
-Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard']);
+Route::view('propietario/perfilEmp', 'perfilEmp')->name('perfilEmp');
 
+
+//Metodos Mostrar
+Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
+Route::get('opticas/mostrar' , [OpticaController::class, 'index']);
+Route::get('/propietario/opticas', [OpticaController::class, 'mostrar'])->name('opticas');
+Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard'])->name('opticasC');
 
 //Route::get('opticas', [OpticaController::class, 'index']);
 
 Route::get('' , [OpticaController::class, 'guardar']);
 
+//Metodos Insertar
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
-
 Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
-
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
+Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
+Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardar'])->name('insertarEmpleado');
 
-Route::get('opticas/mostrar' , [OpticaController::class, 'index']);
 
+//Metodos Buscar
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
-
-/*
-Tienes mal esto necesitas crear lo de passport y luego dentro del archivo api.php que se crea automaticamente en el /routes poner lo de abajo, luego de eso si quieres acceder a  la api debes hacer poner localhost/api/opticas... y   asi accederas a las rutas de la api
-*/
+Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado'])->name('buscarEmpleado');
 
 
-
-/*
-revisa tambien tema cors, porque no se exactmente el error a mi no me ha dado
-ningun error
-*/
 
 // Ruta provisional de ficha (borrar cuando tenga enlace con citas)
 Route::get('home/ficha', function(){
