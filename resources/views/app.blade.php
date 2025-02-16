@@ -17,6 +17,7 @@
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
    
+    <script defer src="/resources/js/contrasenia.js" ></script>
     <!-- nuestros estilos -->
     <link rel="stylesheet" href="./css/styles.css"/>
     <link rel="stylesheet" href="./css/navbar.css"/>

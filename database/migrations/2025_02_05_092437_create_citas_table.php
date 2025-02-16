@@ -16,9 +16,9 @@ return new class extends Migration
             $table->date('fecha');//fecha de la cita
             $table->time('hora');//hora de la cita
             $table->string('descripcion',255);
-            $table->unsignedInteger('idOptometrista');
+            $table->unsignedInteger('idOptometrista')->nullable();
             $table->unsignedInteger('idCliente');
-            $table->unsignedInteger('idAdmin');
+            $table->unsignedInteger('idAdmin')->nullable();
             $table->unsignedInteger('idOptica');
             $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
