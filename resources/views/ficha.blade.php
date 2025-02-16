@@ -6,24 +6,85 @@
 
     <div class="row mb-4">
         <div class="col-auto">
-            <h1 class="tituloPagina">Ficha para NOMBRE</h1>
+            <h1 class="tituloPagina">Ficha para <!-- de la cita, nombre de cliente por id --></h1>
         </div>
-        
+
         <div class="col d-flex justify-content-end ms-auto">
             <a href=""><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
     </div>
     <form action="">
         <div class="row p-1 my-1">
-            <select class="form-select w-50 form-select-sm">
+            <!-- <select class="form-control selectpicker w-50 form-select-sm" multiple>
                 <option value="anamnesis">Anamnesis</option>
                 <option value="graduacion_anterior">Graduacion Anterior</option>
-            </select>
+            </select> -->
+
+
+            <div class="dropdown col" id="apartadosFichaDrodown">
+                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Apartados
+                </button>
+                <ul class="dropdown-menu unstyled-list p-2" id="checksFicha">
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="anamnesisCheck" id="anamnesisCheck">
+                            <label class="form-check-label" for="anamnesisCheck">Anamnesis</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="graduacionAntCheck" id="graduacionAntCheck">
+                            <label class="form-check-label" for="graduacionAntCheck">Graduación Anterior</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="AVSinCorrCheck" id="AVSinCorrCheck">
+                            <label class="form-check-label" for="AVSinCorrCheck">A.V. Sin Corrección</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="reflejoPupilarCheck" id="reflejoPupilarCheck">
+                            <label class="form-check-label" for="reflejoPupilarCheck">Reflejo Pupilar</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ishiharaCheck" id="ishiharaCheck">
+                            <label class="form-check-label" for="ishiharaCheck">Ishihara</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="AVMonocularCheck" id="AVMonocularCheck">
+                            <label class="form-check-label" for="AVMonocularCheck">A.V. Monocular</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="AVBinocularCheck" id="AVBinocularCheck">
+                            <label class="form-check-label" for="AVBinocularCheck">A.V. Binocular</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
+
+
+
+
+
             <div class="col col-1 d-flex ms-5 d-flex align-items-center">
-            <a href="">Historial</a>
+                <a href="">Historial</a>
+            </div>
         </div>
-        </div>
-        <div class="row card p-1 my-1 cardFicha">
+        <div class="row card p-1 my-1 cardFicha" id="anamnesis" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>Anamnesis</h4>
@@ -114,7 +175,7 @@
 
         </div>
 
-        <div class="row card p-1 my-1 cardFicha">
+        <div class="row card p-1 my-1 cardFicha" id="graduacionAnt"  style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>Graduación Anterior</h4>
@@ -178,7 +239,7 @@
 
         </div>
 
-        <div class="row card p-1 my-1 cardFicha">
+        <div class="row card p-1 my-1 cardFicha" id="AVSinCorr"  style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>A.V. Sin Corrección</h4>
@@ -242,7 +303,7 @@
 
         </div>
         <div class="row  my-1 row-auto">
-            <div class="col card p-1 cardFicha col-auto me-auto">
+            <div class="col card p-1 cardFicha col-auto me-auto" id="reflejoPupilar"  style="display:none">
                 <div class="row">
                     <h4>Reflejo Pupilar</h4>
                 </div>
@@ -264,26 +325,26 @@
                     <div class="col-auto form-check">
                         <input class="form-check-input" type="checkbox" id="si_comp_v">
                         <label class="form-check-label" for="flexCheckDefault">
-                           Reaccionan
+                            Reaccionan
                         </label>
                     </div>
                     <div class="col-auto form-check">
                         <input class="form-check-input" type="checkbox" id="si_comp_v">
                         <label class="form-check-label" for="flexCheckDefault">
-                           Reaccionan a luz
+                            Reaccionan a luz
                         </label>
                     </div>
                     <div class="col-auto form-check">
                         <input class="form-check-input" type="checkbox" id="si_comp_v">
                         <label class="form-check-label" for="flexCheckDefault">
-                           Se acomodan
+                            Se acomodan
                         </label>
                     </div>
 
                 </div>
             </div>
 
-            <div class="col card p-1 cardFicha col-auto col-5">
+            <div class="col card p-1 cardFicha col-auto col-5" id="ishihara" style="display:none">
                 <div class="row">
                     <h4>Ishihara</h4>
                 </div>
@@ -296,12 +357,12 @@
             </div>
         </div>
 
-        
 
 
 
 
-        <div class="row card p-1 my-1 cardFicha">
+
+        <div class="row card p-1 my-1 cardFicha" id="AVMonocular" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>A.V. Monocular</h4>
@@ -364,7 +425,7 @@
             </div>
 
         </div>
-        <div class="row card p-1 my-1 cardFicha">
+        <div class="row card p-1 my-1 cardFicha" id="AVBinocular" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>A.V. Binocular</h4>

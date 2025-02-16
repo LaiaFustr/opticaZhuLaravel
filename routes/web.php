@@ -10,10 +10,13 @@ use App\Http\Controllers\ClienteController;
 
 //Hola
 
+Route::get('/', function(){
+    redirect()->route('home/');
+});
+
 Route::get('home', function() {
     return view('app');
 });
-
 Route::get('propietario', function() {
     return view('app');
 });

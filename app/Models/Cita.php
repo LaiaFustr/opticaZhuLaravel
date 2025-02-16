@@ -13,11 +13,19 @@ class Cita extends Model
     //las horas pueden ir asi para no poner los segundos
     //'hora'=>'datetime:H:i',
 
-    public function cita(){
+    public function cita()
+    {
         return $this->belongsTo(Cita::class);
     }
 
-    public function optica(){
+    public function optica()
+    {
         return $this->belongsTo(Optica::class);
     }
+
+    //nombre de cliente de cita que se añadirá a ficha
+    /* public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'idCliente');
+    } */
 }
