@@ -10,11 +10,15 @@ use App\Http\Controllers\EmpleadoController;
 
 
 
+
+/*Route::get('/', function(){
+    redirect()->route('home/');
+});*/
 //Rutas de la vista
+
 Route::get('home', function() {
     return view('app');
 });
-
 Route::get('propietario', function() {
     return view('app');
 });
