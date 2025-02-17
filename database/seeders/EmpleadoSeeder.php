@@ -24,6 +24,7 @@ class EmpleadoSeeder extends Seeder
                 'telefono'=> '645122567',
                 'correo'=> 'jflower21@gmail.com',
                 'rol'=> 'optometrista',
+                'idOptica'=> 1,
             ],
             [
                 'nombre' => 'Lisa',
@@ -33,6 +34,7 @@ class EmpleadoSeeder extends Seeder
                 'telefono'=> '645122567',
                 'correo'=> 'lisilis14@gmail.com',
                 'rol'=> 'auxiliar',
+                'idOptica'=> 1,
             ],
             [
                 'nombre' => 'Emilio',
@@ -42,6 +44,7 @@ class EmpleadoSeeder extends Seeder
                 'telefono'=> '915342525',
                 'correo'=> 'emilioporfavor@gmail.com',
                 'rol'=> 'optometrista',
+                'idOptica'=> 2,
             ],
             [
                 'nombre' => 'Juan',
@@ -51,6 +54,7 @@ class EmpleadoSeeder extends Seeder
                 'telefono'=> '637450380',
                 'correo'=> 'jcpresi@gmail.com',
                 'rol'=> 'auxiliar',
+                'idOptica'=> 2,
             ],
             [
                 'nombre' => 'Sophia',
@@ -60,6 +64,27 @@ class EmpleadoSeeder extends Seeder
                 'telefono'=> '645122634',
                 'correo'=> 'sophii63@gmail.com',
                 'rol'=> 'optometrista',
+                'idOptica'=> 3,
+            ],
+            [   
+                'nombre' => 'Hernan',
+                'apellido'=> 'Mendez',
+                'dni'=> '22221989R',
+                'direccion'=> 'Calle Estatica 25',
+                'telefono'=> '690134235',
+                'correo'=> 'herteve12@gmail.com',
+                'rol'=> 'auxiliar',
+                'idOptica'=> 3,
+            ],
+            [
+                'nombre' => 'Cristina',
+                'apellido'=> 'Martinez',
+                'dni'=> '294565321K',
+                'direccion'=> 'Calle Cristobal',
+                'telefono'=> '647153654',
+                'correo'=> 'crizilla@gmail.com',
+                'rol'=> 'optometrista',
+                'idOptica'=> 1,
             ],
         ];
 

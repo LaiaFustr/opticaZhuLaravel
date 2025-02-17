@@ -62,7 +62,7 @@
                         <div class="row my-2">
                             <div class="col">
                                 <div class="input-group px-3">
-                                    <input class="form-control" type="text" placeholder="Búsqueda por Nombre, Apellidos o DNI">
+                                    <input class="form-control" type="text" placeholder="Búsqueda por DNI">
                                     <button class="btn btn-primary botonInputModal"><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                 </div>
                             </div>
@@ -93,42 +93,45 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli row">
+                <form id="form-cli row" method="POST" action="{{url('propietario/insertarCliente')}}">
                     <div class="col px-2">
                         <div class="row my-2">
+                            @csrf
                             <div class="col">
                                 <label class="col-form-label" for="nombre">Nombre</label>
-                                <input class="form-control" type="text" id="nombre" max="20">
+                                <input class="form-control" type="text" name="nombre" id="nombre" max="20">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="" apellido>Apellidos</label>
-                                <input class="form-control" type="text" id="apellido" max="30">
+                                <input class="form-control" type="text" name="apellido" id="apellido" max="30">
                             </div>
 
                         </div>
                         <div class="row my-2">
                             <div class="col">
-                                <label class="col-form-label" for="telf">Num. Telf</label>
-                                <input class="form-control" type="number" id="telf" max="9">
-                            </div>
-                            <div class="col">
                                 <label class="col-form-label" for="dni">DNI</label>
-                                <input class="form-control" type="text" id="dni" max="9">
+                                <input class="form-control" type="text" name="dni" id="dni" max="9">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
 
-                                <input class="form-control" type="number" id="cp">
+                                <input class="form-control" type="number" name="codPostal" pattern= /^\d{5}$/ id="cp">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="telf">Num. Telf</label>
+                                <input class="form-control" type="text" name="telefono" id="telf" max="9">
+
+                                <input type="hidden" name="idAdmin" value="11">
                             </div>
                         </div>
                     </div>
-                </form>
 
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
+                <button type="submit" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal" onclick="location.href='{{ url('propietario/opticas') }}'">Crear</button>
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -147,13 +150,14 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form class="form-cli row" method="POST" action="">
-                    <div class="col px-2">
+                <form class="form-cli row" method="GET" action="{{url('propietario/buscarEmp')}}">
+                @csrf    
+                <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
                                 <div class="input-group px-3">
-                                    <input class="form-control" type="text" placeholder="Búsqueda por Nombre, Apellidos o DNI">
-                                    <button class="btn btn-primary botonInputModal"><i class="fa-solid fa-angle-right fa-2x"></i></button>
+                                    <input class="form-control" type="text" placeholder="Búsqueda por DNI" name="dni">
+                                    <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                 </div>
 
                             </div>
@@ -162,7 +166,7 @@
                 </form>
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Buscar</button>
+                <!-- <button type="button" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Buscar</button> -->
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
         </div>
@@ -184,51 +188,52 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli row">
+                <form id="form-cli row" method="POST" action="{{url('propietario/insertarEmpleado')}}" onsubmit="return validarContrasenia()">
+                    @csrf
                     <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="nombre">Nombre</label>
-                                <input class="form-control" type="text" id="nombre" max="20">
+                                <input class="form-control" type="text" id="nombre" max="20" name="nombre">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="" apellido>Apellidos</label>
-                                <input class="form-control" type="text" id="apellido" max="30">
+                                <input class="form-control" type="text" id="apellido" max="30" name="apellido">
                             </div>
 
                             <div class="col">
                                 <label class="col-form-label" for="dni">DNI</label>
-                                <input class="form-control" type="text" id="dni" max="30">
+                                <input class="form-control" type="text" id="dni" max="30" name="dni">
                             </div>
                         </div>
 
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="dir">Dirección</label>
-                                <input class="form-control" type="number" id="dir" max="50">
+                                <input class="form-control" type="text" id="dir" max="50" name="direccion">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num.Telf</label>
-                                <input class="form-control" type="number" id="telf">
+                                <input class="form-control" type="text" id="telf" name="telefono">
                             </div>
                         </div>
 
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="email">Correo Electrónico</label>
-                                <input class="form-control" type="email" id="email">
+                                <input class="form-control" type="email" id="email" name="correo">
                             </div>
 
                             <div class="col">
                                 <label class="col-form-label" for="usuario">Nombre Usuario</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" name="nombreUsuario" id="usuario" max="20">
                             </div>
 
                             <div class="col">
                                 <label class="col-form-label" for="rol">Rol</label>
-                                <select class="form-select" id="rol">
-                                    <option value="aux">Auxiliar</option>
-                                    <option value="opt">Optometrista</option>
+                                <select class="form-select" id="rol" name="rol">
+                                    <option value="auxiliar">Auxiliar</option>
+                                    <option value="optometrista">Optometrista</option>
                                 </select>
                             </div>
                         </div>
@@ -236,7 +241,7 @@
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="pass">Contraseña</label>
-                                <input class="form-control" type="password" id="pass" max="20">
+                                <input class="form-control" type="password" id="pass" max="20" name="contrasenia">
                             </div>
 
                             <div class="col">
@@ -245,13 +250,14 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                
 
             </div>
             <div class="modal-footer border-0">
-                <button type="button" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
+                <button type="submit" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
+            </form>
         </div>
     </div>
 </div>

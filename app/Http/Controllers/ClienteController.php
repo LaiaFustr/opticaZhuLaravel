@@ -26,8 +26,12 @@ class ClienteController extends Controller
             'dni' => 'required|string|max:255',
             'codPostal' => 'required|integer',
             'telefono' => 'required|string|max:255',
+            'idAdmin' => 'required|integer',
         ]);
         Cliente::create($validateData);
+
+        return redirect()->route('opticas');
+
     }
 
     public function buscarCli(Request $request)

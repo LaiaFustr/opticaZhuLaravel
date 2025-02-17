@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Models\Optica;
 use App\Models\Horario;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -19,6 +21,11 @@ class EmpleadoController extends Controller
         return response()->json($empleados);
     }
 
+    public function empleadoID($id){
+        $empleado = Empleado::where("id", $id)->get();
+        return response()->json($empleado);
+    }
+
    /*  public function mostrar(Request $request)
     {
         $empleados = Empleado::all();
@@ -26,9 +33,10 @@ class EmpleadoController extends Controller
         return view('opticas', compact('opticas'));
     }
  */
+
+
     public function guardar(Request $request)
     {
-
         $validateData = $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -112,8 +120,20 @@ class EmpleadoController extends Controller
     }
 
     public function buscarEmpleado(Request $request){
-        $empleado = Empleado::where('nombre', $request->nombre)->first();
-        return response()->json($empleado);
+        $request->validate([
+            'dni' => 'required|string|max:255',
+        ]);
+
+        $dni= $request->query('dni');
+
+        $empleado= DB::table('empleados')->where('dni', $dni)->first();
+
+        if($empleado==null){
+            return response()->json(['message' => 'Cliente no encontrado']);
+        }
+
+        //dd($cliente);
+        return view('perfilEmp', compact('empleado'));
     }
 
 
