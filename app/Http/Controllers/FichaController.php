@@ -9,6 +9,7 @@ class FichaController extends Controller
 {
     public function creaFicha($id){
         $cita = Cita::find($id);
-        $datosFicha = request()->validate([''])
+        $datosFicha = request()->validate(['']);
     }
+
 }
