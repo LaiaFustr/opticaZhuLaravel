@@ -76,7 +76,7 @@
 
                             <div class="col">
                                 <label class="col-form label" for="numMaquina">Nombre de Usuario</label>
-                                <input class="form-control form-control-lg" type="number" name="numMaquina" id="numMaquina">
+                                <input class="form-control form-control-lg" type="text" name="numMaquina" id="numMaquina">
                             </div>
                         </div>
 
