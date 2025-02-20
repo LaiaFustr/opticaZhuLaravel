@@ -19,7 +19,7 @@ class Cliente extends Model
     }
 
     public function fichas(){
-        return $this->haMany(Ficha::class);
+        return $this->hasMany(Ficha::class);
     }
 
 }

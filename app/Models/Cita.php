@@ -15,7 +15,7 @@ class Cita extends Model
 
     public function optometrista()
     {
-        return $this->belongsTo(Empleado::class);
+        return $this->belongsTo(Optometrista::class);
     }
 
     public function optica()
@@ -26,10 +26,11 @@ class Cita extends Model
     public function cliente()
     {
         return $this->belongsTo(Cliente::class);
+        
     }
 
     public function ficha(){
         return $this->hasOne(Ficha::class);
     }
-    
+
 }
