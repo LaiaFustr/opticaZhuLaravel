@@ -23,7 +23,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '1',
                 'idCliente'=> '2',
-                'idAdmin'=> '9',
+                /* 'idAdmin'=> '9', */
                 'idOptica'=> '1',
             ],
             [
@@ -32,7 +32,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Recogida de gafas',
                 'idOptometrista'=> '3',
                 'idCliente'=> '6',
-                'idAdmin'=> '11',
+              /*   'idAdmin'=> '11', */
                 'idOptica'=> '2',
             ],
             [
@@ -41,7 +41,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera prueba de lentillas',
                 'idOptometrista'=> '2',
                 'idCliente'=> '6',
-                'idAdmin'=> '11',
+                /* 'idAdmin'=> '11', */
                 'idOptica'=> '2',
             ],
             [
@@ -50,7 +50,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '4',
                 'idCliente'=> '1',
-                'idAdmin'=> '10',
+                /* 'idAdmin'=> '10', */
                 'idOptica'=> '3',
             ],
             [
@@ -59,7 +59,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '4',
                 'idCliente'=> '5',
-                'idAdmin'=> '10',
+               /*  'idAdmin'=> '10', */
                 'idOptica'=> '3',
             ],
             [
@@ -68,7 +68,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '2',
                 'idCliente'=> '3',
-                'idAdmin'=> '12',
+                /* 'idAdmin'=> '12', */
                 'idOptica'=> '2',
             ],
             [
@@ -77,7 +77,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Segunda revision de ojos por problemas en la maquina ',
                 'idOptometrista'=> '3',
                 'idCliente'=> '2',
-                'idAdmin'=> '11',
+                /* 'idAdmin'=> '11', */
                 'idOptica'=> '1',
             ],
             [
@@ -86,7 +86,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '4',
                 'idCliente'=> '4',
-                'idAdmin'=> '9',
+                /* 'idAdmin'=> '9', */
                 'idOptica'=> '3',
             ], //
             [
@@ -95,7 +95,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '1',
                 'idCliente'=> '7',
-                'idAdmin'=> '9',
+                /* 'idAdmin'=> '9', */
                 'idOptica'=> '1',
             ],
             [
@@ -104,7 +104,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revision de ojos',
                 'idOptometrista'=> '3',
                 'idCliente'=> '8',
-                'idAdmin'=> '10',
+                /* 'idAdmin'=> '10', */
                 'idOptica'=> '1',
             ],
             [
@@ -113,7 +113,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera prueba de lentillas',
                 'idOptometrista'=> '2',
                 'idCliente'=> '9',
-                'idAdmin'=> '12',
+                /* 'idAdmin'=> '12', */
                 'idOptica'=> '2',
             ],
             [
@@ -122,7 +122,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revisión de ojos',
                 'idOptometrista'=> '4',
                 'idCliente'=> '10',
-                'idAdmin'=> '11',
+                /* 'idAdmin'=> '11', */
                 'idOptica'=> '3',
             ],
             [
@@ -131,7 +131,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revisión de ojos',
                 'idOptometrista'=> '4',
                 'idCliente'=> '11',
-                'idAdmin'=> '9',
+                /* 'idAdmin'=> '9', */
                 'idOptica'=> '3',
             ],
             [
@@ -140,7 +140,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revisión de ojos',
                 'idOptometrista'=> '1',
                 'idCliente'=> '12',
-                'idAdmin'=> '10',
+                /* 'idAdmin'=> '10', */
                 'idOptica'=> '1',
             ],
             [
@@ -149,7 +149,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revisión de ojos',
                 'idOptometrista'=> '4',
                 'idCliente'=> '13',
-                'idAdmin'=> '12',
+                /* 'idAdmin'=> '12', */
                 'idOptica'=> '3',
             ],
             [
@@ -158,7 +158,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revisión de ojos',
                 'idOptometrista'=> '3',
                 'idCliente'=> '14',
-                'idAdmin'=> '11',
+                /* 'idAdmin'=> '11', */
                 'idOptica'=> '1',
             ],
             [
@@ -167,7 +167,7 @@ class CitaSeeder extends Seeder
                 'descripcion'=> 'Primera revisión de ojos',
                 'idOptometrista'=> '4',
                 'idCliente'=> '15',
-                'idAdmin'=> '9',
+                /* 'idAdmin'=> '9', */
                 'idOptica'=> '3',
             ]
             
@@ -180,7 +180,7 @@ class CitaSeeder extends Seeder
             'descripcion'=> $cita['descripcion'],
             'idOptometrista'=> $cita['idOptometrista'],
             'idCliente'=> $cita['idCliente'],
-            'idAdmin'=> $cita['idAdmin'],
+           /*  'idAdmin'=> $cita['idAdmin'], */
             'idOptica'=>$cita['idOptica'],    
         ]);
         }

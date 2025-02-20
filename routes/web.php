@@ -6,8 +6,8 @@ use App\Http\Controllers\OpticaController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
-
-
+use App\Http\Controllers\FichaController;
+use App\Http\Controllers\CitaController;
 
 
 
@@ -23,35 +23,35 @@ use App\Http\Controllers\EmpleadoController;
     return view('app');
 }); */
 
-Route::get('home/citas', function(){
+Route::get('home/citas', [CitaController::class, 'indexVista'] /* function () {
     return view('citas');
-})->name('home');
+} */)->name('home');
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
 
-Route::get('propietario/citas', function(){
+Route::get('propietario/citas', function () {
     return view('citas');
 })->name('propietario');
 
-Route::get('propietario/opticas', function(){
+Route::get('propietario/opticas', function () {
     return view('opticas');
 });
 
-Route::get('propietario/opticasC', function(){
+Route::get('propietario/opticasC', function () {
     return view('opticasCard');
 });
 
-Route::get('propietario/configInfo', function(){
+Route::get('propietario/configInfo', function () {
     return view('configInfo');
 });
 
-Route::get('propietario/configCalendar', function(){
+Route::get('propietario/configCalendar', function () {
     return view('configCalendar');
 })->name('configCalendar');
 
 
-Route::get('propietario/configEmpleado', function(){
+Route::get('propietario/configEmpleado', function () {
     return view('configEmpleado');
 })->name('configEmpleado');
 
@@ -60,13 +60,13 @@ Route::view('propietario/perfilEmp', 'perfilEmp')->name('perfilEmp');
 
 //Metodos Mostrar
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
-Route::get('opticas/mostrar' , [OpticaController::class, 'index']);
+Route::get('opticas/mostrar', [OpticaController::class, 'index']);
 Route::get('/propietario/opticas', [OpticaController::class, 'mostrar'])->name('opticas');
 Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard'])->name('opticasC');
 
 //Route::get('opticas', [OpticaController::class, 'index']);
 
-Route::get('' , [OpticaController::class, 'guardar']);
+Route::get('', [OpticaController::class, 'guardar']);
 
 //Metodos Insertar
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
@@ -77,21 +77,27 @@ Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardar
 
 
 //Metodos Buscar
-Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
-Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado'])->name('buscarEmpleado');
+Route::get('propietario/buscarCli', [ClienteController::class, 'buscarCli'])->name('buscarCli');
+Route::get('propietario/buscarEmp', [EmpleadoController::class, 'buscarEmpleado'])->name('buscarEmpleado');
 
 
 
 // Ruta provisional de ficha (borrar cuando tenga enlace con citas)
-Route::get('home/ficha', function(){
+Route::get('home/ficha', function () {
     return view('ficha');
-});
+})->name('ficha');
 
 // Redirigirá al login y dependiendo del rol irá a home o a propietario
-Route::get('/', function(){
+Route::get('/', function () {
     //if rol optometrista
     $route = redirect()->route('home');
     //if rol propietario
     //$route = redirect()->route('propietario');
     return $route;
 });
+
+
+
+
+// Redirigirá al login y dependiendo del rol irá a home o a propietario
+Route::post('/creaFicha', [FichaController::class, 'creaFicha'])->name('creaFicha');
