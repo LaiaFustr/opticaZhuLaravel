@@ -14,9 +14,12 @@ class Cliente extends Model
         return $this->belongsTo(Admin::class);
     }
 
-    /* 
     public function citas(){
-        return $this->hasMany(Cita::class,'idCliente');
-    } */
+        return $this->hasMany(Cita::class);
+    }
+
+    public function fichas(){
+        return $this->haMany(Ficha::class);
+    }
 
 }

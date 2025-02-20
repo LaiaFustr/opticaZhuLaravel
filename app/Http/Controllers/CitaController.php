@@ -11,14 +11,14 @@ class CitaController extends Controller
     public function index(Request $request)
     {
         $citas = Cita::all();
-
         return response()->json($citas);
     }
     
 
     public function indexVista()
     {
-        $citas = Cita::all();
+        //$citas = Cita::all();
+        $citas = Cita::with('cliente')->get();
         return view('/citas', ['citas'=>$citas]);
     }
     

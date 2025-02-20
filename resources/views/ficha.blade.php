@@ -6,7 +6,7 @@
 
     <div class="row mb-4">
         <div class="col-auto">
-            
+
             <h1 class="tituloPagina">Ficha para {{$cita->nombreCliente}} {{$cita->apellidoCliente}}</h1>
         </div>
 
@@ -16,6 +16,12 @@
     </div>
     <form action="{{route('creaFicha')}}" method="post">
         @csrf
+        <!-- <input type="hidden" name="idCliente" value="{{ $cita->idCliente }}">
+        <input type="hidden" name="idOptometrista" value="{{ $cita->idOptometrista }}">
+        <input type="hidden" name="nombreCliente" value="{{ $cita->cliente->nombre }}">
+        <input type="hidden" name="apellidoCliente" value="{{ $cita->cliente->apellido }}">
+        <input type="hidden" name="fechaCita" value="{{ $cita->fecha }}">
+        <input type="hidden" name="horaCita" value="{{ $cita->hora }}"> -->
         <div class="row p-1 my-1">
             <!-- <select class="form-control selectpicker w-50 form-select-sm" multiple>
                 <option value="anamnesis">Anamnesis</option>
@@ -23,7 +29,6 @@
             </select> -->
 
             <!-- borrar -->
-            
             <div class="dropdown col" id="apartadosFichaDrodown">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Apartados
@@ -73,14 +78,6 @@
                     </li>
                 </ul>
             </div>
-
-
-
-
-
-
-
-
 
 
             <div class="col col-1 d-flex ms-5 d-flex align-items-center">

@@ -13,7 +13,7 @@ class FichaController extends Controller
 
     public function creaFicha(Request $request)
     {
-       
+        dd($request);
         $datosFicha = $request->validate([
             /* 'ficha.idOptometrista' => 'required|integer',
             'idCliente' => 'required|integer',
@@ -40,7 +40,7 @@ class FichaController extends Controller
             dd($e->getMessage());
         }
         
-        dd($datosFicha);
+       
         /* if ($request->has('')) {// campos de anamnesis 
 
             //validate Campos Anamnesis
