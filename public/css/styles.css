@@ -92,3 +92,7 @@
 .cardFicha {
     border-color: #DA3B00;
 }
+
+.content {
+    width: 100vw;
+}

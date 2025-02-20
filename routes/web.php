@@ -16,23 +16,23 @@ use App\Http\Controllers\EmpleadoController;
 });*/
 //Rutas de la vista
 
-Route::get('home', function() {
+/* Route::get('home', function() {
     return view('app');
-});
-Route::get('propietario', function() {
+})->name('home'); */
+/* Route::get('propietario', function() {
     return view('app');
-});
+}); */
 
 Route::get('home/citas', function(){
     return view('citas');
-});
+})->name('home');
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
 
 Route::get('propietario/citas', function(){
     return view('citas');
-});
+})->name('propietario');
 
 Route::get('propietario/opticas', function(){
     return view('opticas');
@@ -73,7 +73,7 @@ Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])
 Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
-Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardar'])->name('insertarEmpleado');
+Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
 
 
 //Metodos Buscar
@@ -85,4 +85,13 @@ Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado']
 // Ruta provisional de ficha (borrar cuando tenga enlace con citas)
 Route::get('home/ficha', function(){
     return view('ficha');
+});
+
+// Redirigirá al login y dependiendo del rol irá a home o a propietario
+Route::get('/', function(){
+    //if rol optometrista
+    $route = redirect()->route('home');
+    //if rol propietario
+    //$route = redirect()->route('propietario');
+    return $route;
 });

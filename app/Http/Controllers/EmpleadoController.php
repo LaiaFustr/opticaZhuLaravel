@@ -21,12 +21,13 @@ class EmpleadoController extends Controller
         return response()->json($empleados);
     }
 
-    public function empleadoID($id){
+    public function empleadoID($id)
+    {
         $empleado = Empleado::where("id", $id)->get();
         return response()->json($empleado);
     }
 
-   /*  public function mostrar(Request $request)
+    /*  public function mostrar(Request $request)
     {
         $empleados = Empleado::all();
 
@@ -54,8 +55,9 @@ class EmpleadoController extends Controller
         return redirect()->route('opticas');
     }
 
-    public function guardarSesion(Request $request){
-        $datos=  $request->validate([
+    public function guardarSesion(Request $request)
+    {
+        $datos =  $request->validate([
             'nombreE' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'dni' => 'required|string|max:255',
@@ -66,19 +68,20 @@ class EmpleadoController extends Controller
             'nombreUsuario' => 'required|string|max:255',
             'contrasenia' => 'required|string|max:255',
         ]);
-
-        session([
-            'nombreE'=>$datos['nombreE'],
-            'apellido'=>$datos['apellido'],
-            'dni'=>$datos['dni'],
-            'direccionE'=>$datos['direccionE'],
-            'telefonoE'=>$datos['telefonoE'],
-            'correoE'=>$datos['correoE'],
-            'rol'=>$datos['rol'],
-            'nombreUsuario'=>$datos['nombreUsuario'],
-            'contrasenia'=>$datos['contrasenia'],
+        /* $usuarios=[]; */
+        $usuarios = array_push([
+            'nombreE' => $datos['nombreE'],
+            'apellido' => $datos['apellido'],
+            'dni' => $datos['dni'],
+            'direccionE' => $datos['direccionE'],
+            'telefonoE' => $datos['telefonoE'],
+            'correoE' => $datos['correoE'],
+            'rol' => $datos['rol'],
+            'nombreUsuario' => $datos['nombreUsuario'],
+            'contrasenia' => $datos['contrasenia'],
         ]);
-
+        session($usuarios);
+        
         session('nombreH', 'horaApertura', 'horaCierre');
 
         $horario = Horario::create([
@@ -89,7 +92,7 @@ class EmpleadoController extends Controller
 
         ]);
 
-        $optica= Optica::create([
+        $optica = Optica::create([
             'nombre' => session('nombre'),
             'telefono' => session('telefono'),
             'direccion' => session('direccion'),
@@ -116,17 +119,17 @@ class EmpleadoController extends Controller
         $opticas = Optica::all();
 
         return view('opticas', compact('opticas'));
-
     }
 
-    public function buscarEmpleado(Request $request){
+    public function buscarEmpleado(Request $request)
+    {
         $request->validate([
             'dni' => 'required|string|max:255',
         ]);
 
-        $dni= $request->query('dni');
+        $dni = $request->query('dni');
 
-        $empleado= DB::table('empleados')->where('dni', $dni)->first();
+        $empleado = DB::table('empleados')->where('dni', $dni)->first();
 
         if($empleado==null){
             return response()->json(['message' => 'Empleado no encontrado']);
@@ -135,6 +138,4 @@ class EmpleadoController extends Controller
         //dd($cliente);
         return view('perfilEmp', compact('empleado'));
     }
-
-
 }
