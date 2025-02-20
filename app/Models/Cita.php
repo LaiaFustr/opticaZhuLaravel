@@ -23,14 +23,23 @@ class Cita extends Model
         return $this->belongsTo(Optica::class);
     }
 
+
+
+
+    public function bloqueHorario()
+    {
+        return $this->belongsTo(Bloque_Horario::class);
+    }
+
+    //nombre de cliente de cita que se añadirá a ficha
+
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'idCliente');
-        
     }
 
-    public function ficha(){
+    public function ficha()
+    {
         return $this->hasOne(Ficha::class);
     }
-
 }

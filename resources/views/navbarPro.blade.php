@@ -16,6 +16,7 @@
             <ul class="dropdown-menu">
             </ul>
         </li>
+
         <li class="nav-item sidebarLi">
             <div class="optionText">
                 <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#clienteSublist" role="button" aria-expanded="false" aria-controls="clienteSublist">Clientes</a>
@@ -36,6 +37,17 @@
                 <div class="submenu">
                     <li><a data-bs-toggle="modal" data-bs-target="#buscarEmpModal">Buscar Empleado</a></li>
                     <li><a data-bs-toggle="modal" data-bs-target="#crearEmpModal">Crear Empleado</a></li>
+                    <li><a>Ver todos</a></li>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#empleadoSublist" role="button" aria-expanded="false" aria-controls="empleadoSublist">Calendario</a>
+            </div>
+            <ul class="collapse list-unstyled" id="empleadoSublist">
+                <div class="submenu">
+                    <li><a data-bs-toggle="modal" data-bs-target="#">Buscar Bloques</a></li>
                     <li><a>Ver todos</a></li>
                 </div>
             </ul>
@@ -151,7 +163,7 @@
             </div>
             <div class="modal-body mt-2 mb-3">
                 <form class="form-cli row" method="GET" action="{{url('propietario/buscarEmp')}}">
-                @csrf    
+                @csrf
                 <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
@@ -250,7 +262,7 @@
                             </div>
                         </div>
                     </div>
-                
+
 
             </div>
             <div class="modal-footer border-0">
