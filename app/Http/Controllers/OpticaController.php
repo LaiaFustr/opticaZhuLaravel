@@ -89,7 +89,7 @@ class OpticaController extends Controller
             // 'idAdmin'=>1,
             // 'idHorario'=>1,
         ]);
-        return redirect()->route('configCalendar');
+        return redirect()->route('configEmpleado');
     }
 
 }

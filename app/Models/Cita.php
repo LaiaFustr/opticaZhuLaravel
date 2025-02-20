@@ -21,6 +21,10 @@ class Cita extends Model
         return $this->belongsTo(Optica::class);
     }
 
+    public function bloqueHorario(){
+        return $this->belongsTo(Bloque_Horario::class);
+    }
+
     public function cliente(){
         return $this->belongsTo(Cliente::class);
     }

@@ -14,6 +14,19 @@ class CitaController extends Controller
 
         return response()->json($citas);
     }
+    
+
+    public function indexVista()
+    {
+        $citas = Cita::all();
+        return view('/citas', ['citas'=>$citas]);
+    }
+    
+    public function ficha($idCita){
+        $cita = Cita::findOrFail($idCita);
+
+        return view('/ficha', ['cita'=>$cita]);
+    }
 
     public function citaOptica($optica){
         $citas = Cita::where('idOptica', $optica)->get();

@@ -8,8 +8,8 @@ class Optica extends Model
 {
     protected $table='opticas';
     protected $fillable=['nombre', 'telefono', 'direccion', 'correo'];
-    protected $hidden= ['created_at', 'updated_at'];
-
+/*     protected $hidden= ['created_at', 'updated_at'];
+ */
     public function admin(){
         return $this->belongsTo(Admin::class, 'idAdmin');
     }
@@ -20,7 +20,7 @@ class Optica extends Model
     public function empleados(){
         return $this->belongsToMany(Empleado::class, 'asignaropticas', 'idOptica', 'idEmpleado');
     }
-    
-    
+
+
 
 }

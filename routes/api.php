@@ -10,6 +10,8 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AuxiliarController;
 use App\Http\Controllers\OptometristaController;
+use App\Http\Controllers\API\UserController;
+
 
 
 Route::get('/user', function (Request $request) {
@@ -17,6 +19,13 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 
+Route::post('login', [UserController::class, 'login']);
+Route::post('register', [UserController::class,'register']);
+
+Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('details', [UserController::class,'details']);
+        Route::get('logout', [UserController::class,'logout']);
+});
 
 Route::get('/citas', [CitaController::class, 'index']);
 Route::get('citas/{optica}', [CitaController::class, 'citaOptica']);
