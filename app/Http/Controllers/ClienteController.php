@@ -14,8 +14,14 @@ class ClienteController extends Controller
     public function index(Request $request)
     {
         $clientes = Cliente::all();
+        $start = $request->input('start', 0);
+        $length = $request->input('length', 10);
+        $query = Cliente::query();
+        $totalRecords = $query->count();
+        $filteredRecords = $query->count();
+        $clientes = $query->skip($start)->take($length)->get();
 
-        return response()->json($clientes);
+        return response()->json(['data' => $clientes, 'recordsTotal' => $totalRecords, 'recordsFiltered' => $filteredRecords]);
     }
 
 
