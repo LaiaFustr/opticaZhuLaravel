@@ -79,22 +79,22 @@ class EmpleadoController extends Controller
             'contrasenia'=>$datos['contrasenia'],
         ]);
 
-        session('nombreH', 'horaApertura', 'horaCierre');
+        //session('nombreH', 'horaApertura', 'horaCierre');
 
-        $horario = Horario::create([
+       /*  $horario = Horario::create([
             'nombre' => session('nombreH'),
             'horaApertura' => session('horaApertura'),
             'horaCierre' => session('horaCierre'),
             //'idHorario' => $horario->id,
 
-        ]);
+        ]); */
 
         $optica= Optica::create([
             'nombre' => session('nombre'),
             'telefono' => session('telefono'),
             'direccion' => session('direccion'),
             'correo' => session('correo'),
-            'num_Maquinas' => 0,
+            'num_Maquinas' => 1,
             //'idHorario' => $horario->id,
         ]);
 

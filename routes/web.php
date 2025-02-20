@@ -6,6 +6,8 @@ use App\Http\Controllers\OpticaController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\CalendarioController;
+
 
 
 
@@ -73,13 +75,14 @@ Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])
 Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
-Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardar'])->name('insertarEmpleado');
+Route::post('propietario/empleadoSesion', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
 
 
 //Metodos Buscar
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado'])->name('buscarEmpleado');
-
+/* Route::get('propietario/bloquesCalendario', [CalendarioController::class, 'bloquesHorariosCalendario']);
+ */
 
 
 // Ruta provisional de ficha (borrar cuando tenga enlace con citas)

@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tramos', function (Blueprint $table) {
+        Schema::create('festivos', function (Blueprint $table) {
             $table->increments('id');
-            $table->time('horaInicio');
-            $table->time('horaFin');
-            $table->enum('status', ['libre','ocupado'])->default('libre');
+            $table->date('fecha');
+            /* $table->boolean('festivo'); */
         });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tramos');
+        Schema::dropIfExists('calendario');
     }
 };
