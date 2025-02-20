@@ -19,7 +19,6 @@ class CitaController extends Controller
     public function indexVista()
     {
         $citas = Cita::all();
-
         return view('/citas', ['citas'=>$citas]);
     }
     
