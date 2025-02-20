@@ -85,7 +85,9 @@ Route::get('propietario/buscarEmp', [EmpleadoController::class, 'buscarEmpleado'
     return view('ficha');
 })->name('ficha'); */
 
-Route::get('home/citas/ficha/{idCita}',[CitaController::class, 'ficha']
+Route::get(
+    'home/citas/ficha/{idCita}',
+    [CitaController::class, 'ficha']
 )->name('ficha');
 
 
@@ -94,9 +96,9 @@ Route::get('/', function () {
     $route = redirect()->route('home');
     return $route;
 });
- //if rol optometrista
- //if rol propietario
-    //$route = redirect()->route('propietario');
+//if rol optometrista
+//if rol propietario
+//$route = redirect()->route('propietario');
 
 Route::get('home/citas', [CitaController::class, 'indexVista'])->name('home');
 

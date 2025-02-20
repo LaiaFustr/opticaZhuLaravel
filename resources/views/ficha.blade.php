@@ -6,7 +6,8 @@
 
     <div class="row mb-4">
         <div class="col-auto">
-            <h1 class="tituloPagina">Ficha para <!-- de la cita, nombre de cliente por id --></h1>
+            
+            <h1 class="tituloPagina">Ficha para {{$cita->nombreCliente}} {{$cita->apellidoCliente}}</h1>
         </div>
 
         <div class="col d-flex justify-content-end ms-auto">
@@ -22,14 +23,7 @@
             </select> -->
 
             <!-- borrar -->
-            <input type="text" name="idOptometrista" placeholder="ID Optometrista" class="form-control">
-            <input type="text" name="idCliente" placeholder="ID Cliente" class="form-control">
-            <input type="text" name="idCita" placeholder="ID Cita" class="form-control">
-            <input type="date" name="fecha" class="form-control">
-            <input type="time" name="hora" class="form-control">
-            <textarea name="descripcion" class="form-control" placeholder="Descripción"></textarea>
-
-
+            
             <div class="dropdown col" id="apartadosFichaDrodown">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Apartados
