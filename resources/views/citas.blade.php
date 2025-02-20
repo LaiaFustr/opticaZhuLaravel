@@ -32,7 +32,7 @@
                 @forelse($citas as $cita)
                 <tr>
                     <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->hora}}</a></td>
-                    <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->idCliente}}</a></td>
+                    <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->apellidoCliente}}, {{$cita->nombreCliente}}</a></td>
                     <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->descripcion}}</a></td>
                 </tr>
                 @empty
