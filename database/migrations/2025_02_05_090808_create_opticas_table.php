@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('direccion')->unique();
             $table->string('correo');
             $table->integer('num_Maquinas');
+            $table->time('horaApertura');
+            $table->time('horaCierre');
             $table->unsignedInteger('idAdmin');
-            $table->unsignedInteger('idHorario');
             $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('idHorario')->references('id')->on('horarios')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

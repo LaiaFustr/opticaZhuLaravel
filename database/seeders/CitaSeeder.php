@@ -182,8 +182,6 @@ class CitaSeeder extends Seeder
                 'idOptometrista' => $cita['idOptometrista'],
                 'idCliente' => $cita['idCliente'],
                 'idOptica' => $cita['idOptica'],
-                'nombreCliente' => $cliente->nombre,
-                'apellidoCliente' => $cliente->apellido,
             ]);
         }
     }
