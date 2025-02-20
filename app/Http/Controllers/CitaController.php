@@ -20,10 +20,14 @@ class CitaController extends Controller
     {
         $citas = Cita::all();
 
-        return view('home', ['citas'=>$citas]);
+        return view('/citas', ['citas'=>$citas]);
     }
     
+    public function ficha($idCita){
+        $cita = Cita::findOrFail($idCita);
 
+        return view('/ficha', ['cita'=>$cita]);
+    }
 
     public function citaOptica($optica){
         $citas = Cita::where('idOptica', $optica)->get();

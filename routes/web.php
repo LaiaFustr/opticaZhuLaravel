@@ -23,9 +23,7 @@ use App\Http\Controllers\CitaController;
     return view('app');
 }); */
 
-Route::get('home/citas', [CitaController::class, 'indexVista'] /* function () {
-    return view('citas');
-} */)->name('home');
+
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
@@ -83,21 +81,24 @@ Route::get('propietario/buscarEmp', [EmpleadoController::class, 'buscarEmpleado'
 
 
 // Ruta provisional de ficha (borrar cuando tenga enlace con citas)
-Route::get('home/ficha', function () {
+/* Route::get('home/ficha', function () {
     return view('ficha');
-})->name('ficha');
+})->name('ficha'); */
+
+Route::get('home/citas/ficha/{idCita}',[CitaController::class, 'ficha']
+)->name('ficha');
+
 
 // Redirigirá al login y dependiendo del rol irá a home o a propietario
 Route::get('/', function () {
-    //if rol optometrista
     $route = redirect()->route('home');
-    //if rol propietario
-    //$route = redirect()->route('propietario');
     return $route;
 });
+ //if rol optometrista
+ //if rol propietario
+    //$route = redirect()->route('propietario');
 
-
-
+Route::get('home/citas', [CitaController::class, 'indexVista'])->name('home');
 
 // Redirigirá al login y dependiendo del rol irá a home o a propietario
 Route::post('/creaFicha', [FichaController::class, 'creaFicha'])->name('creaFicha');
