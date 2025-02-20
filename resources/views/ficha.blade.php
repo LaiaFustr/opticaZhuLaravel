@@ -7,29 +7,22 @@
     <div class="row mb-4">
         <div class="col-auto">
 
-            <h1 class="tituloPagina">Ficha para {{$cita->nombreCliente}} {{$cita->apellidoCliente}}</h1>
+            <h1 class="tituloPagina">Ficha para {{$cita->cliente->nombre}} {{$cita->cliente->apellido}}</h1>
         </div>
 
         <div class="col d-flex justify-content-end ms-auto">
             <a href=""><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
     </div>
+   
     <form action="{{route('creaFicha')}}" method="post">
         @csrf
-        <!-- <input type="hidden" name="idCliente" value="{{ $cita->idCliente }}">
-        <input type="hidden" name="idOptometrista" value="{{ $cita->idOptometrista }}">
-        <input type="hidden" name="nombreCliente" value="{{ $cita->cliente->nombre }}">
-        <input type="hidden" name="apellidoCliente" value="{{ $cita->cliente->apellido }}">
-        <input type="hidden" name="fechaCita" value="{{ $cita->fecha }}">
-        <input type="hidden" name="horaCita" value="{{ $cita->hora }}"> -->
-        <div class="row p-1 my-1">
-            <!-- <select class="form-control selectpicker w-50 form-select-sm" multiple>
-                <option value="anamnesis">Anamnesis</option>
-                <option value="graduacion_anterior">Graduacion Anterior</option>
-            </select> -->
 
-            <!-- borrar -->
-            <div class="dropdown col" id="apartadosFichaDrodown">
+        <input type="hidden" name="idCita" value="{{ $cita->id }}">
+        
+      <h1>{{$cita->id}}</h1>
+            
+            <!-- <div class="dropdown col" id="apartadosFichaDrodown">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Apartados
                 </button>
@@ -77,9 +70,9 @@
                         </div>
                     </li>
                 </ul>
-            </div>
+            </div> -->
 
-
+<!--
             <div class="col col-1 d-flex ms-5 d-flex align-items-center">
                 <a href="">Historial</a>
             </div>
@@ -116,7 +109,7 @@
                             </div>
 
                             <div class="col col-auto">
-                                <input class="form-control form-control-sm" name="anamnesis[ultima_revision]" type="date" id="ultima_revision"> <!-- nombreApartado[nombredecampo] -->
+                                <input class="form-control form-control-sm" name="anamnesis[ultima_revision]" type="date" id="ultima_revision">  nombreApartado[nombredecampo] 
                             </div>
 
                         </div>
@@ -484,7 +477,7 @@
 
 
 
-</div>
+</div> -->
 <button type="submit" class="btn btn-warning">CreaFicha</button>
 
 </form>

@@ -100,7 +100,7 @@ Route::get('/', function () {
 //if rol propietario
 //$route = redirect()->route('propietario');
 
-Route::get('home/citas', [CitaController::class, 'indexVista'])->name('home');
+Route::get('home/citas', [CitaController::class, 'indexCitas'])->name('home');
 
 // Redirigirá al login y dependiendo del rol irá a home o a propietario
 Route::post('/creaFicha', [FichaController::class, 'creaFicha'])->name('creaFicha');

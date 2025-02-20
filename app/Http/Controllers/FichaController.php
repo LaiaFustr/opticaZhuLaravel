@@ -6,6 +6,7 @@ use App\Models\Cita;
 use App\Models\Ficha;
 use App\Models\Anamnesis;
 use Illuminate\Http\Request;
+use App\Http\Resources\FichasResource;
 
 class FichaController extends Controller
 {
@@ -13,34 +14,30 @@ class FichaController extends Controller
 
     public function creaFicha(Request $request)
     {
-        dd($request);
-        $datosFicha = $request->validate([
-            /* 'ficha.idOptometrista' => 'required|integer',
-            'idCliente' => 'required|integer',
-            'idCita' => 'required|integer',
-            'fecha' => 'required|date',
-            'hora' => 'required|time',
-            'descripcion' => 'nullable|string', */
+        //dd($request);
+        $datosFicha =
+            $request->validate([
+                'idCita' => 'required|integer',
+            ]);
 
-            'idOptometrista' => 'nullable|integer',
-            'idCliente' => 'nullable|integer',
-            'idCita' => 'nullable|integer',
-            'fecha' => 'nullable|date',
-            'hora' => 'nullable|date',
-            'descripcion' => 'nullable|string',
+        //dd($datosFicha);
 
-        ]);
-        
-        
-        /* dd($datosFicha); */
-        /*  dump($datosFicha); */
-        try{
+        Ficha::create($datosFicha);
+/* 
+        try {
             Ficha::create($datosFicha);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             dd($e->getMessage());
-        }
-        
-       
+        } */
+
+
+
+        /* $datosFicha = new Ficha();
+        $datosFicha->idCita = $request->idCita;
+        $datosFicha->save(); */
+
+
+
         /* if ($request->has('')) {// campos de anamnesis 
 
             //validate Campos Anamnesis
@@ -52,12 +49,16 @@ class FichaController extends Controller
             Anamnesis::create($anamnesisData);
         } */
 
-        $redirige = redirect()->route('citas');
+        $redirige = redirect()->route('home'); //de esta vista, llevará a la de 'storeFicha'
 
-        dd($redirige);
+        session()->flash('success', 'Ficha creada correctamente');
         return $redirige; //Falta crear la sesion flash para que funcione la sweet alert
 
     }
+
+    public function guardaFicha() {}
+
+
     /*  public function creaFicha($id){
 
         $cita = Cita::find($id);

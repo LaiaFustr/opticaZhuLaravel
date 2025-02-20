@@ -22,7 +22,6 @@ return new class extends Migration
            /*  $table->string('nombreCliente');
             $table->string('apellidoCliente'); */
 
-
             $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idOptica')->references('id')->on('opticas')->onUpdate('cascade')->onDelete('cascade')->onUpdate('cascade');
