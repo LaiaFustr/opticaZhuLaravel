@@ -26,12 +26,30 @@
 
         <div class="row w-100">
             <div class="col-6">
-                <form id="formOptica" class="row">
+                <h3>Datos guardados en la sesión:</h3>
+                <ul>
+                    <li><strong>Nombre:</strong> {{ session('nombreE') }}</li>
+                    <li><strong>Apellido:</strong> {{ session('apellido') }}</li>
+                    <li><strong>DNI:</strong> {{ session('dni') }}</li>
+                    <li><strong>Dirección:</strong> {{ session('direccionE') }}</li>
+                    <li><strong>Teléfono:</strong> {{ session('telefonoE') }}</li>
+                    <li><strong>Correo:</strong> {{ session('correoE') }}</li>
+                    <li><strong>Rol:</strong> {{ session('rol') }}</li>
+                    <li><strong>Nombre Usuario:</strong> {{ session('nombreUsuario') }}</li>
+                    <li><strong>Contraseña:</strong> {{ session('contrasenia') }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row w-100">
+            <div class="col-6">
+                <form id="formOptica" class="row" method="POST" action="{{url('propietario/empleadoSesion')}}">
+                    @csrf
                     <div class="col px-2">
                         <div class="row my-3">
                             <div class="col mr-5">
                                 <label class="col-form label" for="nombreO">Nombre</label>
-                                <input class="form-control form-control-lg" type="text" name="nombreO" id="nombreO">
+                                <input class="form-control form-control-lg" type="text" name="nombreE" id="nombreO">
                             </div>
 
                             <div class="col">
@@ -49,41 +67,41 @@
 
                             <div class="col">
                                 <label class="col-form label" for="direccion">Dirección</label>
-                                <input class="form-control form-control-lg" type="text" name="direccion" id="direccion">
+                                <input class="form-control form-control-lg" type="text" name="direccionE" id="direccion">
                             </div>
                         </div>
 
                         <div class="row my-2 mt-5">
                             <div class="col">
                                 <label class="col-form label" for="telefono">Teléfono</label>
-                                <input class="form-control form-control-lg" type="tel" name="telefono" id="telefono">
+                                <input class="form-control form-control-lg" type="tel" name="telefonoE" id="telefono">
                             </div>
 
                             <div class="col">
                                 <label class="col-form label" for="email">Correo Electrónico</label>
-                                <input class="form-control form-control-lg" type="email" name="email" id="email">
+                                <input class="form-control form-control-lg" type="email" name="correoE" id="email">
                             </div>
                         </div>
 
                         <div class="row my-2 mt-5">
                             <div class="col">
                                 <label class="col-form-label" for="rol">Rol</label>
-                                <select class="form-select" id="rol">
-                                    <option value="aux">Auxiliar</option>
-                                    <option value="opt">Optometrista</option>
+                                <select class="form-select" id="rol" name="rol">
+                                    <option value="auxiliar">Auxiliar</option>
+                                    <option value="optometrista">Optometrista</option>
                                 </select>
                             </div>
 
                             <div class="col">
-                                <label class="col-form label" for="numMaquina">Nombre de Usuario</label>
-                                <input class="form-control form-control-lg" type="text" name="numMaquina" id="numMaquina">
+                                <label class="col-form label" for="nombreUsuario">Nombre de Usuario</label>
+                                <input class="form-control form-control-lg" type="text" name="nombreUsuario" id="nombreUsuario">
                             </div>
                         </div>
 
                         <div class="row my-2 mt-5">
                             <div class="col">
                                 <label class="col-form label" for="pass">Contraseña</label>
-                                <input class="form-control form-control-lg" type="password" name="pass" id="pass">
+                                <input class="form-control form-control-lg" type="password" name="contrasenia" id="pass">
                             </div>
 
                             <div class="col">
@@ -93,7 +111,7 @@
                         </div>
 
                     </div>
-                </form>
+
                 <div class="row justify-content-end my-5">
                     <div class="col-auto">
                         <button class="botonNuevaCita" onclick="ocultarTabla()">Añadir</button>
@@ -138,9 +156,10 @@
                     <button class="botonNuevaCita" onclick="location.href='{{url('propietario/configCalendar')}}'">Anterior</button>
                 </div>
                 <div class="col-auto">
-                    <button class="botonNuevaCita" onclick="location.href='{{url('propietario/opticas')}}'">Finalizar</button>
+                    <button class="botonNuevaCita" type="submit" onclick="location.href='{{url('propietario/opticas')}}'">Finalizar</button>
                 </div>
             </div>
+        </form>
         </div>
     </div>
 </div>

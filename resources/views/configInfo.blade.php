@@ -105,7 +105,7 @@
             <div class="col">
                 <div class="row justify-content-end">
                     <div class="col-auto">
-                        <button class="botonNuevaCita" type="submit" onclick="location.href='{{ url('propietario/configCalendar') }}'">Siguiente</button>
+                        <button class="botonNuevaCita" type="submit" onclick="location.href='{{ url('propietario/configEmpleado') }}'">Siguiente</button>
                     </div>
                 </div>
             </div>
