@@ -14,14 +14,8 @@ class ClienteController extends Controller
     public function index(Request $request)
     {
         $clientes = Cliente::all();
-        $start = $request->input('start', 0);
-        $length = $request->input('length', 10);
-        $query = Cliente::query();
-        $totalRecords = $query->count();
-        $filteredRecords = $query->count();
-        $clientes = $query->skip($start)->take($length)->get();
 
-        return response()->json(['data' => $clientes, 'recordsTotal' => $totalRecords, 'recordsFiltered' => $filteredRecords]);
+        return response()->json($clientes);
     }
 
 
@@ -34,7 +28,7 @@ class ClienteController extends Controller
             'dni' => 'required|string|max:255',
             'codPostal' => 'required|integer',
             'telefono' => 'required|string|max:255',
-            /* 'idAdmin' => 'required|integer', */
+            'idAdmin' => 'required|integer',
         ]);
         Cliente::create($validateData);
 
