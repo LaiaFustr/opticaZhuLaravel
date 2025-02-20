@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('dni');
             $table->integer('codPostal');
             $table->string('telefono',15);
-            $table->unsignedInteger('idAdmin');
-            $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
+           /*  $table->unsignedInteger('idAdmin');
+            //$table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade'); */
             $table->primary('id');
             $table->unique('dni');
         });

@@ -29,7 +29,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @forelse($citas as $cita)
                     <tr>
+                        <td>{{$cita->hora}}</td>
+                        <td>{{$cita->idCliente}}</td>
+                        <td>{{$cita->descripcion}}</td>
+                    </tr>
+                    
+                    <!-- <tr>
                         <td>08:00</td>
                         <td>Juan Pérez</td>
                         <td>Cambio de graduación</td>
@@ -43,7 +50,7 @@
                         <td>10:00</td>
                         <td>Carlos López</td>
                         <td>Revisión</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
