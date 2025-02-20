@@ -6,21 +6,24 @@
 
     <div class="row mb-4">
         <div class="col-auto">
-            <h1 class="tituloPagina">Ficha para <!-- de la cita, nombre de cliente por id --></h1>
+            
+            <h1 class="tituloPagina">Ficha para {{$cita->nombreCliente}} {{$cita->apellidoCliente}}</h1>
         </div>
 
         <div class="col d-flex justify-content-end ms-auto">
             <a href=""><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
     </div>
-    <form action="">
+    <form action="{{route('creaFicha')}}" method="post">
+        @csrf
         <div class="row p-1 my-1">
             <!-- <select class="form-control selectpicker w-50 form-select-sm" multiple>
                 <option value="anamnesis">Anamnesis</option>
                 <option value="graduacion_anterior">Graduacion Anterior</option>
             </select> -->
 
-
+            <!-- borrar -->
+            
             <div class="dropdown col" id="apartadosFichaDrodown">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Apartados
@@ -116,7 +119,7 @@
                             </div>
 
                             <div class="col col-auto">
-                                <input class="form-control form-control-sm" type="date" id="ultima_revision">
+                                <input class="form-control form-control-sm" name="anamnesis[ultima_revision]" type="date" id="ultima_revision"> <!-- nombreApartado[nombredecampo] -->
                             </div>
 
                         </div>
@@ -129,7 +132,7 @@
                             </div>
 
                             <div class="col col-4">
-                                <input class="form-control form-control-sm w-100" type="text" id="usr_edad">
+                                <input class="form-control form-control-sm w-100" name="anamnesis[edad]" type="text" id="usr_edad">
                             </div>
 
                         </div>
@@ -142,13 +145,10 @@
                             </div>
 
                             <div class="col">
-                                <input class="form-control form-control-sm" type="text" id="usr_profesion">
+                                <input class="form-control form-control-sm" name="anamnesis[profesion]" type="text" id="usr_profesion">
                             </div>
-
                         </div>
                     </div>
-
-
                 </div>
 
                 <div class="row my-1">
@@ -161,7 +161,7 @@
                                     </div>
 
                                     <div class="col col-4">
-                                        <input class="form-control form-control-sm w-100" type="text" id="usr_h_dedicadadas">
+                                        <input class="form-control form-control-sm w-100" name="anamnesis[horas_pantalla]" type="text" id="usr_horas_pantalla">
                                     </div>
 
                                 </div>
@@ -169,13 +169,11 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
         </div>
 
-        <div class="row card p-1 my-1 cardFicha" id="graduacionAnt"  style="display:none">
+        <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>Graduación Anterior</h4>
@@ -239,7 +237,7 @@
 
         </div>
 
-        <div class="row card p-1 my-1 cardFicha" id="AVSinCorr"  style="display:none">
+        <div class="row card p-1 my-1 cardFicha" id="AVSinCorr" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>A.V. Sin Corrección</h4>
@@ -303,7 +301,7 @@
 
         </div>
         <div class="row  my-1 row-auto">
-            <div class="col card p-1 cardFicha col-auto me-auto" id="reflejoPupilar"  style="display:none">
+            <div class="col card p-1 cardFicha col-auto me-auto" id="reflejoPupilar" style="display:none">
                 <div class="row">
                     <h4>Reflejo Pupilar</h4>
                 </div>
@@ -490,7 +488,7 @@
 
 
 </div>
-
+<button type="submit" class="btn btn-warning">CreaFicha</button>
 
 </form>
 

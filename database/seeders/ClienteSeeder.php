@@ -22,7 +22,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "29436267T",
                 "codPostal"=> "46031",
                 "telefono"=> "678914340",
-                "idAdmin"=> "9",
+              /*   "idAdmin"=> "9", */
             ],
             [
                 "nombre"=> "Cassandra",
@@ -30,7 +30,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "23474521K",
                 "codPostal"=> "46020",
                 "telefono"=> "625896431",
-                "idAdmin"=> "9",
+               /*  "idAdmin"=> "9", */
             ],
             [
                 "nombre"=> "Ricardo",
@@ -38,7 +38,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "24546547R",
                 "codPostal"=> "46025",
                 "telefono"=> "696342354",
-                "idAdmin"=> "11",
+                /* "idAdmin"=> "11", */
             ],
             [
                 "nombre"=> "Omar",
@@ -46,7 +46,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "245276535",
                 "codPostal"=> "46018",
                 "telefono"=> "698953271",
-                "idAdmin"=> "9",
+               /*  "idAdmin"=> "9", */
             ],
             [
                 "nombre"=> "Maria",
@@ -54,7 +54,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "23633111A",
                 "codPostal"=> "46016",
                 "telefono"=> "625896431",
-                "idAdmin"=> "12",
+                /* "idAdmin"=> "12", */
             ],
             [
                 "nombre"=> "Alfred",
@@ -62,7 +62,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "21832547R",
                 "codPostal"=> "49102",
                 "telefono"=> "655208923",
-                "idAdmin"=> "11",
+               /*  "idAdmin"=> "11", */
             ],
             [
                 "nombre"=> "Laura",
@@ -70,7 +70,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "22112344V",
                 "codPostal"=> "46027",
                 "telefono"=> "612345678",
-                "idAdmin"=> "1",
+                /* "idAdmin"=> "1", */
             ],
             [
                 "nombre"=> "Carlos",
@@ -78,7 +78,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "22345678M",
                 "codPostal"=> "46030",
                 "telefono"=> "693456789",
-                "idAdmin"=> "10",
+               /*  "idAdmin"=> "10", */
             ],
             [
                 "nombre"=> "Sandra",
@@ -86,7 +86,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "23898999L",
                 "codPostal"=> "46014",
                 "telefono"=> "634567890",
-                "idAdmin"=> "12",
+               /*  "idAdmin"=> "12", */
             ],
             [
                 "nombre"=> "Javier",
@@ -94,7 +94,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "22789933P",
                 "codPostal"=> "46029",
                 "telefono"=> "612998877",
-                "idAdmin"=> "9",
+               /*  "idAdmin"=> "9", */
             ],
             [
                 "nombre"=> "Emilio",
@@ -102,7 +102,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "23782211G",
                 "codPostal"=> "46017",
                 "telefono"=> "677334455",
-                "idAdmin"=> "10",
+               /*  "idAdmin"=> "10", */
             ],
             [
                 "nombre"=> "Pedro",
@@ -110,7 +110,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "24537891B",
                 "codPostal"=> "46032",
                 "telefono"=> "690123456",
-                "idAdmin"=> "9",
+                /* "idAdmin"=> "9", */
             ],
             [
                 "nombre"=> "Ana",
@@ -118,7 +118,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "25648930C",
                 "codPostal"=> "46021",
                 "telefono"=> "655789123",
-                "idAdmin"=> "10",
+                /* "idAdmin"=> "10", */
             ],
             [
                 "nombre"=> "Martin",
@@ -126,7 +126,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "26938574F",
                 "codPostal"=> "46019",
                 "telefono"=> "633415678",
-                "idAdmin"=> "12",
+               /*  "idAdmin"=> "12", */
             ],
             [
                 "nombre"=> "Raquel",
@@ -134,7 +134,7 @@ class ClienteSeeder extends Seeder
                 "dni"=> "27823984D",
                 "codPostal"=> "46033",
                 "telefono"=> "622550234",
-                "idAdmin"=> "11",
+               /*  "idAdmin"=> "11", */
             ],
         ];
 
@@ -145,7 +145,7 @@ class ClienteSeeder extends Seeder
                 'dni'=> $cliente['dni'],
                 'codPostal'=> $cliente['codPostal'],
                 'telefono'=> $cliente['telefono'],
-                'idAdmin'=> $cliente['idAdmin'],
+               /*  'idAdmin'=> $cliente['idAdmin'], */
             ]);
         }
 
