@@ -20,6 +20,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/citas', [CitaController::class, 'index']);
 Route::get('citas/{optica}', [CitaController::class, 'citaOptica']);
+Route::get('/citascliente/{clientes}', [CitaController::class, 'citaCliente']);
 
 Route::get('/admin', [AdminController::class, 'index']);
 Route::put('/admin/actualizar/{id}', [AdminController::class, 'actualizar']);

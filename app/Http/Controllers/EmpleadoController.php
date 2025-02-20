@@ -129,7 +129,7 @@ class EmpleadoController extends Controller
         $empleado= DB::table('empleados')->where('dni', $dni)->first();
 
         if($empleado==null){
-            return response()->json(['message' => 'Cliente no encontrado']);
+            return response()->json(['message' => 'Empleado no encontrado']);
         }
 
         //dd($cliente);

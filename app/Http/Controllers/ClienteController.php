@@ -18,6 +18,8 @@ class ClienteController extends Controller
         return response()->json($clientes);
     }
 
+
+
     public function guardar(Request $request)
     {
         $validateData = $request->validate([
