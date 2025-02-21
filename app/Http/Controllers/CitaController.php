@@ -14,14 +14,14 @@ class CitaController extends Controller
 
         return response()->json($citas);
     }
-    
+
 
     public function indexVista()
     {
         $citas = Cita::all();
         return view('/citas', ['citas'=>$citas]);
     }
-    
+
     public function ficha($idCita){
         $cita = Cita::findOrFail($idCita);
 
@@ -31,5 +31,17 @@ class CitaController extends Controller
     public function citaOptica($optica){
         $citas = Cita::where('idOptica', $optica)->get();
         return response()->json($citas);
+    }
+
+    public function guardar(Request $request){
+
+        $datos= $request->validate([
+            'fecha' => 'required|date',
+            'hora' => 'required|time',
+            'descripcion' => 'required|string',
+        ]);
+
+        Cita::create($datos);
+
     }
 }

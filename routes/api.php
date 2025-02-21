@@ -49,6 +49,7 @@ Route::get('/horariosporadmin/{idAdmin}', [HorarioController::class,'mostrarIDAd
 
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
 Route::post('/propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
+Route::post('crearCita', [CitaController::class, 'guardar'])->name('crearCita');
 
 Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
 Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
