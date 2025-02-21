@@ -23,7 +23,7 @@ return new class extends Migration
             $table->enum('rol', ['auxiliar','optometrista']);
             $table->string('contrasenia');
             $table->unsignedInteger('idOptica')->nullable();
-            $table->boolean('activo');
+            $table->boolean('activo')->default(true);
 
             $table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
 
