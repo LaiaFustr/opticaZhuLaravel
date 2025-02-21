@@ -17,12 +17,25 @@
    
     <form action="{{route('creaFicha')}}" method="post">
         @csrf
+        
 
         <input type="hidden" name="idCita" value="{{ $cita->id }}">
+        <?php  /*  dd($cita->id ) */ ?>
+        <input type="hidden" name="idCliente" value="{{ $cita->idCliente}}">
+        <?php /*   dd($cita->cliente->id) */ ?>
+        <?php /*   dd($cita->idCliente) */ ?>
         
+        <input type="hidden" name="idOptometrista" value="{{ $cita->idOptometrista}}">
+        <?php  /* dd($cita->idOptometrista)  */?>
+        <?php /*  dd($cita->optometrista->id)  */?>
+        <input type="hidden" name="fecha" value="{{ $cita->fecha }}">
+        <input type="hidden" name="hora" value="{{ $cita->hora }}">
+        <input type="hidden" name="descripcion" value="{{ $cita->descripcion }}">
+        <!-- <input type="hidden" name="idCita" value="{{ $cita->cliente->nombre }}"> -->
+        <?php  /* dd($cita)  */?>
       <h1>{{$cita->id}}</h1>
             
-            <!-- <div class="dropdown col" id="apartadosFichaDrodown">
+            <div class="dropdown col" id="apartadosFichaDrodown">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Apartados
                 </button>
@@ -70,9 +83,9 @@
                         </div>
                     </li>
                 </ul>
-            </div> -->
+            </div>
 
-<!--
+
             <div class="col col-1 d-flex ms-5 d-flex align-items-center">
                 <a href="">Historial</a>
             </div>
@@ -163,7 +176,7 @@
 
         </div>
 
-        <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
+     <!--   <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>Graduación Anterior</h4>
