@@ -25,10 +25,10 @@ class Cita extends Model
 
 
 
-    public function bloqueHorario()
+    /* public function bloqueHorario()
     {
         return $this->belongsTo(Bloque_Horario::class);
-    }
+    } */
 
     public function cliente(){
         return $this->belongsTo(Cliente::class, 'idCliente');
