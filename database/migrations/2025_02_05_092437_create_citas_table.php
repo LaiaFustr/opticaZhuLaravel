@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('idOptometrista')->nullable();
             $table->unsignedInteger('idCliente');
             $table->unsignedInteger('idOptica')->nullable(); 
-            
+
 
             $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
