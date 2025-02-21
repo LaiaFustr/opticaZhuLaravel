@@ -36,4 +36,7 @@ class Empleado extends Model
     public function auxiliar(){
         return $this->belongsToMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
     }
+    public function getAuthPassword(){
+        return $this->password;
+    }
 }

@@ -43,8 +43,11 @@ class EmpleadoController extends Controller
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
         ]);
-        $credentials = $request->except(['remember_token']);
+        $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
+        if(Auth::check()){
+            return redirect()->route('propietario/opticasC');
+        }
     }
 
     public function logout(Request $request){
