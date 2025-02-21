@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 Route::get('/citas', [CitaController::class, 'index']);
 Route::get('citas/{optica}', [CitaController::class, 'citaOptica']);
+Route::get('/citascliente/{clientes}', [CitaController::class, 'citaCliente']);
 
 Route::get('/admin', [AdminController::class, 'index']);
 Route::put('/admin/actualizar/{id}', [AdminController::class, 'actualizar']);

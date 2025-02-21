@@ -9,24 +9,36 @@ class Cita extends Model
     protected $table = "citas";
 
     protected $fillable = ['fecha', 'hora', 'descripcion'];
-    protected $hidden = ['created_at', 'updated_at'];
+    public $timestamps = false;
     //las horas pueden ir asi para no poner los segundos
     //'hora'=>'datetime:H:i',
 
-    public function cita()
+    public function optometrista()
     {
-        return $this->belongsTo(Cita::class);
+        return $this->belongsTo(Optometrista::class, 'idOptometrista');
     }
 
-    public function optica()
-    {
+    public function optica(){
         return $this->belongsTo(Optica::class);
     }
 
 
-    //nombre de cliente de cita que se añadirá a ficha
-    /* public function cliente()
+
+
+    /* public function bloqueHorario()
     {
-        return $this->belongsTo(Cliente::class, 'idCliente');
+        return $this->belongsTo(Bloque_Horario::class);
     } */
+
+    public function cliente(){
+        return $this->belongsTo(Cliente::class, 'idCliente');
+    }
+    //nombre de cliente de cita que se añadirá a ficha
+
+    
+
+    public function ficha()
+    {
+        return $this->hasOne(Ficha::class);
+    }
 }

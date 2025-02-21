@@ -21,9 +21,8 @@ return new class extends Migration
             $table->string('correo') ->nullable();
             $table->string('nombreUsuario')->nullable();
             $table->enum('rol', ['auxiliar','optometrista','admin'])->nullable();
-            $table->timestamp('correo_verified_at')->nullable();
             $table->string('contrasenia');
-            $table->rememberToken();
+            $table->rememberToken()->nulleable();
 /*             $table->timestamps();*/
         });
 

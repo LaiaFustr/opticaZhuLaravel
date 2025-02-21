@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
             EmpleadoSeeder::class,
             ClienteSeeder::class,
             FestivosSeeder::class,
-            /* BloqueHorarioSeeder::class, */
             CitaSeeder::class,
             AsignarOpticaSeeder::class,
 
