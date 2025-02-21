@@ -28,8 +28,8 @@ return new class extends Migration
             $table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
 
 
-            $table->primary('id');
-            $table->unique('dni');
+            $table->primary('dni');
+            $table->unique('id');
 
 
         });
