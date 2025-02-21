@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cita;
 use App\Models\Optica;
+use App\Http\Resources\CitasResource;
 
 class CitaController extends Controller
 {
@@ -16,16 +17,19 @@ class CitaController extends Controller
     }
     
 
-    public function indexVista()
+    public function indexCitas()
     {
-        $citas = Cita::all();
-        return view('/citas', ['citas'=>$citas]);
+        //$citas = Cita::all();//consulta
+        $citas = Cita::with('cliente')->get();
+       
+        return view('/citas', ['citas'=> CitasResource::collection($citas)]);
+        
     }
     
     public function ficha($idCita){
         $cita = Cita::findOrFail($idCita);
 
-        return view('/ficha', ['cita'=>$cita]);
+        return view('ficha', ['cita'=>$cita]);
     }
 
     public function citaOptica($optica){

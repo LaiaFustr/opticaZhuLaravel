@@ -13,15 +13,20 @@ class Cita extends Model
     //las horas pueden ir asi para no poner los segundos
     //'hora'=>'datetime:H:i',
 
-    public function cita(){
-        return $this->belongsTo(Cita::class);
+    public function optometrista()
+    {
+        return $this->belongsTo(Optometrista::class);
     }
 
     public function optica(){
         return $this->belongsTo(Optica::class);
     }
 
-    public function bloqueHorario(){
+
+
+
+    public function bloqueHorario()
+    {
         return $this->belongsTo(Bloque_Horario::class);
     }
 
@@ -29,8 +34,11 @@ class Cita extends Model
         return $this->belongsTo(Cliente::class);
     }
     //nombre de cliente de cita que se añadirá a ficha
-    /* public function cliente()
+
+    
+
+    public function ficha()
     {
-        return $this->belongsTo(Cliente::class, 'idCliente');
-    } */
+        return $this->hasOne(Ficha::class);
+    }
 }

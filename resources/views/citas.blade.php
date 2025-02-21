@@ -29,10 +29,11 @@
                 </tr>
             </thead>
             <tbody>
+                <?php /*  dd($citas) */ ?>
                 @forelse($citas as $cita)
                 <tr>
                     <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->hora}}</a></td>
-                    <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->apellidoCliente}}, {{$cita->nombreCliente}}</a></td>
+                    <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->cliente->apellido}}, {{$cita->cliente->nombre}}</a></td>
                     <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->descripcion}}</a></td>
                 </tr>
                 @empty

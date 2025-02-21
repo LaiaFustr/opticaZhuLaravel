@@ -15,19 +15,14 @@ return new class extends Migration
             $table->increments('id');
             $table->date('fecha');//fecha de la cita
             $table->time('hora');//hora de la cita
-            $table->string('descripcion',255);
+            $table->string('descripcion',255)->nullable();
             $table->unsignedInteger('idOptometrista')->nullable();
             $table->unsignedInteger('idCliente');
-           /*  $table->unsignedInteger('idAdmin')->nullable(); */
-            $table->unsignedInteger('idOptica');
 
-            /* $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade'); */
+            $table->unsignedInteger('idOptica')->nullable();
+
             $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
-
-            /* $table->foreign('nombreCliente')->references('nombre')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('apellidoCliente')->references('apellido')->on('clientes')->onDelete('cascade')->onUpdate('cascade'); */
-
             $table->foreign('idOptica')->references('id')->on('opticas')->onUpdate('cascade')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idBloqueHorario')->references('id')->on('bloque_horario')->onUpdate('cascade')->onDelete('cascade')->onUpdate('cascade');
         });

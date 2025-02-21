@@ -174,7 +174,7 @@ class CitaSeeder extends Seeder
         ];
 
         foreach ($citas as $cita) {
-            $cliente = DB::table('clientes')->where('id', $cita['idCliente'])->first();
+            //$cliente = DB::table('clientes')->where('id', $cita['idCliente'])->first();
             DB::table('citas')->insert([
                 'fecha' => $cita['fecha'],
                 'hora' => $cita['hora'],
@@ -182,8 +182,8 @@ class CitaSeeder extends Seeder
                 'idOptometrista' => $cita['idOptometrista'],
                 'idCliente' => $cita['idCliente'],
                 'idOptica' => $cita['idOptica'],
-                'nombreCliente' => $cliente->nombre,
-                'apellidoCliente' => $cliente->apellido,
+               /*  'nombreCliente' => $cliente->nombre,
+                'apellidoCliente' => $cliente->apellido, */
             ]);
         }
     }

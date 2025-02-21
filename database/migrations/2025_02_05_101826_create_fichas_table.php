@@ -13,26 +13,17 @@ return new class extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('idOptometrista');
-            $table->unsignedInteger('idCliente');
+           /*  $table->unsignedInteger('idOptometrista')->nullable();
+            $table->unsignedInteger('idCliente'); */
             $table->unsignedInteger('idCita');
-            $table->date('fecha');
-            $table->time('hora');
-            $table->text('descripcion');
-            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
-            /* $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade'); */
-            //$table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
-
+           /*  $table->date('fecha');
+            $table->time('hora'); */
+           /*  $table->text('descripcion')->nullable(); */
             
+            $table->foreign('idCita')->references('id')->on('citas')->onDelete('cascade')->onUpdate('cascade');
+           /*  $table->foreign('idCliente')->references('idCliente')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idOptometrista')->references('idOptometrista')->on('cita')->onDelete('cascade')->onUpdate('cascade'); */
         });
-      /*   Schema::table('fichas', function (Blueprint $table) {
-            $table->integer('idOptometrista')->nullable()->change();
-            $table->integer('idCliente')->nullable()->change();
-            $table->integer('idCita')->nullable()->change();
-            $table->date('fecha')->nullable()->change();
-            $table->date('hora')->nullable()->change();
-            $table->string('descripcion')->nullable()->change();
-        }); */
     }
 
     /**
