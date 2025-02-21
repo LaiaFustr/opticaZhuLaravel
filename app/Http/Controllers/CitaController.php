@@ -20,7 +20,7 @@ class CitaController extends Controller
     public function indexCitas()
     {
         //$citas = Cita::all();//consulta
-        $citas = Cita::with('cliente')->get();
+        $citas = Cita::with(['cliente', 'optometrista'])->get();
        
         return view('/citas', ['citas'=> CitasResource::collection($citas)]);
         
