@@ -20,8 +20,10 @@ class CitasResource extends JsonResource
             'hora' => $this->hora,
             'descripcion' => $this->descripcion,
             'idCliente' => $this->cliente->id,
+            'idOptometrista'=> $this->optometrista->id,
             'nombreCliente' => $this->cliente->nombre,
             'apellidoCliente' => $this->cliente->apellido,
+            
         ];
     }
 }
