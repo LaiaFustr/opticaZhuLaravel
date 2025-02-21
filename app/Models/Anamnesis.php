@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Anamnesis extends Model
 {
-    //return $this->belongsTo();
+    public function ficha()
+    {
+        return $this->belongsTo(Ficha::class, 'idFicha');
+    }
 }
