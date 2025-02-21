@@ -23,7 +23,7 @@ class CitasResource extends JsonResource
             'idOptometrista'=> $this->optometrista->id,
             'nombreCliente' => $this->cliente->nombre,
             'apellidoCliente' => $this->cliente->apellido,
-            
+            'nombreOptica'=> $this->optica->nombre
         ];
     }
 }

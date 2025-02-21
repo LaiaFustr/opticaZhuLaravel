@@ -14,17 +14,28 @@ class FichaController extends Controller
 
     public function creaFicha(Request $request)
     {
-        //dd($request);
-        $datosFicha =
-            $request->validate([
-                'idCita' => 'required|integer',
-            ]);
+        /* dd($request->validate([
+            'idCita' => 'required|integer',
+            'idOptometrista' => 'integer',
+            'idCliente' => 'integer',
+            'fecha' => 'required|date',
+            'hora' => 'required|date_format:H:i:s',
+            'descripcion'=>'required|string',
+        ])); */
+        $datosFicha = $request->validate([
+            'idCita' => 'required|integer',
+            'idOptometrista' => 'integer',
+            'idCliente' => 'integer',
+            'fecha' => 'required|date',
+            'hora' => 'required|date_format:H:i:s',
+            'descripcion' => 'required|string',
+        ]);
 
-        //dd($datosFicha);
 
-        Ficha::create($datosFicha);
-/* 
-        try {
+
+        //Ficha::create($datosFicha);
+
+        /* try {
             Ficha::create($datosFicha);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -32,27 +43,30 @@ class FichaController extends Controller
 
 
 
-        /* $datosFicha = new Ficha();
+        $datosFicha = new Ficha();
         $datosFicha->idCita = $request->idCita;
-        $datosFicha->save(); */
+        $datosFicha->idCliente = $request->idCliente;
+        $datosFicha->idOptometrista = $request->idOptometrista;
+        $datosFicha->fecha = $request->fecha;
+        $datosFicha->hora = $request->hora;
+        $datosFicha->descripcion = $request->hora;
+        $datosFicha->save();
 
 
 
-        /* if ($request->has('')) {// campos de anamnesis 
-
+        if ($request->has('anamnesisCheck')) { // campos de anamnesis 
+            dd('holi');
             //validate Campos Anamnesis
 
 
-            $anamnesisData = $request->input('anamnesis');
-            $anamnesisData['idFicha'] = $ficha->id;
+            
+            Anamnesis::create();
+        }
 
-            Anamnesis::create($anamnesisData);
-        } */
-
-        $redirige = redirect()->route('home'); //de esta vista, llevará a la de 'storeFicha'
+        $redirige = redirect()->route('home'); //de esta vista, llevará a la de 'guardaFicha' o igual no. ns
 
         session()->flash('success', 'Ficha creada correctamente');
-        return $redirige; //Falta crear la sesion flash para que funcione la sweet alert
+        return $redirige; //Falta añadir la sweet alert que pille si existe esta session
 
     }
 

@@ -13,10 +13,20 @@ class Ficha extends Model
     
     public function cita()
     {
-        return $this->belongsTo(Cita::class);
+        return $this->belongsTo(Cita::class, 'idCita');
     }
 
-    /* public function cliente(){
-        return $this->belongsTo(Cliente::class);
-    } */
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'idCliente');
+    }
+
+    public function optometrista()
+    {
+        return $this->belongsTo(Optometrista::class, 'idOptometrista');
+    }
+
+    public function anamnesis(){
+        return $this->hasOne(Anamnesis::class);
+    }
 }
