@@ -18,13 +18,12 @@ return new class extends Migration
             $table->string('descripcion',255)->nullable();
             $table->unsignedInteger('idOptometrista')->nullable();
             $table->unsignedInteger('idCliente');
-
-            $table->unsignedInteger('idOptica')->nullable();
+            $table->unsignedInteger('idOptica')->nullable(); 
+            
 
             $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idOptica')->references('id')->on('opticas')->onUpdate('cascade')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('idBloqueHorario')->references('id')->on('bloque_horario')->onUpdate('cascade')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
