@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php /*  dd($citas) */ ?>
+                <?php   dd($citas)  ?>
                 @forelse($citas as $cita)
                 <?php  /* dd($cita) */ ?>
                 <tr>
