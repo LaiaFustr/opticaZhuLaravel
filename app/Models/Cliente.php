@@ -14,6 +14,10 @@ class Cliente extends Model
         return $this->belongsTo(Admin::class);
     }
 
+    public function auxiliar(){
+        return $this->belongsToMany(Auxiliar::class);
+    }
+
     public function citas(){
         return $this->hasMany(Cita::class);
     }

@@ -36,4 +36,9 @@ class CitaController extends Controller
         $citas = Cita::where('idOptica', $optica)->get();
         return response()->json($citas);
     }
+
+    public function citaCliente($clientes){
+        $clientes = Cita::where('idCliente', $clientes)->get();
+        return response()->json($clientes);
+    }
 }
