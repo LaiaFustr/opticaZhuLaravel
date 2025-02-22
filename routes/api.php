@@ -50,6 +50,7 @@ Route::get('/horariosporadmin/{idAdmin}', [HorarioController::class,'mostrarIDAd
 
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
 Route::post('/propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
+Route::post('/crearCita', [CitaController::class, 'guardar'])->name('crearCita');
 
 Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
 Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
@@ -63,5 +64,5 @@ Route::get('/clientes', [ClienteController::class,'index'])->name('clientes');
 
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
-
+Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('citasOcupadas');
 //Route::get('/horarios', [HorarioController::class, 'index']->name('horarios'));
