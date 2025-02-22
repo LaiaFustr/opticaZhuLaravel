@@ -8,17 +8,20 @@
         <div class="col-auto">
 
             <h1 class="tituloPagina">Ficha para {{$cita->cliente->nombre}} {{$cita->cliente->apellido}}</h1>
+            <h5>{{$cita->descripcion}}</h5>
         </div>
-
-        <div class="col d-flex justify-content-end ms-auto">
+        <div class="col d-flex justify-content-center align-items-center">
+            <h2>idCita: {{$cita->id}}</h2>
+        </div>
+        <div class="col-auto d-flex justify-content-end ms-auto">
             <a href=""><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
     </div>
-   
-    <form action="{{route('creaFicha')}}" method="post">
-        @csrf
-        
 
+    <form class="" action="{{route('creaFicha')}}" method="post">
+        @csrf
+
+<div class="row">
         <input type="hidden" name="idCita" value="{{ $cita->id }}">
         <?php  /*  dd($cita->id ) */ ?>
         <input type="hidden" name="idCliente" value="{{ $cita->idCliente}}">
@@ -26,157 +29,151 @@
         <?php /*   dd($cita->idCliente) */ ?>
         
         <input type="hidden" name="idOptometrista" value="{{ $cita->idOptometrista}}">
-        <?php  /* dd($cita->idOptometrista)  */?>
-        <?php /*  dd($cita->optometrista->id)  */?>
+        <?php  /* dd($cita->idOptometrista)  */ ?>
+        <?php /*  dd($cita->optometrista->id)  */ ?>
         <input type="hidden" name="fecha" value="{{ $cita->fecha }}">
         <input type="hidden" name="hora" value="{{ $cita->hora }}">
         <input type="hidden" name="descripcion" value="{{ $cita->descripcion }}">
         <!-- <input type="hidden" name="idCita" value="{{ $cita->cliente->nombre }}"> -->
-        <?php  /* dd($cita)  */?>
-      <h1>{{$cita->id}}</h1>
-            
-            <div class="dropdown col" id="apartadosFichaDrodown">
-                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Apartados
-                </button>
-                <ul class="dropdown-menu unstyled-list p-2" id="checksFicha">
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="anamnesisCheck" id="anamnesisCheck">
-                            <label class="form-check-label" for="anamnesisCheck">Anamnesis</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="graduacionAntCheck" id="graduacionAntCheck">
-                            <label class="form-check-label" for="graduacionAntCheck">Graduación Anterior</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="AVSinCorrCheck" id="AVSinCorrCheck">
-                            <label class="form-check-label" for="AVSinCorrCheck">A.V. Sin Corrección</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="reflejoPupilarCheck" id="reflejoPupilarCheck">
-                            <label class="form-check-label" for="reflejoPupilarCheck">Reflejo Pupilar</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="ishiharaCheck" id="ishiharaCheck">
-                            <label class="form-check-label" for="ishiharaCheck">Ishihara</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="AVMonocularCheck" id="AVMonocularCheck">
-                            <label class="form-check-label" for="AVMonocularCheck">A.V. Monocular</label>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="AVBinocularCheck" id="AVBinocularCheck">
-                            <label class="form-check-label" for="AVBinocularCheck">A.V. Binocular</label>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <?php  /* dd($cita)  */ ?>
 
 
-            <div class="col col-1 d-flex ms-5 d-flex align-items-center">
-                <a href="">Historial</a>
-            </div>
+        <div class="dropdown col" id="apartadosFichaDrodown">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Apartados
+            </button>
+            <ul class="dropdown-menu unstyled-list p-2" id="checksFicha">
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="anamnesisCheck" id="anamnesisCheck">
+                        <label class="form-check-label" for="anamnesisCheck">Anamnesis</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="graduacionAntCheck" id="graduacionAntCheck">
+                        <label class="form-check-label" for="graduacionAntCheck">Graduación Anterior</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="AVSinCorrCheck" id="AVSinCorrCheck">
+                        <label class="form-check-label" for="AVSinCorrCheck">A.V. Sin Corrección</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="reflejoPupilarCheck" id="reflejoPupilarCheck">
+                        <label class="form-check-label" for="reflejoPupilarCheck">Reflejo Pupilar</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="ishiharaCheck" id="ishiharaCheck">
+                        <label class="form-check-label" for="ishiharaCheck">Ishihara</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="AVMonocularCheck" id="AVMonocularCheck">
+                        <label class="form-check-label" for="AVMonocularCheck">A.V. Monocular</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="AVBinocularCheck" id="AVBinocularCheck">
+                        <label class="form-check-label" for="AVBinocularCheck">A.V. Binocular</label>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="row card p-1 my-1 cardFicha" id="anamnesis" style="display:none">
-            <div class="col">
+
+
+        <div class="col col-1 d-flex ms-5 d-flex align-items-center">
+            <a href="">Historial</a>
+        </div>
+</div>
+<div class="row card p-1 my-1 cardFicha" id="anamnesis" style="display:none">
+    <div class="col">
+        <div class="row">
+            <h4>Anamnesis</h4>
+        </div>
+        <div class="row my-1">
+            <div class="col-auto d-flex border-end align-items-center">
                 <div class="row">
-                    <h4>Anamnesis</h4>
+                    <div class="col-auto form-check">
+                        
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Utiliza compensación
+                        </label>
+                        <input class="form-check-input" name="compensacion" type="checkbox" id="comp_v">
+                    </div>
+                    
                 </div>
-                <div class="row my-1">
-                    <div class="col-auto d-flex border-end align-items-center">
-                        <div class="row">
-                            <div class="col col-auto"> <label for="">Utiliza Compensación:</label></div>
+            </div>
 
-                            <div class="col-auto form-check">
-                                <input class="form-check-input" type="checkbox" id="si_comp_v">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Sí
-                                </label>
-                            </div>
-                            <div class="col-auto form-check">
-                                <input class="form-check-input" type="checkbox" id="no_comp_v">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    No
-                                </label>
-                            </div>
-                        </div>
+            <div class="col-auto border-end">
+                <div class="row d-flex  justify-content-center align-items-center">
+                    <div class="col col-auto justify-content-center align-items-center">
+                        <label for="">Última revisión:</label>
                     </div>
 
-                    <div class="col-auto border-end">
-                        <div class="row d-flex  justify-content-center align-items-center">
-                            <div class="col col-auto justify-content-center align-items-center">
-                                <label for="">Última revisión:</label>
-                            </div>
-
-                            <div class="col col-auto">
-                                <input class="form-control form-control-sm" name="anamnesis[ultima_revision]" type="date" id="ultima_revision">  nombreApartado[nombredecampo] 
-                            </div>
-
-                        </div>
+                    <div class="col col-auto">
+                        <input class="form-control form-control-sm" name="anamnesis[ultima_revision]" type="date" id="ultima_revision"> nombreApartado[nombredecampo]
                     </div>
 
-                    <div class="col-auto border-end">
-                        <div class="row d-flex  justify-content-center align-items-center">
-                            <div class="col col-auto">
-                                <label for="">Edad:</label>
-                            </div>
+                </div>
+            </div>
 
-                            <div class="col col-4">
-                                <input class="form-control form-control-sm w-100" name="anamnesis[edad]" type="text" id="usr_edad">
-                            </div>
+            <div class="col-auto border-end">
+                <div class="row d-flex  justify-content-center align-items-center">
+                    <div class="col col-auto">
+                        <label for="">Edad:</label>
+                    </div>
 
-                        </div>
+                    <div class="col col-4">
+                        <input class="form-control form-control-sm w-100" name="anamnesis[edad]" type="text" id="usr_edad">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row d-flex  justify-content-center align-items-center">
+                    <div class="col col-auto">
+                        <label for="">Profesión:</label>
                     </div>
 
                     <div class="col">
-                        <div class="row d-flex  justify-content-center align-items-center">
-                            <div class="col col-auto">
-                                <label for="">Profesión:</label>
-                            </div>
-
-                            <div class="col">
-                                <input class="form-control form-control-sm" name="anamnesis[profesion]" type="text" id="usr_profesion">
-                            </div>
-                        </div>
+                        <input class="form-control form-control-sm" name="anamnesis[profesion]" type="text" id="usr_profesion">
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="row my-1">
-                    <div class="col-auto">
-                        <div class="row">
-                            <div class="col-auto border-end">
-                                <div class="row d-flex  justify-content-center align-items-center">
-                                    <div class="col col-auto">
-                                        <label for="">Horas diarias dedicadas a pantallas:</label>
-                                    </div>
-
-                                    <div class="col col-4">
-                                        <input class="form-control form-control-sm w-100" name="anamnesis[horas_pantalla]" type="text" id="usr_horas_pantalla">
-                                    </div>
-
-                                </div>
+        <div class="row my-1">
+            <div class="col-auto">
+                <div class="row">
+                    <div class="col-auto border-end">
+                        <div class="row d-flex  justify-content-center align-items-center">
+                            <div class="col col-auto">
+                                <label for="">Horas diarias dedicadas a pantallas:</label>
                             </div>
+
+                            <div class="col col-4">
+                                <input class="form-control form-control-sm w-100" name="anamnesis[horas_pantalla]" type="text" id="usr_horas_pantalla">
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
 
-     <!--   <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
+</div>
+
+<!--   <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>Graduación Anterior</h4>
