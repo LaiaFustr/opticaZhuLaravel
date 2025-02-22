@@ -15,14 +15,14 @@ class FichaController extends Controller
     public function creaFicha(Request $request)
     {
 
+
         /* $fecha = str_replace("-","", $request['fecha']);
         $hora = str_replace(":","", $request['hora']);
         $id =  $fecha.$hora.$request['idCita']; */
         //dd($fecha.$hora);
         //dd($request['fecha'].$request['hora'].$request['idCliente']);
-        
-        $datosFicha = $request->validate([
-            //'id' => $id,
+
+        $request->validate([
             'idCita' => 'required|integer',
             'idOptometrista' => 'integer',
             'idCliente' => 'integer',
@@ -44,6 +44,7 @@ class FichaController extends Controller
 
 
         $datosFicha = new Ficha();
+        //$datosFicha->id=1;
         $datosFicha->idCita = $request->idCita;
         $datosFicha->idCliente = $request->idCliente;
         $datosFicha->idOptometrista = $request->idOptometrista;
@@ -51,17 +52,63 @@ class FichaController extends Controller
         $datosFicha->hora = $request->hora;
         $datosFicha->descripcion = $request->hora;
         $datosFicha->save();
+        //dd($request);
+        $ultimo = Ficha::orderBy('id', 'desc')->first();
+        //dd($ultimo);
+
 
 
         //dd($request['anamnesis']);
         if ($request->has('anamnesisCheck')) { // campos de anamnesis 
-            dd('holi');
-            //validate Campos Anamnesis
-            $anamnesis = $request['anamnesis']->validate[''];
+            //dd('holi');
 
+            $anamnesis = $request->validate([
+                'anamnesis.idFicha' => 'nullable|integer',
+                'anamnesis.edad' => 'nullable|integer',
+                'anamnesis.compensacion' => 'nullable|string',
+                'anamnesis.ultimarevision' => 'nullable|date',
+                'anamnesis.profesion' => 'nullable|string',
+                'anamnesis.horas_pantalla' => 'nullable|integer',
+            ]);
 
-            Anamnesis::create($anamnesis);
+            $anamnesis = new Anamnesis();
+            $anamnesis->idFicha = $ultimo->id;
+            $anamnesis->edad = $request->input('anamnesis.edad');
+            $anamnesis->compensacion = $request->input('anamnesis.compensacion');
+            $anamnesis->ultimarevision = $request->input('anamnesis.ultimarevision');
+            $anamnesis->profesion = $request->input('anamnesis.profesion');
+            $anamnesis->horas_pantalla = $request->input('anamnesis.horas_pantalla');
+            $anamnesis->save();
+
+            // Anamnesis::create($anamnesis);
         }
+
+        if ($request->has('anamnesisCheck')) { // campos de anamnesis 
+            //dd('holi');
+
+            $anamnesis = $request->validate([
+                'anamnesis.idFicha' => 'nullable|integer',
+                'anamnesis.edad' => 'nullable|integer',
+                'anamnesis.compensacion' => 'nullable|string',
+                'anamnesis.ultimarevision' => 'nullable|date',
+                'anamnesis.profesion' => 'nullable|string',
+                'anamnesis.horas_pantalla' => 'nullable|integer',
+            ]);
+
+            $anamnesis = new Anamnesis();
+            $anamnesis->idFicha = $ultimo->id;
+            $anamnesis->edad = $request->input('anamnesis.edad');
+            $anamnesis->compensacion = $request->input('anamnesis.compensacion');
+            $anamnesis->ultimarevision = $request->input('anamnesis.ultimarevision');
+            $anamnesis->profesion = $request->input('anamnesis.profesion');
+            $anamnesis->horas_pantalla = $request->input('anamnesis.horas_pantalla');
+            $anamnesis->save();
+            
+            // Anamnesis::create($anamnesis);
+        }
+
+
+
 
         $redirige = redirect()->route('home'); //de esta vista, llevará a la de 'guardaFicha' o igual no. ns
 
