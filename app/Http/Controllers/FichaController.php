@@ -14,15 +14,15 @@ class FichaController extends Controller
 
     public function creaFicha(Request $request)
     {
-        /* dd($request->validate([
-            'idCita' => 'required|integer',
-            'idOptometrista' => 'integer',
-            'idCliente' => 'integer',
-            'fecha' => 'required|date',
-            'hora' => 'required|date_format:H:i:s',
-            'descripcion'=>'required|string',
-        ])); */
+
+        /* $fecha = str_replace("-","", $request['fecha']);
+        $hora = str_replace(":","", $request['hora']);
+        $id =  $fecha.$hora.$request['idCita']; */
+        //dd($fecha.$hora);
+        //dd($request['fecha'].$request['hora'].$request['idCliente']);
+        
         $datosFicha = $request->validate([
+            //'id' => $id,
             'idCita' => 'required|integer',
             'idOptometrista' => 'integer',
             'idCliente' => 'integer',
@@ -53,14 +53,14 @@ class FichaController extends Controller
         $datosFicha->save();
 
 
-
+        //dd($request['anamnesis']);
         if ($request->has('anamnesisCheck')) { // campos de anamnesis 
             dd('holi');
             //validate Campos Anamnesis
+            $anamnesis = $request['anamnesis']->validate[''];
 
 
-            
-            Anamnesis::create();
+            Anamnesis::create($anamnesis);
         }
 
         $redirige = redirect()->route('home'); //de esta vista, llevará a la de 'guardaFicha' o igual no. ns
