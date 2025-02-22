@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ficha extends Model
 {
     protected $table = 'fichas';
-    protected $fillable = [/* 'idOptometrista','idCliente', */'idCita'/* ,'fecha','hora','descripcion' */];
+    protected $fillable = ['idOptometrista','idCliente','idCita','fecha','hora','descripcion'];
     //protected $hidden = ['created_at', 'updated_at'];
     public $timestamps = false;
     
@@ -26,7 +26,7 @@ class Ficha extends Model
         return $this->belongsTo(Optometrista::class, 'idOptometrista');
     }
 
-    public function anamnesis(){
+   /*  public function anamnesis(){
         return $this->hasOne(Anamnesis::class);
-    }
+    } */
 }

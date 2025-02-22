@@ -93,6 +93,7 @@
             <a href="">Historial</a>
         </div>
 </div>
+
 <div class="row card p-1 my-1 cardFicha" id="anamnesis" style="display:none">
     <div class="col">
         <div class="row">
@@ -102,11 +103,11 @@
             <div class="col-auto d-flex border-end align-items-center">
                 <div class="row">
                     <div class="col-auto form-check">
-                        
+                    <input type="hidden" name="anamnesis[idFicha]" >
                         <label class="form-check-label" for="flexCheckDefault">
                             Utiliza compensación
                         </label>
-                        <input class="form-check-input" name="compensacion" type="checkbox" id="comp_v">
+                        <input class="form-check-input" name="anamnesis[compensacion]" type="checkbox" id="comp_v">
                     </div>
                     
                 </div>
@@ -119,7 +120,7 @@
                     </div>
 
                     <div class="col col-auto">
-                        <input class="form-control form-control-sm" name="anamnesis[ultima_revision]" type="date" id="ultima_revision"> nombreApartado[nombredecampo]
+                        <input class="form-control form-control-sm" name="anamnesis[ultimarevision]" type="date" id="ultima_revision"> nombreApartado[nombredecampo]
                     </div>
 
                 </div>
