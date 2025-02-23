@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use App\Http\Resources\FichasResource;
 use App\Models\AgudezaVisualSinCorreccion;
 use App\Models\ReflejoPupilar;
+use App\Models\Ishihara;
+use App\Models\AVMonocular;
+use App\Models\AVBinocular;
 use Exception;
 use PhpParser\Node\Stmt\Catch_;
 
@@ -172,7 +175,7 @@ class FichaController extends Controller
             $reaccionan = $request->input('reflejoPupilar.preacc') === 'on' ? true : false;
             $luz = $request->input('reflejoPupilar.pl') === 'on' ? true : false;
             $acomodan = $request->input('reflejoPupilar.pa') === 'on' ? true : false;
-            
+
             ReflejoPupilar::create([
                 'idFicha' =>  $ultimo->id,
                 'iguales' => $iguales,
@@ -184,9 +187,79 @@ class FichaController extends Controller
         }
 
 
+        if ($request->has('ishiharaCheck')) { //campos ishihara
 
+            $request->validate([
+                'ishihara.ishiharaTest' => 'nullable|string',
+                
+            ]);
 
+            Ishihara::create([
+                'idFicha' =>  $ultimo->id,
+                'ishihara' => $request->input('ishihara.ishiharaTest'),
 
+            ]);
+        }
+
+        if ($request->has('AVMonocularCheck')) { //campos agudeza visual monocular
+
+            /* $graduacionAnt = */
+            $request->validate([
+                'avmonoc.idFicha' => 'nullable|integer',
+                'avmonoc.esf_od' => 'nullable|string',
+                'avmonoc.cil_od' => 'nullable|string',
+                'avmonoc.av_od' => 'nullable|string',
+                'avmonoc.esf_oi' => 'nullable|string',
+                'avmonoc.cil_oi' => 'nullable|string',
+                'avmonoc.av_oi' => 'nullable|string',
+                'avmonoc.ga_av' => 'nullable|string',
+                'avmonoc.ga_ad' => 'nullable|string',
+            ]);
+
+            AVMonocular::create([
+                'idFicha' =>  $ultimo->id,
+                'esfera_od' => $request->input('avmonoc.esf_od'),
+                'ejecilindro_od' => $request->input('avmonoc.cil_od'),
+                'agudezavisual_od' => $request->input('avmonoc.av_od'),
+                'esfera_oi' => $request->input('avmonoc.esf_oi'),
+                'ejecilindro_oi' => $request->input('avmonoc.cil_oi'),
+                'agudezavisual_oi' => $request->input('avmonoc.av_oi'),
+
+                'agudezavisual_general' => $request->input('avmonoc.ga_av'),
+                'adicional' => $request->input('avmonoc.ga_ad'),
+
+            ]);
+        }
+
+        if ($request->has('AVBinocularCheck')) { //campos agudeza visualbinocular
+
+            /* $graduacionAnt = */
+            $request->validate([
+                'avbinoc.idFicha' => 'nullable|integer',
+                'avbinoc.esf_od' => 'nullable|string',
+                'abinoc.cil_od' => 'nullable|string',
+                'avbinoc.corr_od' => 'nullable|string',
+                'avbinoc.esf_oi' => 'nullable|string',
+                'avbinoc.cil_oi' => 'nullable|string',
+                'avbinoc.corr_oi' => 'nullable|string',
+                'avbinoc.av_binoc' => 'nullable|string',
+               
+            ]);
+
+            AVBinocular::create([
+                'idFicha' =>  $ultimo->id,
+                'esfera_od' => $request->input('avbinoc.esf_od'),
+                'ejecilindro_od' => $request->input('avbinoc.cil_od'),
+                'correccion_od' => $request->input('avbinoc.corr_od'),
+
+                'esfera_oi' => $request->input('avbinoc.esf_oi'),
+                'ejecilindro_oi' => $request->input('avbinoc.cil_oi'),
+                'correccion_oi' => $request->input('avbinoc.corr_oi'),
+
+                'agudezavisual_binoc' => $request->input('avbinoc.av_binoc')
+
+            ]);
+        }
 
 
 

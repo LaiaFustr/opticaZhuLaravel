@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedInteger('idFicha');
             $table->increments('id');
            
-            $table->string('ishihara');
+            $table->text('ishihara')->nullable();
             
 
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');

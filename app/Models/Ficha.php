@@ -35,4 +35,8 @@ class Ficha extends Model
     public function reflejopupilar(){
         return $this->hasOne(ReflejoPupilar::class);
     }
+    public function ishihara(){
+        return $this->hasOne(Ishihara::class);
+    }
+    
 }
