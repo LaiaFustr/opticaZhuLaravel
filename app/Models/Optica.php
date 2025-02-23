@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Optica extends Model
 {
     protected $table='opticas';
-    protected $fillable=['nombre', 'telefono', 'direccion', 'correo'];
+    protected $fillable=['nombre', 'telefono', 'direccion', 'correo', 'horaApertura', 'horaCierre', 'num_Maquinas'];
 /*     protected $hidden= ['created_at', 'updated_at'];
  */
     public function admin(){

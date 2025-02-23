@@ -15,7 +15,7 @@ class CitaController extends Controller
 
         return response()->json($citas);
     }
-    
+
 
     public function citasOcupadas(){
  // Consulta para agrupar las citas por fecha y hora y contar el número de citas en cada grupo
@@ -30,11 +30,11 @@ class CitaController extends Controller
     {
         //$citas = Cita::all();//consulta
         $citas = Cita::with(['cliente', 'optometrista'])->get();
-       
+
         return view('/citas', ['citas'=> CitasResource::collection($citas)]);
-        
+
     }
-    
+
     public function ficha($idCita){
         $cita = Cita::findOrFail($idCita);
 
@@ -44,6 +44,18 @@ class CitaController extends Controller
     public function citaOptica($optica){
         $citas = Cita::where('idOptica', $optica)->get();
         return response()->json($citas);
+    }
+
+    public function guardar(Request $request){
+
+        $datos= $request->validate([
+            'fecha' => 'required|date',
+            'hora' => 'required|time',
+            'descripcion' => 'required|string',
+        ]);
+
+        Cita::create($datos);
+
     }
 
     public function citaCliente($clientes){
