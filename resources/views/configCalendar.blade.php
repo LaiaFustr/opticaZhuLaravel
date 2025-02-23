@@ -2,24 +2,6 @@
 
 
 @section('content')
-
-{{-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
-
-<script>
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth'
-      });
-      calendar.render();
-    });
-
-  </script> --}}
-
-
-
 <div class="container-flex containerPagina">
     <div class="row w-100 mb-4">
         <div class="col-auto me-auto">
@@ -43,14 +25,14 @@
             </div>
         </div>
 
-        @if ($errors->any())  //esto muestra todos los errores seguidos
+        <!-- @if ($errors->any())  //esto muestra todos los errores seguidos
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
             </ul>
         <br/>
-        @endif
+        @endif -->
 
 
 

@@ -39,6 +39,10 @@ class Empleado extends Authenticable
         return $this->belongsToMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
     }
 
+    public function citas(){
+        return $this->hasMany(Cita::class, 'idEmpleado');
+    }
+
     public function getAuthIdentifierName(){
         return 'nombreUsuario';
     }

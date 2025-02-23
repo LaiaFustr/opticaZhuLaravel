@@ -45,6 +45,7 @@ class UserController extends Controller
         'direccion' => 'required',
         'telefono' => 'required',
         'correo' => 'required',
+        'nombreUsuario' => 'required',
         'rol' => 'required',
         'contrasenia' => 'required', // Usamos confirmed para comparar con password_confirmation
     ]);
@@ -58,6 +59,7 @@ class UserController extends Controller
             'direccion' => $validatedData['direccion'],
             'telefono' => $validatedData['telefono'],
             'correo' => $validatedData['correo'],
+            'nombreUsuario' => $validatedData['nombreUsuario'],
             'rol' => $validatedData['rol'],
             'contrasenia' => Hash::make($validatedData['contrasenia']),
         ]);
