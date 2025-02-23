@@ -63,14 +63,5 @@ class CitaController extends Controller
         return response()->json($clientes);
     }
 
-    public function guardar(Request $request)
-    {
-        $validateData = $request->validate([
-            'fecha' => 'required|date|max:255',
-            'hora' => 'required|date_format:H:i',
-            'descripcion' => 'required|string|max:255',
-        ]);
-        Cita::create($validateData);
-    }
 
 }

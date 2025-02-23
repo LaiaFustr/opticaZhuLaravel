@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('num_Maquinas');
             $table->time('horaApertura');
             $table->time('horaCierre');
-            $table->unsignedInteger('idAdmin');
+            $table->unsignedInteger('idAdmin')->nullable();
             $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
         });
     }

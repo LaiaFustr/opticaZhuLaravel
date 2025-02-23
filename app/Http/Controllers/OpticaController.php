@@ -62,6 +62,8 @@ class OpticaController extends Controller
             'direccion' => 'required|string|max:255',
             'correo' => 'required|string|max:255',
             'num_Maquinas' => 'integer',
+            'horaApertura' => 'required|date_format:H:i',
+            'horaCierre' => 'required|date_format:H:i',
         ]);
 
         //dd($validateData);
@@ -77,16 +79,21 @@ class OpticaController extends Controller
             'direccion' => 'required|string|max:255',
             'correo' => 'required|string|max:255',
             'num_Maquinas' => 'integer',
+            'horaApertura' => 'required|date_format:H:i',
+            'horaCierre' => 'required|date_format:H:i',
+            'idAdmin'=>1,
         ]);
 
         // Guardar los datos en la sesión
         session([
             'nombre' => $datos['nombre'],
-            'telefono' => $request->input('telefono'),
-            'direccion' => $request->input('direccion'),
-            'correo' => $request->input('correo'),
-            'num_Maquinas' => $request->input('num_Maquinas'),
-            // 'idAdmin'=>1,
+            'telefono' => $datos['telefono'],
+            'direccion' => $datos['direccion'],
+            'correo' => $datos['correo'],
+            'num_Maquinas' => $datos['num_Maquinas'],
+            'horaApertura' => $datos['horaApertura'],
+            'horaCierre' => $datos['horaCierre'],
+            'idAdmin'=>1,
             // 'idHorario'=>1,
         ]);
         return redirect()->route('configEmpleado');

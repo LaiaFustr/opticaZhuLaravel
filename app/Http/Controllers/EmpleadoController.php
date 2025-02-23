@@ -69,7 +69,7 @@ class EmpleadoController extends Controller
             'contrasenia' => 'required|string|max:255',
         ]);
         /* $usuarios=[]; */
-        $usuarios = array_push([
+         session([
             'nombreE' => $datos['nombreE'],
             'apellido' => $datos['apellido'],
             'dni' => $datos['dni'],
@@ -80,7 +80,7 @@ class EmpleadoController extends Controller
             'nombreUsuario' => $datos['nombreUsuario'],
             'contrasenia' => $datos['contrasenia'],
         ]);
-        session($usuarios);
+        //session($usuarios);
 
         session('nombreH', 'horaApertura', 'horaCierre');
 
@@ -97,7 +97,10 @@ class EmpleadoController extends Controller
             'telefono' => session('telefono'),
             'direccion' => session('direccion'),
             'correo' => session('correo'),
-            'num_Maquinas' => 1,
+            'num_Maquinas' => session('num_Maquinas'),
+            'horaApertura' => session('horaApertura'),
+            'horaCierre' => session('horaCierre'),
+            'idAdmin' => session('idAdmin'),
             //'idHorario' => $horario->id,
         ]);
 
@@ -120,6 +123,7 @@ class EmpleadoController extends Controller
 
         return view('opticas', compact('opticas'));
     }
+
 
     public function buscarEmpleado(Request $request)
     {
