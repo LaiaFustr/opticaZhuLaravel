@@ -27,10 +27,11 @@ use App\Http\Controllers\CalendarioController;
     return view('app');
 }); */
 
+Route::view('/login', 'login')->name('logininicio');
+Route::post('/login-usuario', [EmpleadoController::class, 'login'])->name('login');
 
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
-
 
 Route::get('propietario/citas', function () {
     return view('citas');
@@ -101,12 +102,12 @@ Route::get(
     [CitaController::class, 'ficha']
 )->name('ficha');
 
-
+/*
 // Redirigirá al login y dependiendo del rol irá a home o a propietario
 Route::get('/', function () {
     $route = redirect()->route('home');
     return $route;
-});
+});*/
 //if rol optometrista
 //if rol propietario
 //$route = redirect()->route('propietario');

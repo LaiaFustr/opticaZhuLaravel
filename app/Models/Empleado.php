@@ -3,9 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+// use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;   
 
-class Empleado extends Model
+class Empleado extends Authenticatable
 {
+    use Notifiable;
+
     protected $table='empleados';
     protected $fillable=['nombre', 'apellido','dni', 'direccion', 'telefono', 'correo', 'nombreUsuario','rol' ,'contrasenia'];
     //protected $hidden= ['created_at', 'updated_at'];
@@ -14,6 +22,7 @@ class Empleado extends Model
     public function admin(){
         return $this->belongsTo(Admin::class,'idAdmin');
     }
+
 
     public function cita(){
         return $this->belongsTo(Cita::class,'idCita');
@@ -33,5 +42,13 @@ class Empleado extends Model
 
     public function citas(){
         return $this->hasMany(Cita::class, 'idEmpleado');
+    }
+
+    public function getAuthIdentifierName(){
+        return 'nombreUsuario';
+    }
+
+    public function getAuthPassword(){
+        return $this->attributes[contrasenia];
     }
 }

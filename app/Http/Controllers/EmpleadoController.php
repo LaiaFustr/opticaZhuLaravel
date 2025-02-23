@@ -7,6 +7,10 @@ use App\Models\Empleado;
 use App\Models\Optica;
 use App\Models\Horario;
 use Illuminate\Support\Facades\DB;
+use Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 
 
@@ -35,6 +39,30 @@ class EmpleadoController extends Controller
     }
  */
 
+    public function login(Request $request){
+        $request->validate([
+            'nombreUsuario' => 'required',
+            'contrasenia' => 'required'
+        ]);
+ 
+        $credentials = $request->except('_token');
+
+        $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();
+
+        if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
+            Auth::login($empleado);
+            return redirect()->route('opticas');
+        } else {
+            session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
+            return redirect()->back();
+        }
+    }
+
+    public function logout(Request $request){
+        Session::flush();
+        Auth::logout();
+        return redirect('login');
+    }
 
     public function guardar(Request $request)
     {
