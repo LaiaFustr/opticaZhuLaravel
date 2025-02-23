@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 // use Laravel\Sanctum\HasApiTokens;
 use Laravel\Passport\HasApiTokens;   
 
-class Empleado extends Authenticable
+class Empleado extends Authenticatable
 {
     use Notifiable;
 
@@ -23,6 +23,7 @@ class Empleado extends Authenticable
         return $this->belongsTo(Admin::class,'idAdmin');
     }
 
+    
     public function cita(){
         return $this->belongsTo(Cita::class,'idCita');
     }
@@ -46,7 +47,8 @@ class Empleado extends Authenticable
     public function getAuthIdentifierName(){
         return 'nombreUsuario';
     }
+
     public function getAuthPassword(){
-        return 'contrasenia';
+        return $this->attributes[contrasenia];
     }
 }

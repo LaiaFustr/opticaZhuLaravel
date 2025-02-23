@@ -9,6 +9,7 @@ use App\Models\Horario;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -39,17 +40,21 @@ class EmpleadoController extends Controller
  */
 
     public function login(Request $request){
-        dd($request->all());
         $request->validate([
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
         ]);
-        $credentials = $request->only('nombreUsuario', 'contrasenia');
-        
-        if(Auth::attempt($credentials)){
-            return redirect()->route('propietario.opticas');
-        }else{
-            return back()->withErrors(['nombreUsuario' => 'Credenciales incorrectas']);
+
+        $credentials = $request->except('_token');
+
+        $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();
+
+        if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
+            Auth::login($empleado);
+            return redirect()->route('opticas');
+        } else {
+            session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
+            return redirect()->back();
         }
     }
 
