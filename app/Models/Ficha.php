@@ -26,7 +26,11 @@ class Ficha extends Model
         return $this->belongsTo(Optometrista::class, 'idOptometrista');
     }
 
-   /*  public function anamnesis(){
+    public function anamnesis(){
         return $this->hasOne(Anamnesis::class);
-    } */
+    }
+    public function graduacionanterior(){
+        return $this->hasOne(GraduacionAnterior::class);
+    }
+
 }
