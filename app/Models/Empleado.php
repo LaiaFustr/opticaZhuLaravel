@@ -30,4 +30,8 @@ class Empleado extends Model
     public function auxiliar(){
         return $this->belongsToMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
     }
+
+    public function citas(){
+        return $this->hasMany(Cita::class, 'idEmpleado');
+    }
 }

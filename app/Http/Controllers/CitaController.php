@@ -50,12 +50,11 @@ class CitaController extends Controller
 
         $datos= $request->validate([
             'fecha' => 'required|date',
-            'hora' => 'required|time',
+            'hora' => 'required|date_format:H:i',
             'descripcion' => 'required|string',
+            'idCliente' => 'required|integer',
         ]);
-
         Cita::create($datos);
-
     }
 
     public function citaCliente($clientes){

@@ -8,7 +8,7 @@ class Cita extends Model
 {
     protected $table = "citas";
 
-    protected $fillable = ['fecha', 'hora', 'descripcion'];
+    protected $fillable = ['fecha', 'hora', 'descripcion', 'idCliente'];
     public $timestamps = false;
     //las horas pueden ir asi para no poner los segundos
     //'hora'=>'datetime:H:i',
