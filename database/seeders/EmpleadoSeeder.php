@@ -25,6 +25,7 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'jflower21@gmail.com',
                 'rol'=> 'optometrista',
                 'idOptica'=> 1,
+                'activo'=> true,
             ],
             [
                 'nombre' => 'Lisa',
@@ -35,6 +36,7 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'lisilis14@gmail.com',
                 'rol'=> 'auxiliar',
                 'idOptica'=> 1,
+                'activo'=> true,
             ],
             [
                 'nombre' => 'Emilio',
@@ -45,6 +47,7 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'emilioporfavor@gmail.com',
                 'rol'=> 'optometrista',
                 'idOptica'=> 2,
+                'activo'=> true,
             ],
             [
                 'nombre' => 'Juan',
@@ -55,6 +58,7 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'jcpresi@gmail.com',
                 'rol'=> 'auxiliar',
                 'idOptica'=> 2,
+                'activo'=> true,
             ],
             [
                 'nombre' => 'Sophia',
@@ -65,6 +69,7 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'sophii63@gmail.com',
                 'rol'=> 'optometrista',
                 'idOptica'=> 3,
+                'activo'=> true,
             ],
             [   
                 'nombre' => 'Hernan',
@@ -75,6 +80,7 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'herteve12@gmail.com',
                 'rol'=> 'auxiliar',
                 'idOptica'=> 3,
+                'activo'=> true,
             ],
             [
                 'nombre' => 'Cristina',
@@ -85,6 +91,7 @@ class EmpleadoSeeder extends Seeder
                 'correo'=> 'crizilla@gmail.com',
                 'rol'=> 'optometrista',
                 'idOptica'=> 1,
+                'activo'=> true,
             ],
         ];
 
@@ -99,9 +106,9 @@ class EmpleadoSeeder extends Seeder
                 'telefono'=> $empleado['telefono'],
                 'correo'=> $empleado['correo'],*/
                 $empleado['nombreUsuario']= 
-                    substr($empleado['nombre'], 0, 2).
-                    substr($empleado['apellido'], 0, 2).
-                    substr($empleado['dni'], 0, 2);
+                    substr($empleado['nombre'], 0, 3).
+                    substr($empleado['apellido'], 0, 3).
+                    substr($empleado['dni'], 0, 3);
    
                 $empleado['contrasenia'] = Str::random(10);
             

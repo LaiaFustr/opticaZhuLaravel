@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('opticas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->primary();
             $table->string('nombre');
             $table->string('telefono');
             $table->string('direccion')->unique();
@@ -21,6 +21,8 @@ return new class extends Migration
             $table->time('horaApertura');
             $table->time('horaCierre');
             $table->unsignedInteger('idAdmin');
+
+           
             $table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
         });
     }
