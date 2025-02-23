@@ -7,6 +7,9 @@ use App\Models\Empleado;
 use App\Models\Optica;
 use App\Models\Horario;
 use Illuminate\Support\Facades\DB;
+use Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -35,6 +38,23 @@ class EmpleadoController extends Controller
     }
  */
 
+    public function login(Request $request){
+        $request->validate([
+            'nombreUsuario' => 'required',
+            'contrasenia' => 'required'
+        ]);
+        $credentials = $request->only('email', 'password');
+        Auth::attempt($credentials);
+        if(Auth::check()){
+            return redirect()->route('propietario/opticasC');
+        }
+    }
+
+    public function logout(Request $request){
+        Session::flush();
+        Auth::logout();
+        return redirect('login');
+    }
 
     public function guardar(Request $request)
     {

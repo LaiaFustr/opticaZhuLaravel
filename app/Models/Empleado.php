@@ -3,6 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+// use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;   
 
 class Empleado extends Model
 {
@@ -29,5 +35,8 @@ class Empleado extends Model
 
     public function auxiliar(){
         return $this->belongsToMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
+    }
+    public function getAuthPassword(){
+        return $this->password;
     }
 }
