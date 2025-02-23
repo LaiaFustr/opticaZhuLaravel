@@ -23,8 +23,9 @@ class OpticaSeeder extends Seeder
                 'direccion' => 'Calle Verdadera 2',
                 'correo' => 'opticazhucentro@opticazhu.com',
                 'num_Maquinas' => 2,
+                "horaApertura"=> "10:00:00",
+                "horaCierre"=> "22:00:00",
                 'idAdmin' => 10,
-                'idHorario' => 1,
             ],
             [
                 'nombre' => 'Óptica Zhu - Norte',
@@ -32,8 +33,9 @@ class OpticaSeeder extends Seeder
                 'direccion' => 'Calle Falsa 21',
                 'correo' => 'opticazhunorte@opticazhu.com',
                 'num_Maquinas' => 3,
+                "horaApertura"=> "10:00:00",
+                "horaCierre"=> "22:00:00",
                 'idAdmin' => 11,
-                'idHorario' => 1,
             ],
             [
                 'nombre' => 'Óptica Zhu - Sur',
@@ -41,8 +43,9 @@ class OpticaSeeder extends Seeder
                 'direccion' => 'Centro Comercial SoyReal, 7',
                 'correo' => 'opticazhusur@opticazhu.com',
                 'num_Maquinas' => 2,
+                "horaApertura"=> "10:00:00",
+                "horaCierre"=> "22:00:00",
                 'idAdmin' => 12,
-                'idHorario' => 3,
             ],
         ];
 
@@ -53,8 +56,9 @@ class OpticaSeeder extends Seeder
                 'direccion' => $optica['direccion'],
                 'correo' => $optica['correo'],
                 'num_Maquinas' => $optica['num_Maquinas'],
+                'horaApertura' => $optica['horaApertura'],
+                'horaCierre' => $optica['horaCierre'],
                 'idAdmin' => $optica['idAdmin'],
-                'idHorario' => $optica['idHorario'],
             ]);
         }
     }
