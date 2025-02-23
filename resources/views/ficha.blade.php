@@ -235,7 +235,7 @@
             </div>
         </div>
 
-        <!--   <div class="row card p-1 my-1 cardFicha" id="AVSinCorr" style="display:none">
+          <div class="row card p-1 my-1 cardFicha" id="AVSinCorr" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>A.V. Sin Corrección</h4>
@@ -298,6 +298,8 @@
             </div>
 
         </div>
+        
+        <!-- 
         <div class="row  my-1 row-auto">
             <div class="col card p-1 cardFicha col-auto me-auto" id="reflejoPupilar" style="display:none">
                 <div class="row">
