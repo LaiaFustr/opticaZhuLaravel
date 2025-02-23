@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\FichasResource;
 use App\Models\AgudezaVisualSinCorreccion;
 use App\Models\ReflejoPupilar;
+use App\Models\Ishihara;
 use Exception;
 use PhpParser\Node\Stmt\Catch_;
 
@@ -172,7 +173,7 @@ class FichaController extends Controller
             $reaccionan = $request->input('reflejoPupilar.preacc') === 'on' ? true : false;
             $luz = $request->input('reflejoPupilar.pl') === 'on' ? true : false;
             $acomodan = $request->input('reflejoPupilar.pa') === 'on' ? true : false;
-            
+
             ReflejoPupilar::create([
                 'idFicha' =>  $ultimo->id,
                 'iguales' => $iguales,
@@ -184,7 +185,19 @@ class FichaController extends Controller
         }
 
 
+        if ($request->has('ishiharaCheck')) { //campos agudeza visual sin correccion
 
+            $request->validate([
+                'ishihara.ishiharaTest' => 'nullable|string',
+                
+            ]);
+
+            Ishihara::create([
+                'idFicha' =>  $ultimo->id,
+                'ishihara' => $request->input('ishihara.ishiharaTest'),
+
+            ]);
+        }
 
 
 

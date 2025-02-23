@@ -349,7 +349,7 @@
 
                 <div class="row my-1">
                     <div class="col col-12">
-                        <textarea class="form-control" id=""></textarea>
+                        <textarea class="form-control" name="ishihara[ishiharaTest]" ></textarea>
                     </div>
                 </div>
             </div>
