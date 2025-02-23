@@ -23,7 +23,7 @@ class Empleado extends Authenticatable
         return $this->belongsTo(Admin::class,'idAdmin');
     }
 
-    
+
     public function cita(){
         return $this->belongsTo(Cita::class,'idCita');
     }

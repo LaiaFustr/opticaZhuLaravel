@@ -44,7 +44,7 @@ class EmpleadoController extends Controller
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
         ]);
-
+ 
         $credentials = $request->except('_token');
 
         $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();

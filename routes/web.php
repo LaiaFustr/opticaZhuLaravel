@@ -33,7 +33,6 @@ Route::post('/login-usuario', [EmpleadoController::class, 'login'])->name('login
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
-
 Route::get('propietario/citas', function () {
     return view('citas');
 })->name('propietario');
