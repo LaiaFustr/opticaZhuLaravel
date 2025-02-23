@@ -21,7 +21,6 @@ return new class extends Migration
             $table->unsignedInteger('idOptica')->nullable(); 
             $table->boolean('atendida')->default(false);
 
-
             $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
 
