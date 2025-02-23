@@ -10,8 +10,10 @@ use Illuminate\Notifications\Notifiable;
 // use Laravel\Sanctum\HasApiTokens;
 use Laravel\Passport\HasApiTokens;   
 
-class Empleado extends Model
+class Empleado extends Authenticable
 {
+    use Notifiable;
+
     protected $table='empleados';
     protected $fillable=['nombre', 'apellido','dni', 'direccion', 'telefono', 'correo', 'nombreUsuario','rol' ,'contrasenia'];
     //protected $hidden= ['created_at', 'updated_at'];
@@ -36,7 +38,11 @@ class Empleado extends Model
     public function auxiliar(){
         return $this->belongsToMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
     }
+
+    public function getAuthIdentifierName(){
+        return 'nombreUsuario';
+    }
     public function getAuthPassword(){
-        return $this->password;
+        return 'contrasenia';
     }
 }

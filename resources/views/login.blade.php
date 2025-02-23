@@ -2,11 +2,11 @@
     @csrf
     <div class="form-group">
         <label>Nombre de usuario</label>
-        <input type="text" name="email" class="form-control p_input">
+        <input type="text" name="nombreUsuario" class="form-control p_input">
     </div>
     <div class="form-group">
         <label>Contrasenia</label>
-        <input type="password" name="password" class="form-control p_input">
+        <input type="password" name="contrasenia" class="form-control p_input">
     </div>
 
     <div class="text-center">

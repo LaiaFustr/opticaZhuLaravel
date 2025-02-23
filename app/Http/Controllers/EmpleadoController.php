@@ -39,14 +39,17 @@ class EmpleadoController extends Controller
  */
 
     public function login(Request $request){
+        dd($request->all());
         $request->validate([
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
         ]);
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        if(Auth::check()){
-            return redirect()->route('propietario/opticasC');
+        $credentials = $request->only('nombreUsuario', 'contrasenia');
+        
+        if(Auth::attempt($credentials)){
+            return redirect()->route('propietario.opticas');
+        }else{
+            return back()->withErrors(['nombreUsuario' => 'Credenciales incorrectas']);
         }
     }
 
