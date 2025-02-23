@@ -8,33 +8,36 @@
         <div class="col-auto">
 
             <h1 class="tituloPagina">Ficha para {{$cita->cliente->nombre}} {{$cita->cliente->apellido}}</h1>
+            <h5>{{$cita->descripcion}}</h5>
         </div>
-
-        <div class="col d-flex justify-content-end ms-auto">
+        <div class="col d-flex justify-content-center align-items-center">
+            <h2>idCita: {{$cita->id}}</h2>
+        </div>
+        <div class="col-auto d-flex justify-content-end ms-auto">
             <a href=""><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
     </div>
-   
-    <form action="{{route('creaFicha')}}" method="post">
-        @csrf
-        
 
-        <input type="hidden" name="idCita" value="{{ $cita->id }}">
-        <?php  /*  dd($cita->id ) */ ?>
-        <input type="hidden" name="idCliente" value="{{ $cita->idCliente}}">
-        <?php /*   dd($cita->cliente->id) */ ?>
-        <?php /*   dd($cita->idCliente) */ ?>
-        
-        <input type="hidden" name="idOptometrista" value="{{ $cita->idOptometrista}}">
-        <?php  /* dd($cita->idOptometrista)  */?>
-        <?php /*  dd($cita->optometrista->id)  */?>
-        <input type="hidden" name="fecha" value="{{ $cita->fecha }}">
-        <input type="hidden" name="hora" value="{{ $cita->hora }}">
-        <input type="hidden" name="descripcion" value="{{ $cita->descripcion }}">
-        <!-- <input type="hidden" name="idCita" value="{{ $cita->cliente->nombre }}"> -->
-        <?php  /* dd($cita)  */?>
-      <h1>{{$cita->id}}</h1>
-            
+    <form class="" action="{{route('creaFicha')}}" method="post">
+        @csrf
+
+        <div class="row">
+            <input type="hidden" name="idCita" value="{{ $cita->id }}">
+            <?php  /*  dd($cita->id ) */ ?>
+            <input type="hidden" name="idCliente" value="{{ $cita->idCliente}}">
+            <?php /*   dd($cita->cliente->id) */ ?>
+            <?php /*   dd($cita->idCliente) */ ?>
+
+            <input type="hidden" name="idOptometrista" value="{{ $cita->idOptometrista}}">
+            <?php  /* dd($cita->idOptometrista)  */ ?>
+            <?php /*  dd($cita->optometrista->id)  */ ?>
+            <input type="hidden" name="fecha" value="{{ $cita->fecha }}">
+            <input type="hidden" name="hora" value="{{ $cita->hora }}">
+            <input type="hidden" name="descripcion" value="{{ $cita->descripcion }}">
+            <!-- <input type="hidden" name="idCita" value="{{ $cita->cliente->nombre }}"> -->
+            <?php  /* dd($cita)  */ ?>
+
+
             <div class="dropdown col" id="apartadosFichaDrodown">
                 <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Apartados
@@ -90,6 +93,7 @@
                 <a href="">Historial</a>
             </div>
         </div>
+
         <div class="row card p-1 my-1 cardFicha" id="anamnesis" style="display:none">
             <div class="col">
                 <div class="row">
@@ -98,20 +102,14 @@
                 <div class="row my-1">
                     <div class="col-auto d-flex border-end align-items-center">
                         <div class="row">
-                            <div class="col col-auto"> <label for="">Utiliza Compensación:</label></div>
+                            <div class="col-auto form-check">
+                                <input type="hidden" name="anamnesis[idFicha]">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Utiliza compensación
+                                </label>
+                                <input class="form-check-input" name="anamnesis[compensacion]" type="checkbox" id="comp_v">
+                            </div>
 
-                            <div class="col-auto form-check">
-                                <input class="form-check-input" type="checkbox" id="si_comp_v">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Sí
-                                </label>
-                            </div>
-                            <div class="col-auto form-check">
-                                <input class="form-check-input" type="checkbox" id="no_comp_v">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    No
-                                </label>
-                            </div>
                         </div>
                     </div>
 
@@ -122,7 +120,7 @@
                             </div>
 
                             <div class="col col-auto">
-                                <input class="form-control form-control-sm" name="anamnesis[ultima_revision]" type="date" id="ultima_revision">  nombreApartado[nombredecampo] 
+                                <input class="form-control form-control-sm" name="anamnesis[ultimarevision]" type="date" id="ultima_revision"> nombreApartado[nombredecampo]
                             </div>
 
                         </div>
@@ -176,7 +174,7 @@
 
         </div>
 
-     <!--   <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
+        <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>Graduación Anterior</h4>
@@ -187,37 +185,37 @@
                         <div class="row d-flex align-items-center my-1">
                             <div class="col col-2"> <label for="">OJO DERECHO</label></div>
                             <div class="col-1">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" name="graduacionAnt[ga_od]" type="text" id="ga_od">
                             </div>
                             <div class="col col-auto"> <label for="">Esfera:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" type="text" name="graduacionAnt[esf_od]" id="esf_od">
                             </div>
                             <div class="col col-auto"> <label for="">Cilindro:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" name="graduacionAnt[cil_od]" type="text" id="cil_od">
                             </div>
                             <div class="col col-auto"> <label for="">A.V:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" name="graduacionAnt[av_od]" type="text" id="av_od">
                             </div>
                         </div>
                         <div class="row d-flex align-items-center my-1">
                             <div class="col col-2"> <label for="">OJO IZQUIERDO</label></div>
                             <div class="col-1">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" type="text" name="graduacionAnt[ga_oi]" id="ga_oi">
                             </div>
                             <div class="col col-auto"> <label for="">Esfera:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" name="graduacionAnt[esf_oi]" type="text" id="esf_oi">
                             </div>
                             <div class="col col-auto"> <label for="">Cilindro:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" type="text" name="graduacionAnt[cil_oi]" id="cil_oi">
                             </div>
                             <div class="col col-auto"> <label for="">A.V:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" name="graduacionAnt[av_oi]" type="text" id="av_oi">
                             </div>
                         </div>
                     </div>
@@ -225,22 +223,19 @@
                         <div class="row">
                             <div class="col col-2"> <label for="">A.V:</label></div>
                             <div class="col col-4">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" type="text" name="graduacionAnt[ga_av]" id="ga_av">
                             </div>
                             <div class="col col-2"> <label for="">Ad.</label></div>
                             <div class="col col-4">
-                                <input class="form-control form-control-sm" type="text" id="ga_od">
+                                <input class="form-control form-control-sm" name="graduacionAnt[ga_ad]" type="text" id="ga_ad">
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
 
-        <div class="row card p-1 my-1 cardFicha" id="AVSinCorr" style="display:none">
+        <!--   <div class="row card p-1 my-1 cardFicha" id="AVSinCorr" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>A.V. Sin Corrección</h4>
@@ -491,9 +486,9 @@
 
 
 </div> -->
-<button type="submit" class="btn btn-warning">CreaFicha</button>
+        <button type="submit" class="btn btn-warning">CreaFicha</button>
 
-</form>
+    </form>
 
 
 </div>

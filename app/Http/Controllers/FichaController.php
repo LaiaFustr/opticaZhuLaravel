@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Cita;
 use App\Models\Ficha;
 use App\Models\Anamnesis;
+use App\Models\GraduacionAnterior;
 use Illuminate\Http\Request;
 use App\Http\Resources\FichasResource;
+use Exception;
+use PhpParser\Node\Stmt\Catch_;
 
 class FichaController extends Controller
 {
@@ -14,15 +17,10 @@ class FichaController extends Controller
 
     public function creaFicha(Request $request)
     {
-        /* dd($request->validate([
-            'idCita' => 'required|integer',
-            'idOptometrista' => 'integer',
-            'idCliente' => 'integer',
-            'fecha' => 'required|date',
-            'hora' => 'required|date_format:H:i:s',
-            'descripcion'=>'required|string',
-        ])); */
-        $datosFicha = $request->validate([
+
+
+
+        $request->validate([
             'idCita' => 'required|integer',
             'idOptometrista' => 'integer',
             'idCliente' => 'integer',
@@ -41,9 +39,17 @@ class FichaController extends Controller
             dd($e->getMessage());
         } */
 
+        Ficha::create([
+            'idCita' =>  $request->idCita,
+            'idOptometrista' => $request->idOptometrista,
+            'idCliente' => $request->idCliente,
+            'fecha' => $request->fecha,
+            'hora' => $request->hora,
+            'descripcion' =>  $request->hora,
+        ]);
 
-
-        $datosFicha = new Ficha();
+        /* $datosFicha = new Ficha();
+        //$datosFicha->id=1;
         $datosFicha->idCita = $request->idCita;
         $datosFicha->idCliente = $request->idCliente;
         $datosFicha->idOptometrista = $request->idOptometrista;
@@ -51,17 +57,97 @@ class FichaController extends Controller
         $datosFicha->hora = $request->hora;
         $datosFicha->descripcion = $request->hora;
         $datosFicha->save();
+        //dd($request); */
+        $ultimo = Ficha::orderBy('id', 'desc')->first();
+        //dd($ultimo);
 
 
 
+        //dd($request['anamnesis']);
         if ($request->has('anamnesisCheck')) { // campos de anamnesis 
-            dd('holi');
-            //validate Campos Anamnesis
+           
+            $anamnesis = $request->validate([
+                'anamnesis.idFicha' => 'nullable|integer',
+                'anamnesis.edad' => 'nullable|integer',
+                'anamnesis.compensacion' => 'nullable|string',
+                'anamnesis.ultimarevision' => 'nullable|date',
+                'anamnesis.profesion' => 'nullable|string',
+                'anamnesis.horas_pantalla' => 'nullable|string',
+            ]);
 
+            /*  $anamnesis = new Anamnesis();
+            $anamnesis->idFicha = $ultimo->id;
+            $anamnesis->edad = $request->input('anamnesis.edad');
+            $anamnesis->compensacion = $request->input('anamnesis.compensacion');
+            $anamnesis->ultimarevision = $request->input('anamnesis.ultimarevision');
+            $anamnesis->profesion = $request->input('anamnesis.profesion');
+            $anamnesis->horas_pantalla = $request->input('anamnesis.horas_pantalla');
+            $anamnesis->save(); */
 
-            
-            Anamnesis::create();
+            Anamnesis::create([
+                    'idFicha' => $ultimo->id,
+                    'edad' => $request->input('anamnesis.edad'),
+                    'compensacion' => $request->input('anamnesis.compensacion'),
+                    'ultimarevision' => $request->input('anamnesis.ultimarevision'),
+                    'profesion' => $request->input('anamnesis.profesion'),
+                    'horas_pantalla' => $request->input('anamnesis.horas_pantalla'),
+                ]);
         }
+
+          if ($request->has('graduacionAntCheck')) { //campos graduiacion anterior
+            //dd($request);
+            $anamnesis = $request->validate([
+                'graduacionAnt.idFicha' => 'nullable|integer',
+                //'graduacionAnt.ga_od' => 'nullable|string',
+                'graduacionAnt.esf_od' => 'nullable|string',
+                'graduacionAnt.cil_od' => 'nullable|string',
+                'graduacionAnt.av_od' => 'nullable|string',
+
+                //'graduacionAnt.ga_oi' => 'nullable|string',
+                'graduacionAnt.esf_oi' => 'nullable|string',
+                'graduacionAnt.cil_oi' => 'nullable|string',
+                'graduacionAnt.av_oi' => 'nullable|string',
+
+                'graduacionAnt.ga_av' => 'nullable|string',
+                'graduacionAnt.ga_ad' => 'nullable|string',
+               
+               
+            ]);
+
+            /* $anamnesis = new Anamnesis();
+            $anamnesis->idFicha = $ultimo->id;
+            $anamnesis->edad = $request->input('anamnesis.edad');
+            $anamnesis->compensacion = $request->input('anamnesis.compensacion');
+            $anamnesis->ultimarevision = $request->input('anamnesis.ultimarevision');
+            $anamnesis->profesion = $request->input('anamnesis.profesion');
+            $anamnesis->horas_pantalla = $request->input('anamnesis.horas_pantalla');
+            $anamnesis->save();  */
+
+
+            GraduacionAnterior::create([
+                'idFicha' =>  $ultimo->id,
+                
+
+                'esfera_od' => $request->input('graduacionAnt.esf_od'),
+                'ejecilindro_od' => 'nullable|string',
+                'agudezavisual_od' => 'nullable|string',
+
+                //'graduacionAnt.ga_oi' => 'nullable|string',
+
+
+                'esfera_oi' => 'nullable|string',
+                'ejecilindro_oi' => 'nullable|string',
+                'agudezavisual_oi' => 'nullable|string',
+
+                'agudezavisual_general' => 'nullable|string',
+                'adicional' => 'nullable|string',
+            ]);
+
+            // Anamnesis::create($anamnesis);
+        }
+
+
+
 
         $redirige = redirect()->route('home'); //de esta vista, llevará a la de 'guardaFicha' o igual no. ns
 

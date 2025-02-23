@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->primary();
             $table->string('nombre',20);
             $table->string('apellido',20);
             $table->string('dni');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('telefono',15);
            /*  $table->unsignedInteger('idAdmin');
             //$table->foreign('idAdmin')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade'); */
-            $table->primary('id');
+            //$table->primary('id');
             $table->unique('dni');
         });
     }

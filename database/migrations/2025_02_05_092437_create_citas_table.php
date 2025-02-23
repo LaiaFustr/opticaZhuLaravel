@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('citas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->primary();
             $table->date('fecha');//fecha de la cita
             $table->time('hora');//hora de la cita
             $table->string('descripcion',255)->nullable();
