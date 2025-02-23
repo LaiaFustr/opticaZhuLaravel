@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bloque_horario', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->primary();
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->integer('citasPosibles')->nullable();
