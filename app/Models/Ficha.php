@@ -32,5 +32,11 @@ class Ficha extends Model
     public function graduacionanterior(){
         return $this->hasOne(GraduacionAnterior::class);
     }
-
+    public function reflejopupilar(){
+        return $this->hasOne(ReflejoPupilar::class);
+    }
+    public function ishihara(){
+        return $this->hasOne(Ishihara::class);
+    }
+    
 }

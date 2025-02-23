@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ReflejoPupilar extends Model
+class Ishihara extends Model
 {
-    protected $table = 'reflejopupilar';
-    protected $fillable = ['idFicha', 'iguales', 'redondas', 'reaccionan', 'reaccLuz', 'acomodacion'];
+    protected $table = 'ishihara';
+    protected $fillable = ['idFicha', 'ishihara'];
     public $timestamps = false;
+
     public function ficha()
     {
         return $this->belongsTo(Ficha::class, 'idFicha');
