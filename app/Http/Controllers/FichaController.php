@@ -8,6 +8,8 @@ use App\Models\Anamnesis;
 use App\Models\GraduacionAnterior;
 use Illuminate\Http\Request;
 use App\Http\Resources\FichasResource;
+use App\Models\AgudezaVisualSinCorreccion;
+use App\Models\ReflejoPupilar;
 use Exception;
 use PhpParser\Node\Stmt\Catch_;
 
@@ -65,29 +67,24 @@ class FichaController extends Controller
 
         //dd($request['anamnesis']);
         if ($request->has('anamnesisCheck')) { // campos de anamnesis 
-
-            /* $anamnesis = */ $request->validate([
+            //dd($request['anamnesis']);
+            /* $anamnesis = */
+            $compensacion = $request->input('anamnesis.compensacion') === 'on' ? true : false;
+            //dd($request['anamnesis']['compensacion'].'-'.$compensacion);
+            $request->validate([
                 'anamnesis.idFicha' => 'nullable|integer',
                 'anamnesis.edad' => 'nullable|integer',
-                'anamnesis.compensacion' => 'nullable|string',
+                /* 'anamnesis.compensacion' => 'nullable|boolean', */
                 'anamnesis.ultimarevision' => 'nullable|date',
                 'anamnesis.profesion' => 'nullable|string',
                 'anamnesis.horas_pantalla' => 'nullable|string',
             ]);
-            /* 
-            $anamnesis = new Anamnesis();
-            $anamnesis->idFicha = $ultimo->id;
-            $anamnesis->edad = $request->input('anamnesis.edad');
-            $anamnesis->compensacion = $request->input('anamnesis.compensacion');
-            $anamnesis->ultimarevision = $request->input('anamnesis.ultimarevision');
-            $anamnesis->profesion = $request->input('anamnesis.profesion');
-            $anamnesis->horas_pantalla = $request->input('anamnesis.horas_pantalla');
-            $anamnesis->save(); */
 
+            //dd($request['anamnesis']['compensacion'].'-'.$compensacion);
             Anamnesis::create([
                 'idFicha' => $ultimo->id,
                 'edad' => $request->input('anamnesis.edad'),
-                'compensacion' => $request->input('anamnesis.compensacion'),
+                'compensacion' => $compensacion,
                 'ultimarevision' => $request->input('anamnesis.ultimarevision'),
                 'profesion' => $request->input('anamnesis.profesion'),
                 'horas_pantalla' => $request->input('anamnesis.horas_pantalla'),
@@ -98,42 +95,7 @@ class FichaController extends Controller
 
         if ($request->has('graduacionAntCheck')) { //campos graduiacion anterior
 
-            /* $graduacionAnt = */ $request->validate([
-                'graduacionAnt.idFicha' => 'nullable|integer',
-                //'graduacionAnt.ga_od' => 'nullable|string',
-                'graduacionAnt.esf_od' => 'nullable|string',
-                'graduacionAnt.cil_od' => 'nullable|string',
-                'graduacionAnt.av_od' => 'nullable|string',
-
-                //'graduacionAnt.ga_oi' => 'nullable|string',
-                'graduacionAnt.esf_oi' => 'nullable|string',
-                'graduacionAnt.cil_oi' => 'nullable|string',
-                'graduacionAnt.av_oi' => 'nullable|string',
-
-                'graduacionAnt.ga_av' => 'nullable|string',
-                'graduacionAnt.ga_ad' => 'nullable|string',
-            ]);
-
-            GraduacionAnterior::create([
-                'idFicha' =>  $ultimo->id,
-                
-                'esfera_od' => $request->input('graduacionAnt.esf_od'),
-               
-                'ejecilindro_od' => $request->input('graduacionAnt.cil_od'),
-                'agudezavisual_od' => $request->input('graduacionAnt.av_od'),
-
-                'esfera_oi' => $request->input('graduacionAnt.esf_oi'),
-                'ejecilindro_oi' => $request->input('graduacionAnt.cil_oi'),
-                'agudezavisual_oi' => $request->input('graduacionAnt.av_oi'),
-
-                'agudezavisual_general' => $request->input('graduacionAnt.ga_av'),
-                'adicional' => $request->input('graduacionAnt.ga_ad'),
-                
-            ]);
-        }
-
-        if ($request->has('AVSinCorrCheck')) { //campos graduiacion anterior
-
+            /* $graduacionAnt = */
             $request->validate([
                 'graduacionAnt.idFicha' => 'nullable|integer',
                 //'graduacionAnt.ga_od' => 'nullable|string',
@@ -152,9 +114,9 @@ class FichaController extends Controller
 
             GraduacionAnterior::create([
                 'idFicha' =>  $ultimo->id,
-                
+
                 'esfera_od' => $request->input('graduacionAnt.esf_od'),
-               
+
                 'ejecilindro_od' => $request->input('graduacionAnt.cil_od'),
                 'agudezavisual_od' => $request->input('graduacionAnt.av_od'),
 
@@ -164,11 +126,62 @@ class FichaController extends Controller
 
                 'agudezavisual_general' => $request->input('graduacionAnt.ga_av'),
                 'adicional' => $request->input('graduacionAnt.ga_ad'),
-                
+
             ]);
         }
 
+        if ($request->has('AVSinCorrCheck')) { //campos agudeza visual sin correccion
 
+            $request->validate([
+                'avSinCorr.idFicha' => 'nullable|integer',
+                //'graduacionAnt.ga_od' => 'nullable|string',
+                'avSinCorr.esf_od' => 'nullable|string',
+                'avSinCorr.cil_od' => 'nullable|string',
+                'avSinCorr.av_od' => 'nullable|string',
+
+                //'graduacionAnt.ga_oi' => 'nullable|string',
+                'avSinCorr.esf_oi' => 'nullable|string',
+                'avSinCorr.cil_oi' => 'nullable|string',
+                'avSinCorr.av_oi' => 'nullable|string',
+
+                'avSinCorr.ga_av' => 'nullable|string',
+                'avSinCorr.ga_ad' => 'nullable|string',
+            ]);
+
+            AgudezaVisualSinCorreccion::create([
+                'idFicha' =>  $ultimo->id,
+
+                'esfera_od' => $request->input('avSinCorr.esf_od'),
+
+                'ejecilindro_od' => $request->input('avSinCorr.cil_od'),
+                'agudezavisual_od' => $request->input('avSinCorr.av_od'),
+
+                'esfera_oi' => $request->input('avSinCorr.esf_oi'),
+                'ejecilindro_oi' => $request->input('avSinCorr.cil_oi'),
+                'agudezavisual_oi' => $request->input('avSinCorr.av_oi'),
+
+                'agudezavisual_general' => $request->input('avSinCorr.ga_av'),
+                'adicional' => $request->input('avSinCorr.ga_ad'),
+
+            ]);
+        }
+
+        if ($request->has('reflejoPupilarCheck')) { //campos reflejo pupilar
+            $iguales = $request->input('reflejoPupilar.pi') === 'on' ? true : false;
+            $redondas = $request->input('reflejoPupilar.pr') === 'on' ? true : false;
+            $reaccionan = $request->input('reflejoPupilar.preacc') === 'on' ? true : false;
+            $luz = $request->input('reflejoPupilar.pl') === 'on' ? true : false;
+            $acomodan = $request->input('reflejoPupilar.pa') === 'on' ? true : false;
+            
+            ReflejoPupilar::create([
+                'idFicha' =>  $ultimo->id,
+                'iguales' => $iguales,
+                'redondas' => $redondas,
+                'reaccionan' => $reaccionan,
+                'reaccLuz' => $luz,
+                'acomodacion' => $acomodan,
+            ]);
+        }
 
 
 

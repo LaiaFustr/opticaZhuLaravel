@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('anamnesis', function (Blueprint $table) {
             $table->unsignedInteger('idFicha');
             $table->increments('id');
-            $table->string('compensacion')->nullable();
+            $table->boolean('compensacion');
             $table->date('ultimarevision')->nullable();
             $table->unsignedInteger('edad')->nullable();
             $table->string('profesion')->nullable();
