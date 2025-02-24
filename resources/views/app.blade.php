@@ -10,16 +10,20 @@
     <!-- todos los links locales (para quefuncione sin internet) -->
      <!-- coreui -->
     <link href="/coreui/coreui.min.css" rel="stylesheet" >
-    
+
     <!-- Bootstrap -->
    
     
     @vite(['resources/css/app.css', 'resources/css/styles.css'])
+
+    <!-- <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/bootstrap.bundle.min.js"></script>  -->
+
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
    <!--  <script defer src="/resources/js/contrasenia.js" ></script> -->
 
     <!-- nuestros estilos -->

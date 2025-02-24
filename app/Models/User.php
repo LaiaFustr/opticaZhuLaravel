@@ -28,8 +28,10 @@ class User extends Authenticatable
         'telefono',
         'correo',
         'nombreUsuario',
-        'rol',
         'contrasenia',
+        'rol',
+        'idOptica',
+        'activo'
     ];
 
     public $timestamps=false;

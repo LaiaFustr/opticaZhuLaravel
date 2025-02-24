@@ -8,7 +8,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\FichaController;
 use App\Http\Controllers\CitaController;
-use App\Http\Controllers\CalendarioController;
+use App\Http\Controllers\Api\UserController;
 
 
 
@@ -28,7 +28,7 @@ use App\Http\Controllers\CalendarioController;
 }); */
 
 Route::view('/login', 'login')->name('logininicio');
-Route::post('/login-usuario', [EmpleadoController::class, 'login'])->name('login');
+Route::post('/login-usuario', [UserController::class, 'login'])->name('login');
 
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
