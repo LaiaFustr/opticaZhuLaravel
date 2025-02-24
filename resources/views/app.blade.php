@@ -14,7 +14,7 @@
     <!-- Bootstrap -->
    <!--  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css"/>
     <script defer src="/bootstrap/bootstrap.bundle.min.js"></script> -->
-    @vite('resources/js/app.js');
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
     <!-- jQuery -->
