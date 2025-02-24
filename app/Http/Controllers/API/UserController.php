@@ -19,14 +19,23 @@ class UserController extends Controller
      * login api
      *
      */
-    public function login()
+    public function login(Request $request)
     {
-        if (Auth::attempt(['nombreUsuario' => request('nombreUsuario'), 'contrasenia' => request('contrasenia')])) {
-            $user = Auth::user();
-            $success['token'] =  $user->createToken('MyApp')->accessToken;
-            return response()->json(['success' => $success], $this->successStatus);
+        $request->validate([
+            'nombreUsuario' => 'required',
+            'contrasenia' => 'required'
+        ]);
+ 
+        $credentials = $request->except('_token');
+
+        $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();
+
+        if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
+            Auth::login($empleado);
+            return redirect()->route('opticas');
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
+            return redirect()->back();
         }
     }
 
