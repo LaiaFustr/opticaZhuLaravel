@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedInteger('idEmpleado');
             $table->unsignedInteger('idOptica');
             $table->date('fecha');
-            $table->foreign('idEmpleado')->references('id')->on('empleados')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idEmpleado')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

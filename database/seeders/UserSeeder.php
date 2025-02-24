@@ -170,7 +170,7 @@ class UserSeeder extends Seeder
                 substr($user['dni'], 0, 4);        
             $user['contrasenia'] = Hash::make('123456');
 
-            $user['id'] = DB::table('empleados')->insertGetId($user);
+            $user['id'] = DB::table('users')->insertGetId($user);
             $empleID[] = $user;
         }
 
@@ -186,6 +186,9 @@ class UserSeeder extends Seeder
                 case 'optometrista':
                     $optometristas[] =['idEmpleado'=> $emple['id']];
                 break;
+                case 'admin':
+                    //No hace nada
+                break;    
             }
 
         }

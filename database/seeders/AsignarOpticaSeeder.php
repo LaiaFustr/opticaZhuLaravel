@@ -16,37 +16,37 @@ class AsignarOpticaSeeder extends Seeder
     {
         $asignar = [
         [
-            "idEmpleado"=> 2, //Lisa
+            "idEmpleado"=> 7, //Lisa
             "idOptica"=> 1,
             "fecha"=> "2025-02-10",
         ],
         [
-            "idEmpleado"=> 4, //Juan Cuesta
+            "idEmpleado"=> 9, //Juan Cuesta
             "idOptica"=> 2,
             "fecha"=> "2025-02-20",
         ],
         [
-            "idEmpleado"=> 3, //Emilio
+            "idEmpleado"=> 8, //Emilio
             "idOptica"=> 2,
             "fecha"=> "2025-02-16",
         ],
         [
-            "idEmpleado"=> 1, //Juan Flores
+            "idEmpleado"=> 6, //Juan Flores
             "idOptica"=> 1,
             "fecha"=> "2025-02-10",
         ],
         [
-            "idEmpleado"=> 5, //Sophia
+            "idEmpleado"=> 10, //Sophia
             "idOptica"=> 1,
             "fecha"=> "2025-03-05",
         ],
         [
-            "idEmpleado"=> 6, //Hernan
+            "idEmpleado"=> 11, //Hernan
             "idOptica"=> 3,
             "fecha"=> "2025-02-20",
         ],
         [
-            "idEmpleado"=> 7, //Cristina
+            "idEmpleado"=> 12, //Cristina
             "idOptica"=> 3,
             "fecha"=> "2025-02-27"
         ],
