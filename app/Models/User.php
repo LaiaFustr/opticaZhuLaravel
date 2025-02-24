@@ -20,18 +20,8 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'nombre',
-        'apellido',
-        'dni',
-        'direccion',
-        'telefono',
-        'correo',
-        'nombreUsuario',
-        'contrasenia',
-        'rol',
-        'idOptica',
-        'activo'
+    protected $fillable = ['nombre','apellido','dni','direccion','telefono',
+    'correo','nombreUsuario','contrasenia','rol','idOptica','activo'
     ];
 
     public $timestamps=false;
@@ -57,5 +47,42 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'contrasenia' => 'hashed',
         ];
+    }
+
+    public function admin(){
+        return $this->belongsTo(Admin::class,'idAdmin');
+    }
+
+
+    public function cita(){
+        return $this->belongsTo(Cita::class,'idCita');
+    }
+
+    public function asignaOptica(){
+        return $this->belongsTo(AsignaOptica::class,'idEmpleado');
+    }
+
+    public function opticas(){
+        return $this->belongsToMany(Optica::class, 'asignaropticas', 'idEmpleado', 'idOptica');
+    }
+
+    public function auxiliar(){
+        return $this->hasMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
+    }
+
+    public function optometrista(){
+        return $this->hasMany(Optica::class, 'optometristas', 'idEmpleado', 'id');
+    }
+
+    public function citas(){
+        return $this->hasMany(Cita::class, 'idEmpleado');
+    }
+
+    public function getAuthIdentifierName(){
+        return 'nombreUsuario';
+    }
+
+    public function getAuthPassword(){
+        return $this->attributes[contrasenia];
     }
 }
