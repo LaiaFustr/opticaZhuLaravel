@@ -77,7 +77,7 @@ class AdminSeeder extends Seeder
                 substr($admin['nombre'], 0, 2).
                 substr($admin['apellido'], 0, 2).
                 substr($admin['dni'], 0, 2),        
-            'contrasenia' => Str::random(10)]);
+            'contrasenia' => Hash::make('123456')]);
         }
     }
 }
