@@ -1,6 +1,8 @@
+@extends('layouts.prueba')
 @extends('app')
 
 @section('content')
+
 
 <div class="container-flex containerPagina">
 

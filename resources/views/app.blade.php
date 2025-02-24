@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@extends('layouts.prueba')
 <head>
     <meta charset="utf-8">
     <title>OpticaZhu</title>
@@ -15,7 +15,7 @@
 
     {{-- <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
     <script src="/bootstrap/bootstrap.bundle.min.js"></script> --}}
-    @vite(['./css/app.css', './css/styles.css','./js/app.js'])
+ 
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
     <!-- jQuery -->

@@ -59,7 +59,7 @@ class EmpleadoController extends Controller
     }
 
     public function logout(Request $request){
-        Session::flush();
+     //   Session::flush();
         Auth::logout();
         return redirect('home');
     }
