@@ -1,4 +1,7 @@
-<form method="post" action="{{ route('login') }}">
+
+
+@vite(['resources/css/app.css','resources/js/app.js'])
+<form class="login" method="post" action="{{ route('login') }}">
     @csrf
     <div class="form-group">
         <label>Nombre de usuario</label>
