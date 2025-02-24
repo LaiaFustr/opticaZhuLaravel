@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+
 class EmpleadoSeeder extends Seeder
 {
     /**
@@ -110,7 +111,7 @@ class EmpleadoSeeder extends Seeder
                     substr($empleado['apellido'], 0, 3).
                     substr($empleado['dni'], 0, 3);
    
-                $empleado['contrasenia'] = Str::random(10);
+                $empleado['contrasenia'] = Hash::make('123456');
             
             $empleado['id'] = DB::table('empleados')->insertGetId($empleado);
             $empleID[] = $empleado;
