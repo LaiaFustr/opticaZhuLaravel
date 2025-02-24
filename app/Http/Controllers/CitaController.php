@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Cita;
 use App\Models\Optica;
@@ -17,13 +18,33 @@ class CitaController extends Controller
     }
 
 
-    public function citasOcupadas(){
- // Consulta para agrupar las citas por fecha y hora y contar el número de citas en cada grupo
-        $citas = Cita::selectRaw('fecha, hora, COUNT(*) as total')
+    public function citasOcupadas(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'fecha' => 'required|date',
+        ]);
+
+        $fecha = $request->query('fecha');
+
+        // Consulta para agrupar las citas por fecha y hora y contar el número de citas en cada grupo
+        $citas = DB::table('citas')
+            ->selectRaw('fecha, hora, COUNT(*) as total')
+            ->where('fecha', $fecha)
             ->groupBy('fecha', 'hora')
             ->get();
-       
-        return response()->json($citas);
+
+            if($citas ==null){
+                return response()->json(['message' => 'No hay citas ocupadas'])
+                ->header('Access-Control-Allow-Origin', '*')
+                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+                ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            }
+
+            return response()->json($citas)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 
     public function indexCitas()
