@@ -25,7 +25,7 @@ class OpticaSeeder extends Seeder
                 'num_Maquinas' => 2,
                 "horaApertura"=> "10:00:00",
                 "horaCierre"=> "22:00:00",
-                'idAdmin' => 10,
+                //'idAdmin' => 10,
             ],
             [
                 'nombre' => 'Óptica Zhu - Norte',
@@ -35,7 +35,7 @@ class OpticaSeeder extends Seeder
                 'num_Maquinas' => 3,
                 "horaApertura"=> "10:00:00",
                 "horaCierre"=> "22:00:00",
-                'idAdmin' => 11,
+                //'idAdmin' => 11,
             ],
             [
                 'nombre' => 'Óptica Zhu - Sur',
@@ -45,7 +45,7 @@ class OpticaSeeder extends Seeder
                 'num_Maquinas' => 2,
                 "horaApertura"=> "10:00:00",
                 "horaCierre"=> "22:00:00",
-                'idAdmin' => 12,
+                //'idAdmin' => 12,
             ],
         ];
 
@@ -58,7 +58,7 @@ class OpticaSeeder extends Seeder
                 'num_Maquinas' => $optica['num_Maquinas'],
                 'horaApertura' => $optica['horaApertura'],
                 'horaCierre' => $optica['horaCierre'],
-                'idAdmin' => $optica['idAdmin'],
+                //'idAdmin' => $optica['idAdmin'],
             ]);
         }
     }

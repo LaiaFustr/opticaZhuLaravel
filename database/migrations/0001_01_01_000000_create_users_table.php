@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('telefono') ->nullable();
             $table->string('correo') ->nullable();
             $table->string('nombreUsuario')->nullable();
-            $table->enum('rol', ['auxiliar','optometrista','admin'])->nullable();
             $table->string('contrasenia');
-            $table->rememberToken()->nulleable();
+            $table->enum('rol', ['auxiliar','optometrista','admin']);
+            $table->unsignedInteger('idOptica')->nullable();
+            $table->boolean('activo');
+            //$table->rememberToken()->nulleable();
 /*             $table->timestamps();*/
         });
 
