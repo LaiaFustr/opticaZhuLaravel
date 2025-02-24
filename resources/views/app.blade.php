@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@extends('layouts.prueba')
 <head>
     <meta charset="utf-8">
     <title>OpticaZhu</title>
@@ -12,13 +12,10 @@
     <link href="/coreui/coreui.min.css" rel="stylesheet" >
 
     <!-- Bootstrap -->
-   
-    
-    @vite(['resources/css/app.css', 'resources/css/styles.css'])
 
-    <!-- <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <script src="/bootstrap/bootstrap.bundle.min.js"></script>  -->
-
+    {{-- <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/bootstrap.bundle.min.js"></script> --}}
+ 
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
     <!-- jQuery -->

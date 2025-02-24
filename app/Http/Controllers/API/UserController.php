@@ -4,18 +4,15 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Empleado;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Log;
 
 
 class UserController extends Controller
 {
-    public $succesStatus=200;
-    /**
+     /**
      * login api
      *
      */
@@ -25,15 +22,17 @@ class UserController extends Controller
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
         ]);
- 
+      
         $credentials = $request->except('_token');
 
-        $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();
+        $empleado = User::where('nombreUsuario', $request->nombreUsuario)->first();
 
         if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
+            Log::info($request);
             Auth::login($empleado);
             return redirect()->route('opticas');
         } else {
+            Log::info("hola");
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
             return redirect()->back();
         }
@@ -92,7 +91,6 @@ class UserController extends Controller
     }
     }
 
-
       /**
      * details api
      *
@@ -101,7 +99,7 @@ class UserController extends Controller
     public function details()
     {
         $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
+        return response()->json(['success' => $user], 200);
     }
 
 
@@ -111,7 +109,7 @@ class UserController extends Controller
         $isUser = $request->user()->token()->revoke();
         if($isUser){
             $success['message'] = "Successfully logged out.";
-            return response()->json(['success' => $isUser], $this->successStatus);
+            return response()->json(['success' => $isUser], 200);
         }
         else{
             return response()->json(['error' => 'Unauthorised'], 401);

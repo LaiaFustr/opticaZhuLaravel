@@ -1,6 +1,5 @@
-@vite(['resources/css/app.css','resources/js/app.js'])
-
-
+@extends('layouts.prueba')
+<?php use Illuminate\Support\Facades\Log;?>
 <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-6">
