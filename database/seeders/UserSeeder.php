@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -16,6 +17,67 @@ class UserSeeder extends Seeder
     {
         $users =[
             [
+                'id' => 1,
+                'nombre' => 'Manuel',
+                'apellido' => 'Rodriguez Alonso',
+                'dni'=> '45275313M',
+                'direccion'=> 'Calle Torno del Hospital 10',
+                'telefono'=> '671452787',
+                'correo'=> 'manueladmin@gmail.com',
+                'rol' => 'admin',
+                'idOptica'=> null,
+                'activo'=>true,
+            ],
+            [
+                'id' => 2,
+                'nombre' => 'Jordi',
+                'apellido' => 'Paillacho',
+                'dni'=> '21006147V',
+                'direccion'=> 'Calle Totalmente Real 67',
+                'telefono'=> '616161616',
+                'correo'=> 'jordiadmin@gmail.com',
+                'rol' => 'admin',
+                'idOptica'=> null,
+                'activo'=>true,
+            ],
+            [
+                'id' => 3,
+                'nombre' => 'Laia',
+                'apellido' => 'Fuster',
+                'dni'=> '43558634R',
+                'direccion'=> 'Calle Existente 12',
+                'telefono'=> '634153226',
+                'correo'=> 'laiaadmin@gmail.com',
+                'rol' => 'admin',
+                'idOptica'=> null,
+                'activo'=>true,
+            ],
+            [
+                'id' => 4,
+                'nombre' => 'Oscar',
+                'apellido' => 'Mateu',
+                'dni'=> '23478457T',
+                'direccion'=> 'Calle Enserio que existe 9',
+                'telefono'=> '613125327',
+                'correo'=> 'oscaradmin@gmail.com',
+                'rol' => 'admin',
+                'idOptica'=> null,
+                'activo'=>true,
+            ],
+            [
+                'id' => 5,
+                'nombre' => 'Tobias',
+                'apellido' => 'Wilson',
+                'dni'=> '23434566T',
+                'direccion'=> 'Calle Ya levantate 12',
+                'telefono'=> '613123464',
+                'correo'=> 'tobiasadmin@gmail.com',
+                'rol' => 'admin',
+                'idOptica'=> null,
+                'activo'=>true,
+            ],
+            [
+                'id' => 6,
                 'nombre' => 'Juan',
                 'apellido'=> 'Flores',
                 'dni'=> '994132127E',
@@ -27,6 +89,7 @@ class UserSeeder extends Seeder
                 'activo'=> true,
             ],
             [
+                'id' => 7,
                 'nombre' => 'Lisa',
                 'apellido'=> 'Rivera',
                 'dni'=> '20120314Y',
@@ -38,6 +101,7 @@ class UserSeeder extends Seeder
                 'activo'=> true,
             ],
             [
+                'id' => 8,
                 'nombre' => 'Emilio',
                 'apellido'=> 'Delgado',
                 'dni'=> '19760728F',
@@ -49,6 +113,7 @@ class UserSeeder extends Seeder
                 'activo'=> true,
             ],
             [
+                'id' => 9,
                 'nombre' => 'Juan',
                 'apellido'=> 'Cuesta',
                 'dni'=> '13299357X',
@@ -60,6 +125,7 @@ class UserSeeder extends Seeder
                 'activo'=> true,
             ],
             [
+                'id' => 10,
                 'nombre' => 'Sophia',
                 'apellido'=> 'Sanchez',
                 'dni'=> '236745422R',
@@ -71,6 +137,7 @@ class UserSeeder extends Seeder
                 'activo'=> true,
             ],
             [
+                'id' => 11,
                 'nombre' => 'Hernan',
                 'apellido'=> 'Mendez',
                 'dni'=> '22221989R',
@@ -82,6 +149,7 @@ class UserSeeder extends Seeder
                 'activo'=> true,
             ],
             [
+                'id' => 12,
                 'nombre' => 'Cristina',
                 'apellido'=> 'Martinez',
                 'dni'=> '294565321K',
@@ -96,23 +164,15 @@ class UserSeeder extends Seeder
 
         $empleID = [];
 
-        foreach ($users as $empleado){
-            /*DB::table('empleados')->insert([
-                'nombre'=> $empleado['nombre'],
-                'apellido'=> $empleado['apellido'],
-                'dni'=> $empleado['dni'],
-                'direccion'=> $empleado['direccion'],
-                'telefono'=> $empleado['telefono'],
-                'correo'=> $empleado['correo'],*/
-                $empleado['nombreUsuario']=
-                    substr($empleado['nombre'], 0, 3).
-                    substr($empleado['apellido'], 0, 3).
-                    substr($empleado['dni'], 0, 3);
+        foreach ($users as $user) {
+            $user['nombreUsuario']=
+                substr($user['nombre'], 0, 4).
+                substr($user['apellido'], 0, 4).
+                substr($user['dni'], 0, 4);
+            $user['contrasenia'] = Hash::make('123456');
 
-                $empleado['contrasenia'] = Hash::make('123456');
-
-            $empleado['id'] = DB::table('users')->insertGetId($empleado);
-            $empleID[] = $empleado;
+            $user['id'] = DB::table('users')->insertGetId($user);
+            $empleID[] = $user;
         }
 
         $auxiliares =[];
@@ -127,6 +187,9 @@ class UserSeeder extends Seeder
                 case 'optometrista':
                     $optometristas[] =['idEmpleado'=> $emple['id']];
                 break;
+                case 'admin':
+                    //No hace nada
+                break;
             }
 
         }
@@ -137,8 +200,5 @@ class UserSeeder extends Seeder
         if(!empty($optometristas)){
             DB::table('optometristas')->insert($optometristas);
         }
-
-
     }
-
 }

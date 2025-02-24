@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('optometristas', function (Blueprint $table) {
             $table->increments('id')->primary();
             $table->unsignedInteger('idEmpleado');//Clave ajena de Usuario
-            $table->foreign('idEmpleado')->references('id')->on('empleados')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idEmpleado')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
