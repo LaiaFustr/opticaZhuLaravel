@@ -83,6 +83,6 @@ class User extends Authenticatable
     }
 
     public function getAuthPassword(){
-        return $this->attributes[contrasenia];
+        return $this->attributes['contrasenia'];
     }
 }
