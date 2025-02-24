@@ -28,7 +28,7 @@ class UserController extends Controller
  
         $credentials = $request->except('_token');
 
-        $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();
+        $empleado = User::where('nombreUsuario', $request->nombreUsuario)->first();
 
         if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
             Auth::login($empleado);
