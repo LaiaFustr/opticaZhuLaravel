@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url(./styles.css);
 .botonNaranja {
     border: 1px solid #DA3B00 !important;
     background-color: #DA3B00!important;

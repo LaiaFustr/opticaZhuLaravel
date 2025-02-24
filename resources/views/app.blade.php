@@ -24,9 +24,9 @@
    <!--  <script defer src="/resources/js/contrasenia.js" ></script> -->
 
     <!-- nuestros estilos -->
-    <link rel="stylesheet" href="./css/styles.css"/>
+    <!-- <link rel="stylesheet" href="./css/styles.css"/>
     <link rel="stylesheet" href="./css/navbar.css"/>
-    <link rel="stylesheet" href="./css/card.css"/>
+    <link rel="stylesheet" href="./css/card.css"/> -->
 
 </head>
 
