@@ -61,7 +61,7 @@ class EmpleadoController extends Controller
     public function logout(Request $request){
         Session::flush();
         Auth::logout();
-        return redirect('login');
+        return redirect('home');
     }
 
     public function guardar(Request $request)
