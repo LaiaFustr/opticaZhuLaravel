@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -135,7 +136,9 @@ class UserSeeder extends Seeder
                 'idOptica'=> 3,
                 'activo'=> true,
             ],
-            [   
+
+            [
+
                 'id' => 11,
                 'nombre' => 'Hernan',
                 'apellido'=> 'Mendez',
@@ -167,7 +170,9 @@ class UserSeeder extends Seeder
             $user['nombreUsuario']=
                 substr($user['nombre'], 0, 4).
                 substr($user['apellido'], 0, 4).
-                substr($user['dni'], 0, 4);        
+
+                substr($user['dni'], 0, 4);
+
             $user['contrasenia'] = Hash::make('123456');
 
             $user['id'] = DB::table('users')->insertGetId($user);
@@ -188,7 +193,9 @@ class UserSeeder extends Seeder
                 break;
                 case 'admin':
                     //No hace nada
+
                 break;    
+
             }
 
         }
