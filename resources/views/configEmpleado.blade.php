@@ -17,14 +17,12 @@
                 <ul class="lista-horizontal">
                     <li class="subtituloPagina">Información</li>
                     <li><i class="fa-solid fa-angle-right breadcrumb-icono"></i></li>
-                    <li class="subtituloPagina">Calendario</li>
-                    <li><i class="fa-solid fa-angle-right breadcrumb-icono"></i></li>
                     <li class="subtituloPagina"><strong>Empleados</strong></li>
                 </ul>
             </div>
         </div>
 
-        <div class="row w-100">
+      <!--   <div class="row w-100">
             <div class="col-6">
                 <h3>Datos guardados en la sesión:</h3>
                 <ul>
@@ -39,7 +37,7 @@
                     <li><strong>Contraseña:</strong> {{ session('contrasenia') }}</li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
         <div class="row w-100">
             <div class="col-6">
@@ -109,10 +107,11 @@
                                 <input class="form-control form-control-lg" type="password" name="cpass" id="cpass">
                             </div>
                         </div>
+                        </div>
 
                     </div>
 
-                <div class="row justify-content-end my-5">
+                <!-- <div class="row justify-content-end my-5">
                     <div class="col-auto">
                         <button class="botonNuevaCita" onclick="ocultarTabla()">Añadir</button>
                     </div>
@@ -128,7 +127,7 @@
                         <td>DNI</td>
                     </tr>
                 </table>
-            </div>
+            </div> 
 
             <script>
                 function ocultarTabla() {
@@ -136,24 +135,23 @@
                     tabla.style.display = "none";
                 }
             </script>
-
+                -->
 
         <div class="col d-flex justify-content-end"  >
-            <div class="card  mb-1" id="cardEmple">
-                <div class="card-header" ><h5>Trabajadores de la Óptica</h5></div>
+            <div class="card  mb-1 cardInfo" id="cardEmple" >
+                <div><h5>Trabajadores de la Óptica</h5></div>
                 <div class="card-body">
-                    <p class="card-text">Añade a los trabajadores que se ocuparan de la óptica .</p>
+                    <p class="card-text">En esta página puedes añadir toda la información sobre la óptica y los profesionales que se encargarán de atenderte.</p>
                 </div>
             </div>
         </div>
     </div>
 
-
     <div class="row w-100 mt-5">
         <div class="col">
             <div class="row justify-content-end">
                 <div class="col-auto">
-                    <button class="botonNuevaCita" onclick="location.href='{{url('propietario/configCalendar')}}'">Anterior</button>
+                    <button class="botonNuevaCita" onclick="location.href='{{url('propietario/configInfo')}}'">Anterior</button>
                 </div>
                 <div class="col-auto">
                     <button class="botonNuevaCita" type="submit" onclick="location.href='{{url('propietario/opticas')}}'">Finalizar</button>

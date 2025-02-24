@@ -20,7 +20,6 @@ return new class extends Migration
             $table->boolean('reaccionan');
             $table->boolean('reaccLuz');
             $table->boolean('acomodacion');
-            
 
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });

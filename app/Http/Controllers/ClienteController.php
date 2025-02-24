@@ -48,11 +48,42 @@ class ClienteController extends Controller
         $cliente= DB::table('clientes')->where('dni', $dni)->first();
 
         if($cliente==null){
-            return response()->json(['message' => 'Cliente no encontrado']);
+            return response()->json(['message' => 'Cliente no encontrado'])
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         }
 
         //dd($cliente);
-        return response()->json($cliente);
+        return response()->json($cliente)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    }
+
+    public function citasCliente(Request $request)
+    {
+        $request->validate([
+            'dni' => 'required|string|max:255',
+        ]);
+
+        $dni = $request->query('dni');
+
+        $cliente = Cliente::where('dni', $dni)->first();
+
+        if($cliente==null){
+            return response()->json(['message' => 'Citas no encontradas'])
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        }
+
+        $citas= $cliente->citas;
+
+        return response()->json($citas)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 
 }

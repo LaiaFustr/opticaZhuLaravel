@@ -96,3 +96,11 @@
 .content {
     width: 100vw;
 }
+
+.cardInfo{
+    background-color: #9FF0DA;
+    border-radius: 7px;
+    padding: 1em;
+    margin: 1em 0;
+    width: 60%;
+}

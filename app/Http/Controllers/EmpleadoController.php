@@ -7,6 +7,10 @@ use App\Models\Empleado;
 use App\Models\Optica;
 use App\Models\Horario;
 use Illuminate\Support\Facades\DB;
+use Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 
 
@@ -35,6 +39,30 @@ class EmpleadoController extends Controller
     }
  */
 
+    public function login(Request $request){
+        $request->validate([
+            'nombreUsuario' => 'required',
+            'contrasenia' => 'required'
+        ]);
+ 
+        $credentials = $request->except('_token');
+
+        $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();
+
+        if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
+            Auth::login($empleado);
+            return redirect()->route('opticas');
+        } else {
+            session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
+            return redirect()->back();
+        }
+    }
+
+    public function logout(Request $request){
+        Session::flush();
+        Auth::logout();
+        return redirect('login');
+    }
 
     public function guardar(Request $request)
     {
@@ -69,7 +97,7 @@ class EmpleadoController extends Controller
             'contrasenia' => 'required|string|max:255',
         ]);
         /* $usuarios=[]; */
-        $usuarios = array_push([
+         session([
             'nombreE' => $datos['nombreE'],
             'apellido' => $datos['apellido'],
             'dni' => $datos['dni'],
@@ -80,7 +108,7 @@ class EmpleadoController extends Controller
             'nombreUsuario' => $datos['nombreUsuario'],
             'contrasenia' => $datos['contrasenia'],
         ]);
-        session($usuarios);
+        //session($usuarios);
 
         session('nombreH', 'horaApertura', 'horaCierre');
 
@@ -97,7 +125,10 @@ class EmpleadoController extends Controller
             'telefono' => session('telefono'),
             'direccion' => session('direccion'),
             'correo' => session('correo'),
-            'num_Maquinas' => 1,
+            'num_Maquinas' => session('num_Maquinas'),
+            'horaApertura' => session('horaApertura'),
+            'horaCierre' => session('horaCierre'),
+            'idAdmin' => session('idAdmin'),
             //'idHorario' => $horario->id,
         ]);
 
@@ -120,6 +151,7 @@ class EmpleadoController extends Controller
 
         return view('opticas', compact('opticas'));
     }
+
 
     public function buscarEmpleado(Request $request)
     {

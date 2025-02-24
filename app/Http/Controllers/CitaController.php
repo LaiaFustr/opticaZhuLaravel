@@ -17,6 +17,15 @@ class CitaController extends Controller
     }
 
 
+    public function citasOcupadas(){
+ // Consulta para agrupar las citas por fecha y hora y contar el número de citas en cada grupo
+        $citas = Cita::selectRaw('fecha, hora, COUNT(*) as total')
+            ->groupBy('fecha', 'hora')
+            ->get();
+       
+        return response()->json($citas);
+    }
+
     public function indexCitas()
     {
         //$citas = Cita::all();//consulta
@@ -41,16 +50,17 @@ class CitaController extends Controller
 
         $datos= $request->validate([
             'fecha' => 'required|date',
-            'hora' => 'required|time',
+            'hora' => 'required|date_format:H:i',
             'descripcion' => 'required|string',
+            'idCliente' => 'required|integer',
         ]);
-
         Cita::create($datos);
-
     }
 
     public function citaCliente($clientes){
         $clientes = Cita::where('idCliente', $clientes)->get();
         return response()->json($clientes);
     }
+
+
 }

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('festivos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->primary();
             $table->date('fecha');
             /* $table->boolean('festivo'); */
         });

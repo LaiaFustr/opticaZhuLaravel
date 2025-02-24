@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('anamnesis', function (Blueprint $table) {
             $table->unsignedInteger('idFicha');
             $table->increments('id');
-            $table->string('compensacion');
-            $table->date('ultima_revision');
-            $table->unsignedInteger('edad');
-            $table->string('profesion');
-            $table->string('horas_pantalla');
+            $table->boolean('compensacion');
+            $table->date('ultimarevision')->nullable();
+            $table->unsignedInteger('edad')->nullable();
+            $table->string('profesion')->nullable();
+            $table->string('horas_pantalla')->nullable();
             
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
         });
