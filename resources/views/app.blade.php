@@ -14,7 +14,7 @@
     <!-- Bootstrap -->
    
     
-    @vite(['./css/app.css', './css/styles.css','./js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/styles.css'])
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
     <!-- jQuery -->
@@ -23,9 +23,9 @@
    <!--  <script defer src="/resources/js/contrasenia.js" ></script> -->
 
     <!-- nuestros estilos -->
-    <link rel="stylesheet" href="./css/styles.css"/>
+    <!-- <link rel="stylesheet" href="./css/styles.css"/>
     <link rel="stylesheet" href="./css/navbar.css"/>
-    <link rel="stylesheet" href="./css/card.css"/>
+    <link rel="stylesheet" href="./css/card.css"/> -->
 
 </head>
 
