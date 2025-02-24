@@ -102,12 +102,12 @@ Route::get(
     [CitaController::class, 'ficha']
 )->name('ficha');
 
-/*
+
 // Redirigirá al login y dependiendo del rol irá a home o a propietario
 Route::get('/', function () {
-    $route = redirect()->route('home');
+    $route = redirect()->route('logininicio');
     return $route;
-});*/
+});
 //if rol optometrista
 //if rol propietario
 //$route = redirect()->route('propietario');
