@@ -37,7 +37,11 @@ class Empleado extends Authenticatable
     }
 
     public function auxiliar(){
-        return $this->belongsToMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
+        return $this->hasMany(Optica::class, 'auxiliares', 'idEmpleado', 'id');
+    }
+
+    public function optometrista(){
+        return $this->hasMany(Optica::class, 'optometristas', 'idEmpleado', 'id');
     }
 
     public function citas(){
