@@ -14,7 +14,7 @@
     <!-- Bootstrap -->
    
     
-    @vite(['resources/css/app.css', 'resources/css/styles.css','resources/js/app.js'])
+    @vite(['./css/app.css', './css/styles.css','./js/app.js'])
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
     <!-- jQuery -->
