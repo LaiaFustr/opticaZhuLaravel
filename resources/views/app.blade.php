@@ -15,7 +15,7 @@
 
     {{-- <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
     <script src="/bootstrap/bootstrap.bundle.min.js"></script> --}}
- 
+
     <!-- font awesome -->
     <link href="/font-awesome/all.min.css" rel="stylesheet">
     <!-- jQuery -->

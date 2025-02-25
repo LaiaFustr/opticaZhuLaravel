@@ -7,7 +7,9 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\FichaController;
 use App\Http\Controllers\CitaController;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\API\UserController;
+//use App/Http/Controllers/API/UserController;
+//use App\Http\Controllers\UserController;
 
 
 
@@ -28,13 +30,14 @@ use App\Http\Controllers\Api\UserController;
 
 Route::view('/login', 'login')->name('logininicio');
 Route::post('/login-usuario', [UserController::class, 'login'])->name('login');
+//Route::post('/login', [UserController::class, 'login'])->name('login');
 
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
 Route::get('propietario/citas', function () {
     return view('citas');
-})->name('propietario');
+})->name('citas');
 
 Route::get('propietario/opticas', function () {
     return view('opticas');
@@ -65,6 +68,8 @@ Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('
 Route::get('opticas/mostrar', [OpticaController::class, 'index']);
 Route::get('/propietario/opticas', [OpticaController::class, 'mostrar'])->name('opticas');
 Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard'])->name('opticasC');
+Route::get('/propietario/opticaSelec/{id}', [OpticaController::class, 'opticaSelect'])->name('opticaSelec');
+Route::get('propietario/opticaSelec/citas', [CitaController::class, 'citaOptica'])->name('citas');
 
 //Route::get('opticas', [OpticaController::class, 'index']);
 
@@ -76,7 +81,7 @@ Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
 Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
-Route::post('propietario/empleadoSesion', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
+Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])->name('insertarEmpleado');
 
 
 //Metodos Buscar

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Optica;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -18,11 +19,12 @@ class UserController extends Controller
      */
     public function login(Request $request)
     {
+        //dd($request);
         $request->validate([
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
         ]);
-      
+
         $credentials = $request->except('_token');
 
         $empleado = User::where('nombreUsuario', $request->nombreUsuario)->first();
@@ -30,10 +32,12 @@ class UserController extends Controller
         if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
             Log::info($request);
             Auth::login($empleado);
+            session(['idAdmin' => $empleado->id]);
             return redirect()->route('opticas');
         } else {
             Log::info("hola");
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
+            echo "no funciona";
             return redirect()->back();
         }
     }
@@ -133,6 +137,75 @@ class UserController extends Controller
         }
 
 
+    }
+
+    public function guardarSesion(Request $request)
+    {
+        $datos =  $request->validate([
+            'nombreE' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'dni' => 'required|string|max:255',
+            'direccionE' => 'required|string|max:255',
+            'telefonoE' => 'integer',
+            'correoE' => 'required|string|max:255',
+            'rol' => 'required|in:auxiliar,optometrista',
+            'nombreUsuario' => 'required|string|max:255',
+            'contrasenia' => 'required|string|max:255',
+        ]);
+        /* $usuarios=[]; */
+         session([
+            'nombreE' => $datos['nombreE'],
+            'apellido' => $datos['apellido'],
+            'dni' => $datos['dni'],
+            'direccionE' => $datos['direccionE'],
+            'telefonoE' => $datos['telefonoE'],
+            'correoE' => $datos['correoE'],
+            'rol' => $datos['rol'],
+            'nombreUsuario' => $datos['nombreUsuario'],
+            'contrasenia' => $datos['contrasenia'],
+        ]);
+        //session($usuarios);
+
+        session('nombreH', 'horaApertura', 'horaCierre');
+
+       /*  $horario = Horario::create([
+            'nombre' => session('nombreH'),
+            'horaApertura' => session('horaApertura'),
+            'horaCierre' => session('horaCierre'),
+            //'idHorario' => $horario->id,
+
+        ]); */
+
+        $optica = Optica::create([
+            'nombre' => session('nombre'),
+            'telefono' => session('telefono'),
+            'direccion' => session('direccion'),
+            'correo' => session('correo'),
+            'num_Maquinas' => session('num_Maquinas'),
+            'horaApertura' => session('horaApertura'),
+            'horaCierre' => session('horaCierre'),
+            'idAdmin' => session('idAdmin'),
+            //'idHorario' => $horario->id,
+        ]);
+
+        $user = User::create([
+            'nombre' => $datos['nombreE'],
+            'apellido' => session('apellido'),
+            'dni' => session('dni'),
+            'direccion' => session('direccionE'),
+            'telefono' => session('telefonoE'),
+            'correo' => session('correoE'),
+            'rol' => session('rol'),
+            'nombreUsuario' => session('nombreUsuario'),
+            'contrasenia' => session('contrasenia'),
+            //'idOptica' => $optica->id,
+        ]);
+
+
+
+        $opticas = Optica::all();
+
+        return view('opticas', compact('opticas'));
     }
 
 }

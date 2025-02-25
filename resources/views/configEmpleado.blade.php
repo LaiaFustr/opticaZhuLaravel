@@ -41,7 +41,7 @@
 
         <div class="row w-100">
             <div class="col-6">
-                <form id="formOptica" class="row" method="POST" action="{{url('propietario/empleadoSesion')}}">
+                <form id="formOptica" class="row" method="POST" action="{{url('propietario/userSesion')}}">
                     @csrf
                     <div class="col px-2">
                         <div class="row my-3">
@@ -127,7 +127,7 @@
                         <td>DNI</td>
                     </tr>
                 </table>
-            </div> 
+            </div>
 
             <script>
                 function ocultarTabla() {
