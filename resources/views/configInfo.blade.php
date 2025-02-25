@@ -7,7 +7,7 @@
             <h1 class="tituloPagina">Configuración de Óptica</h1>
         </div>
         <div class="col d-flex justify-content-end">
-            <a href="{{url('propietario/opticas')}}"><i class="fa-solid fa-x fa-lg">Cerrar</i></a>
+            <a href="{{url('propietario/opticas')}}"><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
     </div>
 

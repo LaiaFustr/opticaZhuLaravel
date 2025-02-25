@@ -81,7 +81,7 @@ class OpticaController extends Controller
             'num_Maquinas' => 'integer',
             'horaApertura' => 'required|date_format:H:i',
             'horaCierre' => 'required|date_format:H:i',
-            'idAdmin'=>1,
+            //'idAdmin'=>session(['idAdmin']),
         ]);
 
         // Guardar los datos en la sesión
@@ -93,7 +93,7 @@ class OpticaController extends Controller
             'num_Maquinas' => $datos['num_Maquinas'],
             'horaApertura' => $datos['horaApertura'],
             'horaCierre' => $datos['horaCierre'],
-            'idAdmin'=>1,
+            'idAdmin'=>session('idAdmin'),
             // 'idHorario'=>1,
         ]);
         return redirect()->route('configEmpleado');

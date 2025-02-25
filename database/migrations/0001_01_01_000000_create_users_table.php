@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('contrasenia');
             $table->enum('rol', ['auxiliar','optometrista','admin']);
             $table->unsignedInteger('idOptica')->nullable();
-            $table->boolean('activo');
+            $table->boolean('activo')->default(true);
             //$table->rememberToken()->nulleable();
 /*             $table->timestamps();*/
         });

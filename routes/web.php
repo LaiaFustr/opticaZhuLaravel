@@ -79,7 +79,7 @@ Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
 Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
-Route::post('propietario/empleadoSesion', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
+Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])->name('insertarEmpleado');
 
 
 //Metodos Buscar
