@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OpticaController;
-use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\FichaController;
@@ -76,7 +75,7 @@ Route::get('', [OpticaController::class, 'guardar']);
 
 //Metodos Insertar
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
-Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
+//Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
 Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
