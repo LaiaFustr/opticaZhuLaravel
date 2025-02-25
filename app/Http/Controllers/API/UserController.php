@@ -38,6 +38,23 @@ class UserController extends Controller
         }
     }
 
+    public function index(Request $request)
+    {
+        $empleados = User::all();
+
+        return response()->json($empleados);
+    }
+
+    public function empleados(Request $request){
+        $empleados = User::whereIn("rol", ["auxiliar", "optometrista"])->get();
+        return response()->json($empleados);
+    }
+
+    public function empleadosOptica($optica){
+        $empleados = User::whereIn("rol", ["auxiliar", "optometrista"])
+                    ->where("idOptica", $optica)->get();
+        return response()->json($empleados);
+    }
      /**
      * Register api
      *
