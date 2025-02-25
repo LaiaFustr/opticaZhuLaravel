@@ -43,13 +43,16 @@ Route::get('/opticasporadmin/{idAdmin}', [OpticaController::class,'mostrarIDAdmi
 Route::get('/opticasporhorario/{idHorario}', [OpticaController::class,'mostrarIDHorario']);
 Route::get('/empleadosoptica/{id}',[OpticaController::class,'empleadosOptica']);
 
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/empleados', [UserController::class, 'empleados']);
+Route::get('/empleadosOptica/{optica}', [UserController::class, 'empleadosOptica']);
 
 
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
 Route::post('/crearCita', [CitaController::class, 'guardar'])->name('crearCita');
 
-Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
-Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
+//Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
+//Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
 
 Route::get('/auxiliares', [AuxiliarController::class, 'listado']);
 Route::get('/auxiliaresoptica/{id}', [AuxiliarController::class,'listadoOptica']);
