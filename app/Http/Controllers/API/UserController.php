@@ -21,20 +21,23 @@ class UserController extends Controller
      */
     public function login(Request $request)
     {
+        //dd($request);
         $request->validate([
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
         ]);
- 
+
         $credentials = $request->except('_token');
 
-        $empleado = Empleado::where('nombreUsuario', $request->nombreUsuario)->first();
+        $user = User::where('nombreUsuario', $request->nombreUsuario)->first();
+        //dd($user);
 
-        if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
-            Auth::login($empleado);
+        if ($user && Hash::check($request->contrasenia, $user->contrasenia)) {
+            Auth::login($user);
             return redirect()->route('opticas');
         } else {
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
+            echo "no funciona";
             return redirect()->back();
         }
     }

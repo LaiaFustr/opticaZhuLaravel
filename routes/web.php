@@ -8,7 +8,9 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\FichaController;
 use App\Http\Controllers\CitaController;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\API\UserController;
+//use App/Http/Controllers/API/UserController;
+//use App\Http\Controllers\UserController;
 
 
 
@@ -29,6 +31,7 @@ use App\Http\Controllers\Api\UserController;
 
 Route::view('/login', 'login')->name('logininicio');
 Route::post('/login-usuario', [UserController::class, 'login'])->name('login');
+//Route::post('/login', [UserController::class, 'login'])->name('login');
 
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
