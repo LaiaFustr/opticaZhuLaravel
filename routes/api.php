@@ -61,5 +61,6 @@ Route::get('/citasCliente', [ClienteController::class,'citasCliente'])->name('ci
 
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
+Route::get('/citasOptica/{optica}', [CitaController::class, 'citasOptica'])->name('citasOptica');
 Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('citasOcupadas');
 //Route::get('/horarios', [HorarioController::class, 'index']->name('horarios'));

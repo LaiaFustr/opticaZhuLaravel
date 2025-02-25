@@ -33,14 +33,15 @@
             <table class="table table-stripped">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Dirección</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($opticas as $op)
-
-                    <tr>
+                    <tr onclick="window.location='{{route('opticaSelec', $op->id )}}'">
+                        <td>{{$op->id}}</td>
                         <td>{{$op->nombre}}</td>
                         <td>{{$op->direccion}}</td>
 

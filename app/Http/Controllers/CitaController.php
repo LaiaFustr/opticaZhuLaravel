@@ -62,9 +62,18 @@ class CitaController extends Controller
         return view('ficha', ['cita'=>$cita]);
     }
 
-    public function citaOptica($optica){
+   /*  public function citaOptica($optica){
         $citas = Cita::where('idOptica', $optica)->get();
         return response()->json($citas);
+    } */
+
+    public function citaOptica(){
+
+        $optica = session('idOptica');
+
+        $citas = Cita::where('idOptica', $optica)->get();
+        dd($citas);
+        return view('citas', compact('citas'));
     }
 
     public function guardar(Request $request){

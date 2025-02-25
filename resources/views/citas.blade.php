@@ -19,7 +19,7 @@
             </div>
         </div>
     </form>
-    <div class="my-3">
+    {{-- <div class="my-3">
         <table class="table table-stripped table-hover">
             <thead>
                 <tr>
@@ -41,7 +41,32 @@
                 @endforelse
             </tbody>
         </table>
-    </div>
+    </div> --}}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($citas as $cit)
+            <tr>
+                <td><a class="nav-link" href="{{ route('ficha', $cit->id) }}">{{ $cit->fecha }}</a></td>
+                <td><a class="nav-link" href="{{ route('ficha', $cit->id) }}">{{ $cit->hora }}</a></td>
+                <td><a class="nav-link" href="{{ route('ficha', $cit->id) }}">{{ $cit->descripcion }}</a></td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="3">No hay citas para esta óptica.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+
+
 
 </div>
 

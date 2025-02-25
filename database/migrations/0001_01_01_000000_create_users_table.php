@@ -26,6 +26,9 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             //$table->rememberToken()->nulleable();
 /*             $table->timestamps();*/
+
+            //$table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
+
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
