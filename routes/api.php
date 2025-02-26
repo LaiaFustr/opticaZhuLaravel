@@ -50,6 +50,7 @@ Route::post('/crearCita', [CitaController::class, 'guardar'])->name('crearCita')
 
 Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
 Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
+Route::get('users', [UserController::class, 'index'])->name('users');
 
 Route::get('/auxiliares', [AuxiliarController::class, 'listado']);
 Route::get('/auxiliaresoptica/{id}', [AuxiliarController::class,'listadoOptica']);
@@ -61,6 +62,9 @@ Route::get('/citasCliente', [ClienteController::class,'citasCliente'])->name('ci
 
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
-Route::get('/citasOptica/{optica}', [CitaController::class, 'citasOptica'])->name('citasOptica');
+Route::get('/citasOptica/{optica}', [CitaController::class, 'citaOptica'])->name('citasOptica');
 Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('citasOcupadas');
+
+//Cambiar por id cuando este el login angular.
+Route::get('/empleadosOptica/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOptica');
 //Route::get('/horarios', [HorarioController::class, 'index']->name('horarios'));

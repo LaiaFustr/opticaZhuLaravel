@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
+    public function index(Request $request){
+        $user=User::all();
+
+        return response()->json($user);
+    }
+
+
      /**
      * login api
      *

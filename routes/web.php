@@ -70,6 +70,7 @@ Route::get('/propietario/opticas', [OpticaController::class, 'mostrar'])->name('
 Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard'])->name('opticasC');
 Route::get('/propietario/opticaSelec/{id}', [OpticaController::class, 'opticaSelect'])->name('opticaSelec');
 Route::get('propietario/opticaSelec/citas', [CitaController::class, 'citaOptica'])->name('citas');
+//Route::get('/propietario/empleadosOp/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOp');
 
 //Route::get('opticas', [OpticaController::class, 'index']);
 

@@ -27,10 +27,12 @@ class CitaController extends Controller
 
         $fecha = $request->query('fecha');
 
+        //$fechaDate=new DateTime($fecha);
+
         // Consulta para agrupar las citas por fecha y hora y contar el número de citas en cada grupo
         $citas = DB::table('citas')
             ->selectRaw('fecha, hora, COUNT(*) as total')
-            ->where('fecha', $fecha)
+            ->where('fecha',$fecha)
             ->groupBy('fecha', 'hora')
             ->get();
 
@@ -62,18 +64,27 @@ class CitaController extends Controller
         return view('ficha', ['cita'=>$cita]);
     }
 
-   /*  public function citaOptica($optica){
+    public function citaOptica($optica){
         $citas = Cita::where('idOptica', $optica)->get();
         return response()->json($citas);
-    } */
+    }
 
-    public function citaOptica(){
+  /*   public function citaOptica($optica){
 
         $optica = session('idOptica');
 
         $citas = Cita::where('idOptica', $optica)->get();
-        dd($citas);
-        return view('citas', compact('citas'));
+        //dd($citas);
+        //return view('citas', compact('citas'));
+        return response()->json($citas);
+    } */
+
+    public function citaOpticaApi(){
+        $optica = session('idOptica');
+
+        $citas = Cita::where('idOptica', $optica)->get();
+
+        return response()->json($citas);
     }
 
     public function guardar(Request $request){
