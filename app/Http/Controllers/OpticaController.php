@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Optica;
 use App\Models\Cita;
+use App\Models\User;
+use App\Models\Empleado;
+
 
 class OpticaController extends Controller
 {
@@ -32,9 +35,12 @@ class OpticaController extends Controller
         return view('citas', compact('citas'));
     }
 
+
     public function empleadosOptica($id){
-        $optica = Optica::find($id);
-        $empleados = $optica->empleados;
+        session(['idOptica' => $id]);
+
+        $empleados=User::where('idOptica', $id)->get();
+
         return response()->json($empleados);
     }
 

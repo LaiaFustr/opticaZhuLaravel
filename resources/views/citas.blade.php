@@ -6,9 +6,16 @@
         <div class="col-auto me-auto">
             <h1 class="tituloPagina">Citas</h1>
         </div>
-        <div class="col-auto ms-auto d-flex ">
-            <button class="botonNuevaCita" data-bs-toggle="modal" data-bs-target="#buscarCliModal2">Nueva Cita</button>
+
+        <div class="col d-flex justify-content-end">
+            <a href="{{url('propietario/opticas')}}"><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
+
+      {{--   <div class="col-auto ms-auto d-flex ">
+            <button class="botonNuevaCita" data-bs-toggle="modal" data-bs-target="#buscarCliModal2">Nueva Cita</button>
+        </div> --}}
+
+
     </div>
     <form action="">
         <div class="row">
@@ -19,29 +26,6 @@
             </div>
         </div>
     </form>
-    {{-- <div class="my-3">
-        <table class="table table-stripped table-hover">
-            <thead>
-                <tr>
-                    <th>Hora</th>
-                    <th>Nombre y Apellidos</th>
-                    <th>Motivo de la cita</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php  /*  dd($citas)  */ ?>
-                @forelse($citas as $cita)
-                <?php  /* dd($cita) */ ?>
-                <tr>
-                    <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->hora}}</a></td>
-                    <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->cliente->apellido}}, {{$cita->cliente->nombre}}</a></td>
-                    <td> <a class="nav-link" href="{{route('ficha', $cita->id)}}">{{$cita->descripcion}}</a></td>
-                </tr>
-                @empty
-                @endforelse
-            </tbody>
-        </table>
-    </div> --}}
 
     <table class="table table-striped">
         <thead>
