@@ -49,6 +49,30 @@ class UserController extends Controller
         }
     }
 
+    public function loginAngular(Request $request){
+        $request->validate([
+            'nombreUsuario' => 'required',
+            'contrasenia' => 'required'
+        ]);
+
+        $credentials = $request->except(['_token']);
+
+        $empleado = User::with('optica')->where('nombreUsuario', $request->nombreUsuario)->first();
+
+        if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
+            //Log::info($request);
+            Auth::login($empleado);
+            //dd($empleado);
+            return response()->json(['nombreUsuario' =>$empleado->nombreUsuario, 'rol'=> $empleado->rol,
+                                     'optica' => [
+                                        'id' => $empleado->optica->id ?? 1,
+                                        'nombre' => $empleado->optica->nombre ?? null,
+                                     ]]);
+        }else{
+            return response()->json('message', 'Nombre de usuario o contraseña incorrectos');
+        }
+    }
+
      /**
      * Register api
      *

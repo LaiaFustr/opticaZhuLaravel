@@ -53,17 +53,12 @@ class User extends Authenticatable
         return $this->belongsTo(Admin::class,'idAdmin');
     }
 
-
-    public function cita(){
-        return $this->belongsTo(Cita::class,'idCita');
-    }
-
     public function asignaOptica(){
         return $this->belongsTo(AsignaOptica::class,'idEmpleado');
     }
 
-    public function opticas(){
-        return $this->belongsToMany(Optica::class, 'asignaropticas', 'idEmpleado', 'idOptica');
+    public function optica(){
+        return $this->belongsTo(Optica::class);
     }
 
     public function auxiliar(){
