@@ -64,9 +64,27 @@ class CitaController extends Controller
         return view('ficha', ['cita'=>$cita]);
     }
 
-    public function citaOptica($optica){
+    public function citaOptica(Reques $request){
+
+        $request->validate([
+            'idOptica' => 'required|string|max:255',
+        ]);
+
+        $idOptica=$request->query('idOptica');
+
         $citas = Cita::where('idOptica', $optica)->get();
+
+        if($citas==null){
+            return response()->json(['message' => 'Citas no encontrado'])
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        }
+
         return response()->json($citas);
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 
   /*   public function citaOptica($optica){

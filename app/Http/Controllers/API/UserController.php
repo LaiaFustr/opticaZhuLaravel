@@ -49,23 +49,30 @@ class UserController extends Controller
         }
     }
 
-    public function index(Request $request)
-    {
-        $empleados = User::all();
+    public function loginAngular(Request $request){
+        $request->validate([
+            'nombreUsuario' => 'required',
+            'contrasenia' => 'required'
+        ]);
 
-        return response()->json($empleados);
+        $credentials = $request->except(['_token']);
+
+        $empleado = User::with('optica')->where('nombreUsuario', $request->nombreUsuario)->first();
+
+        if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
+            //Log::info($request);
+            Auth::login($empleado);
+            //dd($empleado);
+            return response()->json(['nombreUsuario' =>$empleado->nombreUsuario, 'rol'=> $empleado->rol,
+                                     'optica' => [
+                                        'id' => $empleado->optica->id ?? 1,
+                                        'nombre' => $empleado->optica->nombre ?? null,
+                                     ]]);
+        }else{
+            return response()->json('message', 'Nombre de usuario o contraseña incorrectos');
+        }
     }
 
-    public function empleados(Request $request){
-        $empleados = User::whereIn("rol", ["auxiliar", "optometrista"])->get();
-        return response()->json($empleados);
-    }
-
-    public function empleadosOptica($optica){
-        $empleados = User::whereIn("rol", ["auxiliar", "optometrista"])
-                    ->where("idOptica", $optica)->get();
-        return response()->json($empleados);
-    }
      /**
      * Register api
      *

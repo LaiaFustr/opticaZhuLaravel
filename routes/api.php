@@ -65,9 +65,11 @@ Route::get('/citasCliente', [ClienteController::class,'citasCliente'])->name('ci
 
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
-Route::get('/citasOptica/{optica}', [CitaController::class, 'citaOptica'])->name('citasOptica');
+Route::get('/citasOptica', [CitaController::class, 'citaOptica'])->name('citasOptica');
 Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('citasOcupadas');
 
 //Cambiar por id cuando este el login angular.
 Route::get('/empleadosOptica/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOptica');
 //Route::get('/horarios', [HorarioController::class, 'index']->name('horarios'));
+
+Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('login');
