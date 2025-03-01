@@ -9,6 +9,8 @@ use App\Models\Optica;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Laravel\Passport\HasApiTokens;
+
 
 
 class UserController extends Controller
@@ -20,7 +22,7 @@ class UserController extends Controller
     }
 
 
-     /**
+    /**
      * login api
      *
      */
@@ -64,16 +66,21 @@ class UserController extends Controller
             Auth::login($empleado);
             //dd($empleado);
             return response()->json(['nombreUsuario' =>$empleado->nombreUsuario, 'rol'=> $empleado->rol,
-                                     'optica' => [
+                                    'optica' => [
                                         'id' => $empleado->optica->id ?? 1,
                                         'nombre' => $empleado->optica->nombre ?? null,
-                                     ]]);
+                                    ]]) ->header('Access-Control-Allow-Origin', '*')
+                                    ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+                                    ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         }else{
-            return response()->json('message', 'Nombre de usuario o contraseña incorrectos');
+            return response()->json('message', 'Nombre de usuario o contraseña incorrectos')
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         }
     }
 
-     /**
+    /**
      * Register api
      *
      * @return \Illuminate\Http\Response
@@ -90,7 +97,8 @@ class UserController extends Controller
         'correo' => 'required',
         'nombreUsuario' => 'required',
         'rol' => 'required',
-        'contrasenia' => 'required', // Usamos confirmed para comparar con password_confirmation
+        'contrasenia' => 'required',
+        'idOptica' => 'integer' // Usamos confirmed para comparar con password_confirmation
     ]);
 
     try {
@@ -105,6 +113,7 @@ class UserController extends Controller
             'nombreUsuario' => $validatedData['nombreUsuario'],
             'rol' => $validatedData['rol'],
             'contrasenia' => Hash::make($validatedData['contrasenia']),
+            'idOptica' => $validatedData['idOptica'],
         ]);
 
         // Generar un token de acceso
@@ -117,6 +126,7 @@ class UserController extends Controller
                 'nombre' => $user->nombre,
             ]
         ], 201); // Código HTTP 201: Creado
+        return redirect()->route('opticas');
     } catch (\Exception $e) {
         // Manejar errores inesperados
         return response()->json([
@@ -126,7 +136,7 @@ class UserController extends Controller
     }
     }
 
-      /**
+    /**
      * details api
      *
      * @return \Illuminate\Http\Response
@@ -167,7 +177,7 @@ class UserController extends Controller
             'contrasenia' => 'required|string|max:255',
         ]);
         /* $usuarios=[]; */
-         session([
+        session([
             'nombreE' => $datos['nombreE'],
             'apellido' => $datos['apellido'],
             'dni' => $datos['dni'],
@@ -182,7 +192,7 @@ class UserController extends Controller
 
         session('nombreH', 'horaApertura', 'horaCierre');
 
-       /*  $horario = Horario::create([
+    /*  $horario = Horario::create([
             'nombre' => session('nombreH'),
             'horaApertura' => session('horaApertura'),
             'horaCierre' => session('horaCierre'),
