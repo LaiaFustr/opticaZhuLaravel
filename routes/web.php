@@ -12,10 +12,6 @@ use App\Http\Controllers\API\UserController;
 //use App\Http\Controllers\UserController;
 
 
-
-
-
-
 /*Route::get('/', function(){
     redirect()->route('home/');
 });*/
