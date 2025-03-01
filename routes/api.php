@@ -73,3 +73,5 @@ Route::get('/empleadosOptica/{id}', [OpticaController::class, 'empleadosOptica']
 //Route::get('/horarios', [HorarioController::class, 'index']->name('horarios'));
 
 Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('login');
+
+Route::get('/buscarEmpleado', [UserController::class, 'buscarEmpleado'])->name('buscarEmpleado');

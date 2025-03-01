@@ -222,4 +222,10 @@ class UserController extends Controller
         return view('opticas', compact('opticas'));
     }
 
+
+    public function buscarEmpleado(Request $request){
+       $user = User::find($request->id);
+        return response()->json($user);
+
+    }
 }
