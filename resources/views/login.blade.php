@@ -58,7 +58,6 @@
             $('#show-hide-passwordLog').html('');
             $('#show-hide-passwordLog').html('<i class="fa-solid fa-lock"></i>');
         }
-       /*  $('#show-hide-passwordLog i').html($('#show-hide-passwordLog i').html() == '<i class="fa-solid fa-lock"></i>' ? '<i class="fa-solid fa-unlock"></i>' : '<i class="fa-solid fa-lock"></i>'); */
 
         
         
