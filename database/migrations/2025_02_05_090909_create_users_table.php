@@ -22,12 +22,12 @@ return new class extends Migration
             $table->string('nombreUsuario')->nullable();
             $table->string('contrasenia');
             $table->enum('rol', ['auxiliar','optometrista','admin']);
-            $table->unsignedInteger('idOptica')->nullable();
+            $table->unsignedInteger('idOptica');
             $table->boolean('activo')->default(true);
             //$table->rememberToken()->nulleable();
 /*             $table->timestamps();*/
 
-            //$table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
 
         });
 

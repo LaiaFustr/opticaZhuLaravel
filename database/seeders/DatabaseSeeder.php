@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
 
             //HorarioSeeder::class,
         $this->call([
+            OpticaSeeder::class,
             UserSeeder::class,
             AdminSeeder::class,
             HorarioSeeder::class,
-            OpticaSeeder::class,
             //EmpleadoSeeder::class,
             ClienteSeeder::class,
             FestivosSeeder::class,

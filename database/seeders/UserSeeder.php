@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'telefono'=> '671452787',
                 'correo'=> 'manueladmin@gmail.com',
                 'rol' => 'admin',
-                'idOptica'=> null,
+                'idOptica'=> 3,
                 'activo'=>true,
             ],
             [
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
                 'telefono'=> '616161616',
                 'correo'=> 'jordiadmin@gmail.com',
                 'rol' => 'admin',
-                'idOptica'=> null,
+                'idOptica'=> 2,
                 'activo'=>true,
             ],
             [
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
                 'telefono'=> '634153226',
                 'correo'=> 'laiaadmin@gmail.com',
                 'rol' => 'admin',
-                'idOptica'=> null,
+                'idOptica'=> 1,
                 'activo'=>true,
             ],
             [
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
                 'telefono'=> '613125327',
                 'correo'=> 'oscaradmin@gmail.com',
                 'rol' => 'admin',
-                'idOptica'=> null,
+                'idOptica'=> 2,
                 'activo'=>true,
             ],
             [
@@ -73,7 +73,7 @@ class UserSeeder extends Seeder
                 'telefono'=> '613123464',
                 'correo'=> 'tobiasadmin@gmail.com',
                 'rol' => 'admin',
-                'idOptica'=> null,
+                'idOptica'=> 1,
                 'activo'=>true,
             ],
             [
@@ -194,7 +194,7 @@ class UserSeeder extends Seeder
                 case 'admin':
                     //No hace nada
 
-                break;    
+                break;
 
             }
 
