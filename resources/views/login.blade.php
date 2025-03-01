@@ -29,7 +29,7 @@
                                 <div class="col-1 mx-2"><button type="button" class="m-0 p-0" id="show-hide-passwordLog"><i class="fa-solid fa-lock"></i></button></div>
                                 <div class="col mx-1">Contraseña</div>
                             </label>
-                            <input type="password" name="contrasenia" id="contrasenia" class="form-control p_input">
+                            <input  name="contrasenia" type="password" id="contrasenia" class="form-control p_input">
                         </div>
 
                         <div class="text-center my-2 p-2">
@@ -46,7 +46,7 @@
 
 <script>
     $('#show-hide-passwordLog').on('click', function() {
-        event.preventDefault();
+        
         $('#contrasenia').attr('type', $('#contrasenia').attr('type') == 'text' ? 'password' : 'text');
 
         if ($('#show-hide-passwordLog').html() == '<i class="fa-solid fa-lock"></i>') {
@@ -58,7 +58,6 @@
             $('#show-hide-passwordLog').html('');
             $('#show-hide-passwordLog').html('<i class="fa-solid fa-lock"></i>');
         }
-       /*  $('#show-hide-passwordLog i').html($('#show-hide-passwordLog i').html() == '<i class="fa-solid fa-lock"></i>' ? '<i class="fa-solid fa-unlock"></i>' : '<i class="fa-solid fa-lock"></i>'); */
 
         
         
