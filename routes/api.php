@@ -53,6 +53,7 @@ Route::post('/crearCita', [CitaController::class, 'guardar'])->name('crearCita')
 
 Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
 Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
+Route::get('/empleadosOptica', [UserController::class, 'empleadosOptica'])->name('empleadoOptica');
 Route::get('users', [UserController::class, 'index'])->name('users');
 
 Route::get('/auxiliares', [AuxiliarController::class, 'listado']);

@@ -64,10 +64,10 @@ class UserController extends Controller
             Auth::login($empleado);
             //dd($empleado);
             return response()->json(['nombreUsuario' =>$empleado->nombreUsuario, 'rol'=> $empleado->rol,
-                                     'optica' => [
+                                    'optica' => [
                                         'id' => $empleado->optica->id ?? 1,
                                         'nombre' => $empleado->optica->nombre ?? null,
-                                     ]]);
+                                    ]]);
         }else{
             return response()->json('message', 'Nombre de usuario o contraseña incorrectos');
         }
@@ -226,6 +226,29 @@ class UserController extends Controller
     public function buscarEmpleado(Request $request){
        $user = User::find($request->id);
         return response()->json($user);
-
     }
+
+    public function empleadosOptica(Request $request){
+
+        $request->validate([
+            'idOptica' => 'required|string|max:255',
+        ]);
+
+        $idOptica=$request->query('idOptica');
+
+        $empleados = User::where('idOptica', $idOptica)->get();
+
+        if($empleados==null){
+            return response()->json(['message' => 'Citas no encontrado'])
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        }
+
+        return response()->json($empleados)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    }
+
 }

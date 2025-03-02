@@ -144,9 +144,6 @@ class EmpleadoController extends Controller
             'contrasenia' => session('contrasenia'),
             //'idOptica' => $optica->id,
         ]);
-
-
-
         $opticas = Optica::all();
 
         return view('opticas', compact('opticas'));
@@ -166,8 +163,9 @@ class EmpleadoController extends Controller
         if($empleado==null){
             return response()->json(['message' => 'Empleado no encontrado']);
         }
-
         //dd($cliente);
         return view('perfilEmp', compact('empleado'));
     }
+
+   
 }
