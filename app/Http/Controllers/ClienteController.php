@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
-
+use Illuminate\Support\Facades\Log;
 
 class ClienteController extends Controller
 {
     public function index(Request $request)
     {
+        Log::info($request);
         $clientes = Cliente::all();
 
         return response()->json($clientes);
