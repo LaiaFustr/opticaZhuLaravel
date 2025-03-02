@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
-
+use Illuminate\Support\Facades\Log;
 
 class ClienteController extends Controller
 {
     public function index(Request $request)
     {
+        Log::info($request);
         $clientes = Cliente::all();
 
         return response()->json($clientes);
@@ -55,7 +56,7 @@ class ClienteController extends Controller
         }
 
         //dd($cliente);
-        return response()->json($cliente);
+        return response()->json($cliente)
         ->header('Access-Control-Allow-Origin', '*')
         ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
         ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
