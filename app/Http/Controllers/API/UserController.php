@@ -9,6 +9,8 @@ use App\Models\Optica;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+
 
 
 class UserController extends Controller
@@ -232,8 +234,19 @@ class UserController extends Controller
 
     public function buscarEmpleado(Request $request)
     {
-        $user = User::find($request->id);
-        return response()->json($user);
+        $request->validate([
+            'dni' => 'required|string|max:255',
+        ]);
+
+        $dni = $request->query('dni');
+
+        $empleado = DB::table('users')->where('dni', $dni)->first();
+
+        if($empleado==null){
+            return response()->json(['message' => 'Empleado no encontrado']);
+        }
+        //dd($cliente);
+        return view('perfilEmp', compact('empleado'));
     }
 
     public function empleadosOptica(Request $request){

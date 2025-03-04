@@ -188,7 +188,7 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli row" method="POST" action="{{url('propietario/insertarEmpleado')}}" onsubmit="return validarContrasenia()">
+                <form id="form-cli row" method="POST" action="{{url('propietario/insertarEmpleado')}}" >
                     @csrf
                     <div class="col px-2">
                         <div class="row my-2">
