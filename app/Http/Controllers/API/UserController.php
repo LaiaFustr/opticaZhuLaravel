@@ -43,7 +43,15 @@ class UserController extends Controller
             Log::info($request);
             Auth::login($empleado);
             session(['idAdmin' => $empleado->id]);
-            return redirect()->route('opticas');
+            
+            $logeado = User::find($empleado->id);
+
+            if($logeado->rol== 'admin'){
+                $ruta = redirect()->route('opticas');
+            }elseif ($logeado->rol== 'auxiliar' || $logeado->rol == 'optometrista') {
+                $ruta = redirect()->route('home');
+            }
+            return $ruta;
         } else {
             Log::info("hola");
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
