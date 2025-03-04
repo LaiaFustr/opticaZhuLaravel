@@ -224,8 +224,6 @@ class UserController extends Controller
             //'idOptica' => $optica->id,
         ]);
 
-
-
         $opticas = Optica::all();
 
         return view('opticas', compact('opticas'));
@@ -236,5 +234,34 @@ class UserController extends Controller
     {
         $user = User::find($request->id);
         return response()->json($user);
+    }
+
+    public function empleadosOptica(Request $request){
+
+      /*   $request->validate([
+            'idOptica' => 'required|string|max:255',
+        ]); */
+
+        if (!$request->has('idOptica')) {
+            return response()->json([
+                'message' => 'El parámetro idOptica es requerido'
+            ], 400);
+        }
+
+        $idOptica=$request->query('idOptica');
+
+        $empleados = User::where('idOptica', $idOptica)->get();
+
+        if($empleados==null){
+            return response()->json(['message' => 'Citas no encontrado'])
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        }
+
+        return response()->json($empleados)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 }
