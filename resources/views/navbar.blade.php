@@ -23,7 +23,7 @@
                     </div>
                 </ul>
             </li>
-            <li class="nav-item sidebarLi">
+            <!-- <li class="nav-item sidebarLi">
                 <div class="optionText">
                     <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#empleadoSublist" role="button" aria-expanded="false" aria-controls="empleadoSublist">Empleados</a>
                 </div>
@@ -34,7 +34,7 @@
                         <li><a>Ver todos</a></li>
                     </div>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </div>
 

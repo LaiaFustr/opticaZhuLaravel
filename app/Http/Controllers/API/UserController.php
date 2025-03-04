@@ -9,6 +9,8 @@ use App\Models\Optica;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+
 
 
 class UserController extends Controller
@@ -41,7 +43,15 @@ class UserController extends Controller
             Log::info($request);
             Auth::login($empleado);
             session(['idAdmin' => $empleado->id]);
-            return redirect()->route('opticas');
+            
+            $logeado = User::find($empleado->id);
+
+            if($logeado->rol== 'admin'){
+                $ruta = redirect()->route('opticas');
+            }elseif ($logeado->rol== 'auxiliar' || $logeado->rol == 'optometrista') {
+                $ruta = redirect()->route('home');
+            }
+            return $ruta;
         } else {
             Log::info("hola");
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
@@ -232,8 +242,19 @@ class UserController extends Controller
 
     public function buscarEmpleado(Request $request)
     {
-        $user = User::find($request->id);
-        return response()->json($user);
+        $request->validate([
+            'dni' => 'required|string|max:255',
+        ]);
+
+        $dni = $request->query('dni');
+
+        $empleado = DB::table('users')->where('dni', $dni)->first();
+
+        if($empleado==null){
+            return response()->json(['message' => 'Empleado no encontrado']);
+        }
+        //dd($cliente);
+        return view('perfilEmp', compact('empleado'));
     }
 
     public function empleadosOptica(Request $request){

@@ -112,6 +112,7 @@ class CitaController extends Controller
             'hora' => 'required|date_format:H:i',
             'descripcion' => 'required|string',
             'idCliente' => 'required|integer',
+            'idOptica' => 'required|integer',
         ]);
         Cita::create($datos);
     }

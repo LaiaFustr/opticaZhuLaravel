@@ -35,7 +35,7 @@
     <div class="row">
     @foreach ($opticas as $op)
         <div class="col-md-4">
-            <div class="card my-3 carta">
+            <div class="card my-3 carta" onclick="window.location='{{route('opticaSelec', $op->id )}}'">
                 <div class="card-body">
                     <ul class="lista">
                         <li><strong>Nombre:</strong> {{ $op->nombre }}</li>
