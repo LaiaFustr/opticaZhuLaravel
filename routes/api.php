@@ -41,11 +41,10 @@ Route::get('opticas/guardar' , [OpticaController::class, 'guardar']);
 Route::get('/opticas/{id}', [OpticaController::class,'mostrarID']);
 Route::get('/opticasporadmin/{idAdmin}', [OpticaController::class,'mostrarIDAdmin']);
 Route::get('/opticasporhorario/{idHorario}', [OpticaController::class,'mostrarIDHorario']);
-//Route::get('/empleadosoptica/{id}',[OpticaController::class,'empleadosOptica']);
 
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/empleados', [UserController::class, 'empleados']);
-//Route::get('/empleadosOptica/{optica}', [UserController::class, 'empleadosOptica']);
+
 
 
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
