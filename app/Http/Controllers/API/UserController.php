@@ -45,6 +45,7 @@ class UserController extends Controller
             session(['idAdmin' => $empleado->id]);
             
             $logeado = User::find($empleado->id);
+            
 
             if($logeado->rol== 'admin'){
                 $ruta = redirect()->route('opticas');

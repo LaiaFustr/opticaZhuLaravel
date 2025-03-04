@@ -33,9 +33,10 @@ Route::post('/login-usuario', [UserController::class, 'login'])->name('login');
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
-Route::get('propietario/citas', function () {
+/* Route::get('propietario/citas', function () {
     return view('citas');
-})->name('citas');
+})->name('citas'); */
+Route::get('propietario/citas', [CitaController::class, 'indexCitas'])->name('citas');
 
 Route::get('propietario/opticas', function () {
     return view('opticas');

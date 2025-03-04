@@ -12,9 +12,9 @@
             <h1 class="tituloPagina">Ficha para {{$cita->cliente->nombre}} {{$cita->cliente->apellido}}</h1>
             <h5>{{$cita->descripcion}}</h5>
         </div>
-        <div class="col d-flex justify-content-center align-items-center">
+        <!-- <div class="col d-flex justify-content-center align-items-center">
             <h2>idCita: {{$cita->id}}</h2>
-        </div>
+        </div> -->
         <div class="col-auto d-flex justify-content-end ms-auto">
             <a href=""><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
@@ -205,7 +205,7 @@
                         <div class="row d-flex align-items-center my-1">
                             <div class="col col-2"> <label for="">OJO IZQUIERDO</label></div>
                             <div class="col-1">
-                               <!--  <input class="form-control form-control-sm" type="text" name="graduacionAnt[ga_oi]" id="ga_oi"> -->
+                                <!--  <input class="form-control form-control-sm" type="text" name="graduacionAnt[ga_oi]" id="ga_oi"> -->
                             </div>
                             <div class="col col-auto"> <label for="">Esfera:</label></div>
                             <div class="col col-2">
@@ -237,7 +237,7 @@
             </div>
         </div>
 
-          <div class="row card p-1 my-1 cardFicha" id="AVSinCorr" style="display:none">
+        <div class="row card p-1 my-1 cardFicha" id="AVSinCorr" style="display:none">
             <div class="col">
                 <div class="row">
                     <h4>A.V. Sin Corrección</h4>
@@ -252,7 +252,7 @@
                             </div>
                             <div class="col col-auto"> <label for="">Esfera:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" name="avSinCorr[esf_od]"  type="text" id="avscesf_od">
+                                <input class="form-control form-control-sm" name="avSinCorr[esf_od]" type="text" id="avscesf_od">
                             </div>
                             <div class="col col-auto"> <label for="">Cilindro:</label></div>
                             <div class="col col-2">
@@ -274,11 +274,11 @@
                             </div>
                             <div class="col col-auto"> <label for="">Cilindro:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" name="avSinCorr[cil_oi]"  id="avsccil_oi">
+                                <input class="form-control form-control-sm" type="text" name="avSinCorr[cil_oi]" id="avsccil_oi">
                             </div>
                             <div class="col col-auto"> <label for="">A.V:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm" type="text" name="avSinCorr[av_oi]"  id="avscav_oi">
+                                <input class="form-control form-control-sm" type="text" name="avSinCorr[av_oi]" id="avscav_oi">
                             </div>
                         </div>
                     </div>
@@ -301,7 +301,7 @@
 
         </div>
 
-         
+
         <div class="row  my-1 row-auto">
             <div class="col card p-1 cardFicha col-auto me-auto" id="reflejoPupilar" style="display:none">
                 <div class="row">
@@ -323,19 +323,19 @@
                         </label>
                     </div>
                     <div class="col-auto form-check">
-                        <input class="form-check-input"name="reflejoPupilar[preacc]"  type="checkbox" id="si_comp_v">
+                        <input class="form-check-input" name="reflejoPupilar[preacc]" type="checkbox" id="si_comp_v">
                         <label class="form-check-label" for="flexCheckDefault">
                             Reaccionan
                         </label>
                     </div>
                     <div class="col-auto form-check">
-                        <input class="form-check-input" name="reflejoPupilar[pl]"  type="checkbox" id="si_comp_v">
+                        <input class="form-check-input" name="reflejoPupilar[pl]" type="checkbox" id="si_comp_v">
                         <label class="form-check-label" for="flexCheckDefault">
                             Reaccionan a luz
                         </label>
                     </div>
                     <div class="col-auto form-check">
-                        <input class="form-check-input" name="reflejoPupilar[pa]"  type="checkbox" id="si_comp_v">
+                        <input class="form-check-input" name="reflejoPupilar[pa]" type="checkbox" id="si_comp_v">
                         <label class="form-check-label" for="flexCheckDefault">
                             Se acomodan
                         </label>
@@ -351,7 +351,7 @@
 
                 <div class="row my-1">
                     <div class="col col-12">
-                        <textarea class="form-control" name="ishihara[ishiharaTest]" ></textarea>
+                        <textarea class="form-control" name="ishihara[ishiharaTest]"></textarea>
                     </div>
                 </div>
             </div>
@@ -390,7 +390,7 @@
                         <div class="row d-flex align-items-center my-1">
                             <div class="col col-2"> <label for="">OJO IZQUIERDO</label></div>
                             <div class="col-1">
-                               <!--  <input class="form-control form-control-sm" type="text" name="graduacionAnt[ga_oi]" id="ga_oi"> -->
+                                <!--  <input class="form-control form-control-sm" type="text" name="graduacionAnt[ga_oi]" id="ga_oi"> -->
                             </div>
                             <div class="col col-auto"> <label for="">Esfera:</label></div>
                             <div class="col col-2">
@@ -439,15 +439,15 @@
                             </div>
                             <div class="col col-auto"> <label for="">Esfera:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm"  name="avbinoc[esf_od]"type="text" id="binesf_od">
+                                <input class="form-control form-control-sm" name="avbinoc[esf_od]" type="text" id="binesf_od">
                             </div>
                             <div class="col col-auto"> <label for="">Cilindro:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm"  name="avbinoc[cil_od]"type="text" id="bincil_od">
+                                <input class="form-control form-control-sm" name="avbinoc[cil_od]" type="text" id="bincil_od">
                             </div>
                             <div class="col col-auto"> <label for="">Corr. :</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm"  name="avbinoc[corr_od]"type="text" id="bncorr_od">
+                                <input class="form-control form-control-sm" name="avbinoc[corr_od]" type="text" id="bncorr_od">
                             </div>
                         </div>
                         <div class="row d-flex align-items-center my-1">
@@ -457,7 +457,7 @@
                             </div>
                             <div class="col col-auto"> <label for="">Esfera:</label></div>
                             <div class="col col-2">
-                                <input class="form-control form-control-sm"  name="avbinoc[esf_oi]" type="text" id="binesf_oi">
+                                <input class="form-control form-control-sm" name="avbinoc[esf_oi]" type="text" id="binesf_oi">
                             </div>
                             <div class="col col-auto"> <label for="">Cilindro:</label></div>
                             <div class="col col-2">
@@ -473,7 +473,7 @@
                         <div class="row">
                             <div class="col col-5"> <label for="">A.V Binoc. :</label></div>
                             <div class="col col-5">
-                                <input class="form-control form-control-sm" name="avbinoc[av_binoc]"type="text" id="">
+                                <input class="form-control form-control-sm" name="avbinoc[av_binoc]" type="text" id="">
                             </div>
                         </div>
                     </div>
@@ -485,13 +485,16 @@
         </div>
 
 
+<div class="row">
+    <div class="col me-auto"></div>
+    <div class="col-auto"><button type="submit" id="creaFicha" class="btn botonNuevaCita" style="display:none">CreaFicha</button></div>
+</div>
 
 
+</div>
 
-</div> 
-        <button type="submit" class="btn btn-warning">CreaFicha</button>
 
-    </form>
+</form>
 
 
 </div>

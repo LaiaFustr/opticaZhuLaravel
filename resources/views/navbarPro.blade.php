@@ -117,7 +117,7 @@
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
 
-                                <input class="form-control" type="number" name="codPostal" pattern= /^\d{5}$/ id="cp">
+                                <input class="form-control" type="text" name="codPostal" pattern= /^\d{5}$/ id="cp">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num. Telf</label>
@@ -294,3 +294,5 @@
 <div class="content">
     <router-outlet></router-outlet>
 </div>
+
+

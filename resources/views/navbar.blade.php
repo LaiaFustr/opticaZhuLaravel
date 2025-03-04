@@ -285,3 +285,28 @@
     <div class="content">
         <router-outlet></router-outlet>
     </div>
+
+
+<!--     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+@if(session('fichaCreada')!=null){
+<script>
+    $(window).on('load', function() {
+       
+        Swal.fire({
+            icon: "success",
+            width: 400,
+            iconColor:'#176E63',
+            color: '#176E63',
+            background: '#9FF0DA',
+            titleText: "{{session('fichaCreada')}}",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    });
+</script>
+}
+@else
+
+@endif -->
