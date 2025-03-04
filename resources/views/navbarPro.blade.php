@@ -2,13 +2,7 @@
     <div class="logo"><img src="./assets/img/mininaranjiverdeTrayecto.svg" class="logo"></div>
     <div class="containerUser"><img src="./assets/img/user.svg" class="userLogo">Usuario</div>
     <ul class="sidebarUl">
-        <li class="nav-item sidebarLi">
-            <div class="optionText">
-                <a class="sidebar-optionA" href="{{url('propietario/opticas')}}">Ópticas</a>
-            </div>
-            <ul class="dropdown-menu">
-            </ul>
-        </li>
+        
         <li class="nav-item sidebarLi">
             <div class="optionText">
                 <a class="sidebar-optionA" href="{{url('propietario/citas')}}">Citas</a>
@@ -39,6 +33,13 @@
                     <li><a data-bs-toggle="modal" data-bs-target="#crearEmpModal">Crear Empleado</a></li>
                     <li><a>Ver todos</a></li>
                 </div>
+            </ul>
+        </li>
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="sidebar-optionA" href="{{url('propietario/opticas')}}">Ópticas</a>
+            </div>
+            <ul class="dropdown-menu">
             </ul>
         </li>
     </ul>
