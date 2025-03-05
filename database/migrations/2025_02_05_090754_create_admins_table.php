@@ -15,14 +15,12 @@ return new class extends Migration
             $table->increments('id')->primary();
             $table->string('nombre',20);
             $table->string('apellido',20);
-            $table->string('dni', 9);
+            $table->string('dni', 9)->unique();
             $table->string('direccion',40);
             $table->string('telefono',15);
             $table->string('correo');
             $table->string('nombreUsuario');
             $table->string('contrasenia');
-            
-            $table->unique('dni');
 
         });
     }

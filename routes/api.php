@@ -75,4 +75,4 @@ Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('ci
 
 Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('login');
 
-Route::get('/buscarEmpleado', [UserController::class, 'buscarEmpleado'])->name('buscarEmpleado');
+Route::get('/buscarEmpleadoApi', [UserController::class, 'buscarEmpleadoApi'])->name('buscarEmpleadoApi');
