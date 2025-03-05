@@ -40,7 +40,7 @@ Route::get('propietario/citas', [CitaController::class, 'indexCitas'])->name('ci
 
 Route::get('propietario/opticas', function () {
     return view('opticas');
-});
+})->name('opticas');
 
 Route::get('propietario/opticasC', function () {
     return view('opticasCard');
@@ -88,6 +88,13 @@ Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])-
 Route::get('propietario/buscarCli', [ClienteController::class, 'buscarCli'])->name('buscarCli');
 Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleado'])->name('buscarEmpleado');
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
+
+//Metodos Editar
+Route::patch('propietario/desactivar/{id}', [UserController::class, 'desactivarEmpleado'])->name('desactivar');
+Route::patch('propietario/activar/{id}', [UserController::class, 'activarEmpleado'])->name('activar');
+
+
+
 //Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado'])->name('buscarEmpleado');
 /* Route::get('propietario/bloquesCalendario', [CalendarioController::class, 'bloquesHorariosCalendario']);
  */
