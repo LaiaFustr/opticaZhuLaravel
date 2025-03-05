@@ -86,7 +86,7 @@ Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])-
 
 //Metodos Buscar
 Route::get('propietario/buscarCli', [ClienteController::class, 'buscarCli'])->name('buscarCli');
-Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleado'])->name('buscarEmpleado');
+Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleadoLaravel'])->name('buscarEmpleado');
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 
 //Metodos Editar
