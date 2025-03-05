@@ -309,7 +309,7 @@ class UserController extends Controller
 
         $idOptica = $request->query('idOptica');
 
-        $empleados = User::where('idOptica', $idOptica)->get();
+        $empleados = User::where('idOptica', $idOptica)->where('activo', 1)->get();
 
         if ($empleados == null) {
             return response()->json(['message' => 'Citas no encontrado'])
@@ -323,4 +323,21 @@ class UserController extends Controller
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
             ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
+
+    public function desactivarEmpleado($id){
+        $empleado= User::find($id);
+        $empleado->activo=0;
+        $empleado->update();
+
+        return redirect()->route('opticas');
+    }
+
+    public function activarEmpleado($id){
+        $empleado= User::find($id);
+        $empleado->activo=1;
+        $empleado->update();
+
+        return redirect()->route('opticas');
+    }
+
 }

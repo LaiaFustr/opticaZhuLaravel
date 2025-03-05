@@ -88,4 +88,22 @@ class ClienteController extends Controller
         ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 
+    public function borrarCli(Request $request){
+        $request->validate([
+            'id' => 'required|string',
+        ]);
+
+        $id= $request->query('id');
+
+        $cliente= Cliente::find($id);
+        
+        if (!$cliente) {
+            return response()->json(['error' => 'Cliente no encontrado'], 404);
+        }
+    
+        $cliente->delete();
+    
+        return response()->json(['mensaje' => 'Cliente eliminado correctamente']);
+    }
+
 }
