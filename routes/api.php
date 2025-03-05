@@ -41,8 +41,11 @@ Route::get('opticas/guardar' , [OpticaController::class, 'guardar']);
 Route::get('/opticas/{id}', [OpticaController::class,'mostrarID']);
 Route::get('/opticasporadmin/{idAdmin}', [OpticaController::class,'mostrarIDAdmin']);
 Route::get('/opticasporhorario/{idHorario}', [OpticaController::class,'mostrarIDHorario']);
-Route::get('/empleadosoptica/{id}',[OpticaController::class,'empleadosOptica']);
+//Route::get('/empleadosoptica/{id}',[OpticaController::class,'empleadosOptica']);
 
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/empleados', [UserController::class, 'empleados']);
+//Route::get('/empleadosOptica/{optica}', [UserController::class, 'empleadosOptica']);
 
 
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
@@ -50,6 +53,7 @@ Route::post('/crearCita', [CitaController::class, 'guardar'])->name('crearCita')
 
 Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados');
 Route::get('/empleados/{id}', [EmpleadoController::class, 'empleadoID']);
+Route::get('/empleadosOptica', [UserController::class, 'empleadosOptica'])->name('empleadoOptica');
 Route::get('users', [UserController::class, 'index'])->name('users');
 
 Route::get('/auxiliares', [AuxiliarController::class, 'listado']);
@@ -66,7 +70,9 @@ Route::get('/citasOptica', [CitaController::class, 'citaOptica'])->name('citasOp
 Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('citasOcupadas');
 
 //Cambiar por id cuando este el login angular.
-Route::get('/empleadosOptica/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOptica');
+//Route::get('/empleadosOptica/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOptica');
 //Route::get('/horarios', [HorarioController::class, 'index']->name('horarios'));
 
 Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('login');
+
+Route::get('/buscarEmpleadoApi', [UserController::class, 'buscarEmpleadoApi'])->name('buscarEmpleadoApi');

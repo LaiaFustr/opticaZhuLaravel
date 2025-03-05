@@ -23,7 +23,7 @@
                     </div>
                 </ul>
             </li>
-            <li class="nav-item sidebarLi">
+            <!-- <li class="nav-item sidebarLi">
                 <div class="optionText">
                     <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#empleadoSublist" role="button" aria-expanded="false" aria-controls="empleadoSublist">Empleados</a>
                 </div>
@@ -34,7 +34,7 @@
                         <li><a>Ver todos</a></li>
                     </div>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </div>
 
@@ -285,3 +285,28 @@
     <div class="content">
         <router-outlet></router-outlet>
     </div>
+
+
+<!--     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+@if(session('fichaCreada')!=null){
+<script>
+    $(window).on('load', function() {
+       
+        Swal.fire({
+            icon: "success",
+            width: 400,
+            iconColor:'#176E63',
+            color: '#176E63',
+            background: '#9FF0DA',
+            titleText: "{{session('fichaCreada')}}",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    });
+</script>
+}
+@else
+
+@endif -->

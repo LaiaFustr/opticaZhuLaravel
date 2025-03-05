@@ -8,12 +8,10 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\FichaController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\API\UserController;
+use App\Models\User;
+
 //use App/Http/Controllers/API/UserController;
 //use App\Http\Controllers\UserController;
-
-
-
-
 
 
 /*Route::get('/', function(){
@@ -35,9 +33,10 @@ Route::post('/login-usuario', [UserController::class, 'login'])->name('login');
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
-Route::get('propietario/citas', function () {
+/* Route::get('propietario/citas', function () {
     return view('citas');
-})->name('citas');
+})->name('citas'); */
+Route::get('propietario/citas', [CitaController::class, 'indexCitas'])->name('citas');
 
 Route::get('propietario/opticas', function () {
     return view('opticas');
@@ -81,16 +80,15 @@ Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])
 //Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
-Route::post('propietario/insertarEmpleado', [EmpleadoController::class, 'guardarSesion'])->name('insertarEmpleado');
+Route::post('propietario/insertarEmpleado', [UserController::class, 'register'])->name('insertarEmpleado');
 Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])->name('insertarEmpleado');
 
 
 //Metodos Buscar
 Route::get('propietario/buscarCli', [ClienteController::class, 'buscarCli'])->name('buscarCli');
-Route::get('propietario/buscarEmp', [EmpleadoController::class, 'buscarEmpleado'])->name('buscarEmpleado');
-
+Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleado'])->name('buscarEmpleado');
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
-Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado'])->name('buscarEmpleado');
+//Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado'])->name('buscarEmpleado');
 /* Route::get('propietario/bloquesCalendario', [CalendarioController::class, 'bloquesHorariosCalendario']);
  */
 

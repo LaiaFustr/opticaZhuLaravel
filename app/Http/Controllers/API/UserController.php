@@ -9,18 +9,21 @@ use App\Models\Optica;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+
 
 
 class UserController extends Controller
 {
-    public function index(Request $request){
-        $user=User::all();
+    public function index(Request $request)
+    {
+        $user = User::all();
 
         return response()->json($user);
     }
 
 
-     /**
+    /**
      * login api
      *
      */
@@ -40,7 +43,16 @@ class UserController extends Controller
             Log::info($request);
             Auth::login($empleado);
             session(['idAdmin' => $empleado->id]);
-            return redirect()->route('opticas');
+
+            $logeado = User::find($empleado->id);
+
+
+            if ($logeado->rol == 'admin') {
+                $ruta = redirect()->route('opticas');
+            } elseif ($logeado->rol == 'auxiliar' || $logeado->rol == 'optometrista') {
+                $ruta = redirect()->route('home');
+            }
+            return $ruta;
         } else {
             Log::info("hola");
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
@@ -49,7 +61,8 @@ class UserController extends Controller
         }
     }
 
-    public function loginAngular(Request $request){
+    public function loginAngular(Request $request)
+    {
         $request->validate([
             'nombreUsuario' => 'required',
             'contrasenia' => 'required'
@@ -63,70 +76,80 @@ class UserController extends Controller
             //Log::info($request);
             Auth::login($empleado);
             //dd($empleado);
-            return response()->json(['nombreUsuario' =>$empleado->nombreUsuario, 'rol'=> $empleado->rol,
-                                     'optica' => [
-                                        'id' => $empleado->optica->id ?? 1,
-                                        'nombre' => $empleado->optica->nombre ?? null,
-                                     ]]);
-        }else{
+            return response()->json([
+                'id' => $empleado->id,
+                'nombreUsuario' => $empleado->nombreUsuario,
+                'apellido' => $empleado->apellido,
+                'nombre' => $empleado->nombre,
+                'rol' => $empleado->rol,
+                'dni' => $empleado->dni,
+                'direccion' => $empleado->direccion,
+                'telefono' => $empleado->telefono,
+                'correo' => $empleado->correo,
+                'optica' => [
+                    'id' => $empleado->optica->id ?? 1,
+                    'nombre' => $empleado->optica->nombre ?? null,
+                ]
+            ]);
+        } else {
             return response()->json('message', 'Nombre de usuario o contraseña incorrectos');
         }
     }
 
-     /**
+    /**
      * Register api
      *
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
     {
-    // Validar los datos recibidos
-    $validatedData = $request->validate([
-        'nombre' => 'required',
-        'apellido' => 'required',
-        'dni' => 'required',
-        'direccion' => 'required',
-        'telefono' => 'required',
-        'correo' => 'required',
-        'nombreUsuario' => 'required',
-        'rol' => 'required',
-        'contrasenia' => 'required', // Usamos confirmed para comparar con password_confirmation
-    ]);
-
-    try {
-        // Crear el usuario con la contraseña cifrada
-        $user = User::create([
-            'nombre' => $validatedData['nombre'],
-            'apellido' => $validatedData['apellido'],
-            'dni' => $validatedData['dni'],
-            'direccion' => $validatedData['direccion'],
-            'telefono' => $validatedData['telefono'],
-            'correo' => $validatedData['correo'],
-            'nombreUsuario' => $validatedData['nombreUsuario'],
-            'rol' => $validatedData['rol'],
-            'contrasenia' => Hash::make($validatedData['contrasenia']),
+        // Validar los datos recibidos
+        $validatedData = $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'dni' => 'required',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'correo' => 'required',
+            'nombreUsuario' => 'required',
+            'rol' => 'required',
+            'contrasenia' => 'required', // Usamos confirmed para comparar con password_confirmation
         ]);
 
-        // Generar un token de acceso
-        $token = $user->createToken('MyApp')->accessToken;
+        try {
+            // Crear el usuario con la contraseña cifrada
+            $user = User::create([
+                'nombre' => $validatedData['nombre'],
+                'apellido' => $validatedData['apellido'],
+                'dni' => $validatedData['dni'],
+                'direccion' => $validatedData['direccion'],
+                'telefono' => $validatedData['telefono'],
+                'correo' => $validatedData['correo'],
+                'nombreUsuario' => $validatedData['nombreUsuario'],
+                'rol' => $validatedData['rol'],
+                'contrasenia' => Hash::make($validatedData['contrasenia']),
+            ]);
 
-        // Preparar la respuesta de éxito
-        return response()->json([
-            'success' => [
-                'token' => $token,
-                'nombre' => $user->nombre,
-            ]
-        ], 201); // Código HTTP 201: Creado
-    } catch (\Exception $e) {
-        // Manejar errores inesperados
-        return response()->json([
-            'error' => 'No se pudo registrar el usuario.',
-            'details' => $e->getMessage(),
-        ], 500); // Código HTTP 500: Error interno del servidor
-    }
+            // Generar un token de acceso
+            $token = $user->createToken('MyApp')->accessToken;
+
+            // Preparar la respuesta de éxito
+            return response()->json([
+                'success' => [
+                    'token' => $token,
+                    'nombre' => $user->nombre,
+                ]
+            ], 201); // Código HTTP 201: Creado
+        } catch (\Exception $e) {
+            // Manejar errores inesperados
+            return response()->json([
+                'error' => 'No se pudo registrar el usuario.',
+                'details' => $e->getMessage(),
+            ], 500); // Código HTTP 500: Error interno del servidor
+        }
     }
 
-      /**
+    /**
      * details api
      *
      * @return \Illuminate\Http\Response
@@ -142,15 +165,12 @@ class UserController extends Controller
     {
 
         $isUser = $request->user()->token()->revoke();
-        if($isUser){
+        if ($isUser) {
             $success['message'] = "Successfully logged out.";
             return response()->json(['success' => $isUser], 200);
-        }
-        else{
+        } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
-
-
     }
 
     public function guardarSesion(Request $request)
@@ -167,7 +187,7 @@ class UserController extends Controller
             'contrasenia' => 'required|string|max:255',
         ]);
         /* $usuarios=[]; */
-         session([
+        session([
             'nombreE' => $datos['nombreE'],
             'apellido' => $datos['apellido'],
             'dni' => $datos['dni'],
@@ -182,7 +202,7 @@ class UserController extends Controller
 
         session('nombreH', 'horaApertura', 'horaCierre');
 
-       /*  $horario = Horario::create([
+        /*  $horario = Horario::create([
             'nombre' => session('nombreH'),
             'horaApertura' => session('horaApertura'),
             'horaCierre' => session('horaCierre'),
@@ -215,11 +235,92 @@ class UserController extends Controller
             //'idOptica' => $optica->id,
         ]);
 
-
-
         $opticas = Optica::all();
 
         return view('opticas', compact('opticas'));
     }
 
+
+
+    public function buscarEmpleadoApi(Request $request)
+    {
+        $request->validate([
+            'dni' => 'required|string|max:255',
+        ]);
+
+        $dni = $request->query('dni');
+
+        $empleado = DB::table('users')->where('dni', $dni)->first();
+
+        if ($empleado == null) {
+            return response()->json(['message' => 'Empleado no encontrado']);
+        }
+        //dd($cliente);
+        return response()->json($empleado);
+    }
+
+    public function guardarEmpleadoApi(Request $request)
+    {
+        $id = $request['id'];
+        $usuarioCambiado = User::find($id);
+
+        $usuarioCambiado->nombre = $request->nombre;
+        $usuarioCambiado->apellido = $request->apellido;
+        $usuarioCambiado->direccion = $request->direccion;
+        $usuarioCambiado->telefono = $request->telefono;
+        $usuarioCambiado->correo = $request->correo;
+        $usuarioCambiado->nombreUsuario = $request->nombreEmpleado;
+    }
+
+
+
+
+    public function buscarEmpleadoLaravel(Request $request)
+    {
+        $request->validate([
+            'dni' => 'required|string|max:255',
+        ]);
+
+        $dni = $request->query('dni');
+
+        $empleado = DB::table('users')->where('dni', $dni)->first();
+
+        if ($empleado == null) {
+            return response()->json(['message' => 'Empleado no encontrado']);
+        }
+        //dd($cliente);
+        return view('perfilEmp', compact('empleado'));
+    }
+
+
+
+    public function empleadosOptica(Request $request)
+    {
+
+        /*   $request->validate([
+            'idOptica' => 'required|string|max:255',
+        ]); */
+
+        if (!$request->has('idOptica')) {
+            return response()->json([
+                'message' => 'El parámetro idOptica es requerido'
+            ], 400);
+        }
+
+        $idOptica = $request->query('idOptica');
+
+        $empleados = User::where('idOptica', $idOptica)->get();
+
+        if ($empleados == null) {
+            return response()->json(['message' => 'Citas no encontrado'])
+                ->header('Access-Control-Allow-Origin', '*')
+                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+                ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        }
+
+        return response()->json($empleados)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    }
 }

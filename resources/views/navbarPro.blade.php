@@ -2,13 +2,7 @@
     <div class="logo"><img src="./assets/img/mininaranjiverdeTrayecto.svg" class="logo"></div>
     <div class="containerUser"><img src="./assets/img/user.svg" class="userLogo">Usuario</div>
     <ul class="sidebarUl">
-        <li class="nav-item sidebarLi">
-            <div class="optionText">
-                <a class="sidebar-optionA" href="{{url('propietario/opticas')}}">Ópticas</a>
-            </div>
-            <ul class="dropdown-menu">
-            </ul>
-        </li>
+        
         <li class="nav-item sidebarLi">
             <div class="optionText">
                 <a class="sidebar-optionA" href="{{url('propietario/citas')}}">Citas</a>
@@ -39,6 +33,13 @@
                     <li><a data-bs-toggle="modal" data-bs-target="#crearEmpModal">Crear Empleado</a></li>
                     <li><a>Ver todos</a></li>
                 </div>
+            </ul>
+        </li>
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="sidebar-optionA" href="{{url('propietario/opticas')}}">Ópticas</a>
+            </div>
+            <ul class="dropdown-menu">
             </ul>
         </li>
     </ul>
@@ -116,7 +117,7 @@
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
 
-                                <input class="form-control" type="number" name="codPostal" pattern= /^\d{5}$/ id="cp">
+                                <input class="form-control" type="text" name="codPostal" pattern= /^\d{5}$/ id="cp">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num. Telf</label>
@@ -188,7 +189,7 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli row" method="POST" action="{{url('propietario/insertarEmpleado')}}" onsubmit="return validarContrasenia()">
+                <form id="form-cli row" method="POST" action="{{url('propietario/insertarEmpleado')}}" >
                     @csrf
                     <div class="col px-2">
                         <div class="row my-2">
@@ -293,3 +294,5 @@
 <div class="content">
     <router-outlet></router-outlet>
 </div>
+
+
