@@ -43,13 +43,13 @@ class UserController extends Controller
             Log::info($request);
             Auth::login($empleado);
             session(['idAdmin' => $empleado->id]);
-            
-            $logeado = User::find($empleado->id);
-            
 
-            if($logeado->rol== 'admin'){
+            $logeado = User::find($empleado->id);
+
+
+            if ($logeado->rol == 'admin') {
                 $ruta = redirect()->route('opticas');
-            }elseif ($logeado->rol== 'auxiliar' || $logeado->rol == 'optometrista') {
+            } elseif ($logeado->rol == 'auxiliar' || $logeado->rol == 'optometrista') {
                 $ruta = redirect()->route('home');
             }
             return $ruta;
@@ -241,7 +241,8 @@ class UserController extends Controller
     }
 
 
-    public function buscarEmpleado(Request $request)
+
+    public function buscarEmpleadoApi(Request $request)
     {
         $request->validate([
             'dni' => 'required|string|max:255',
@@ -251,16 +252,52 @@ class UserController extends Controller
 
         $empleado = DB::table('users')->where('dni', $dni)->first();
 
-        if($empleado==null){
+        if ($empleado == null) {
+            return response()->json(['message' => 'Empleado no encontrado']);
+        }
+        //dd($cliente);
+        return response()->json($empleado);
+    }
+
+    public function guardarEmpleadoApi(Request $request)
+    {
+        $id = $request['id'];
+        $usuarioCambiado = User::find($id);
+
+        $usuarioCambiado->nombre = $request->nombre;
+        $usuarioCambiado->apellido = $request->apellido;
+        $usuarioCambiado->direccion = $request->direccion;
+        $usuarioCambiado->telefono = $request->telefono;
+        $usuarioCambiado->correo = $request->correo;
+        $usuarioCambiado->nombreUsuario = $request->nombreEmpleado;
+    }
+
+
+
+
+    public function buscarEmpleadoLaravel(Request $request)
+    {
+        $request->validate([
+            'dni' => 'required|string|max:255',
+        ]);
+
+        $dni = $request->query('dni');
+
+        $empleado = DB::table('users')->where('dni', $dni)->first();
+
+        if ($empleado == null) {
             return response()->json(['message' => 'Empleado no encontrado']);
         }
         //dd($cliente);
         return view('perfilEmp', compact('empleado'));
     }
 
-    public function empleadosOptica(Request $request){
 
-      /*   $request->validate([
+
+    public function empleadosOptica(Request $request)
+    {
+
+        /*   $request->validate([
             'idOptica' => 'required|string|max:255',
         ]); */
 
@@ -270,20 +307,20 @@ class UserController extends Controller
             ], 400);
         }
 
-        $idOptica=$request->query('idOptica');
+        $idOptica = $request->query('idOptica');
 
         $empleados = User::where('idOptica', $idOptica)->get();
 
-        if($empleados==null){
+        if ($empleados == null) {
             return response()->json(['message' => 'Citas no encontrado'])
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+                ->header('Access-Control-Allow-Origin', '*')
+                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+                ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         }
 
         return response()->json($empleados)
-        ->header('Access-Control-Allow-Origin', '*')
-        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 }
