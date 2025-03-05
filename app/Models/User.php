@@ -66,7 +66,7 @@ class User extends Authenticatable
     }
 
     public function optometrista(){
-        return $this->hasMany(Optica::class, 'optometristas', 'idEmpleado', 'id');
+        return $this->hasMany(Optica::class, /* 'optometristas', */ 'idEmpleado', 'id');
     }
 
     public function citas(){
