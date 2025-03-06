@@ -263,9 +263,7 @@ class FichaController extends Controller
 
 
 
-        $redirige = redirect()->route('home'); //de esta vista, llevará a la de 'guardaFicha' o igual no. ns
-
-        session()->flash('success', 'Ficha creada correctamente');
+        $redirige = redirect()->route('home')->with(session()->flash('success', 'Ficha creada correctamente'));
         return $redirige; //Falta añadir la sweet alert que pille si existe esta session
 
     }

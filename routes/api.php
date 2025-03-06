@@ -62,6 +62,8 @@ Route::get('/optometristasoptica/{id}', [OptometristaController::class,'listadoO
 
 Route::get('/clientes', [ClienteController::class,'index'])->name('clientes');
 Route::get('/citasCliente', [ClienteController::class,'citasCliente'])->name('citasCliente');
+Route::delete('/borrarCliente', [ClienteController::class, 'borrarCli'])->name('borrarCli');
+
 
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
@@ -74,4 +76,4 @@ Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('ci
 
 Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('login');
 
-Route::get('/buscarEmpleado', [UserController::class, 'buscarEmpleado'])->name('buscarEmpleado');
+Route::get('/buscarEmpleadoApi', [UserController::class, 'buscarEmpleadoApi'])->name('buscarEmpleadoApi');

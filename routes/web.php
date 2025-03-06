@@ -33,13 +33,14 @@ Route::post('/login-usuario', [UserController::class, 'login'])->name('login');
 
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
 
-Route::get('propietario/citas', function () {
+/* Route::get('propietario/citas', function () {
     return view('citas');
-})->name('citas');
+})->name('citas'); */
+Route::get('propietario/citas', [CitaController::class, 'indexCitas'])->name('citas');
 
 Route::get('propietario/opticas', function () {
     return view('opticas');
-});
+})->name('opticas');
 
 Route::get('propietario/opticasC', function () {
     return view('opticasCard');
@@ -85,8 +86,15 @@ Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])-
 
 //Metodos Buscar
 Route::get('propietario/buscarCli', [ClienteController::class, 'buscarCli'])->name('buscarCli');
-Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleado'])->name('buscarEmpleado');
+Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleadoLaravel'])->name('buscarEmpleado');
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
+
+//Metodos Editar
+Route::patch('propietario/desactivar/{id}', [UserController::class, 'desactivarEmpleado'])->name('desactivar');
+Route::patch('propietario/activar/{id}', [UserController::class, 'activarEmpleado'])->name('activar');
+
+
+
 //Route::get('propietario/buscarEmp', [EmpleadoController::class,'buscarEmpleado'])->name('buscarEmpleado');
 /* Route::get('propietario/bloquesCalendario', [CalendarioController::class, 'bloquesHorariosCalendario']);
  */
