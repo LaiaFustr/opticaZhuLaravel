@@ -50,16 +50,14 @@
         $('#contrasenia').attr('type', $('#contrasenia').attr('type') == 'text' ? 'password' : 'text');
 
         if ($('#show-hide-passwordLog').html() == '<i class="fa-solid fa-lock"></i>') {
-            console.log('lock');
+            //console.log('lock');
             $('#show-hide-passwordLog').html('');
-            $('#show-hide-passwordLog').html('<i class="fa-solid fa-unlock"></i>');
+            $('#show-hide-passwordLog').html('<i class="fa-solid fa-lock-open"></i>');
         } else {
-            console.log('unlock');
+            //console.log('unlock');
             $('#show-hide-passwordLog').html('');
             $('#show-hide-passwordLog').html('<i class="fa-solid fa-lock"></i>');
         }
-
-        
         
     });
 </script>
