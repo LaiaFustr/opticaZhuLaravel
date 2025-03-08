@@ -71,6 +71,7 @@ class UserController extends Controller
         $credentials = $request->except(['_token']);
 
         $empleado = User::with('optica')->where('nombreUsuario', $request->nombreUsuario)->first();
+        //dd($empleado);
 
         if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
             //Log::info($request);
@@ -103,7 +104,6 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        // Validar los datos recibidos
         $validatedData = $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
@@ -113,11 +113,11 @@ class UserController extends Controller
             'correo' => 'required',
             'nombreUsuario' => 'required',
             'rol' => 'required',
-            'contrasenia' => 'required', // Usamos confirmed para comparar con password_confirmation
+            'contrasenia' => 'required',
+            'idOptica' => 'required|integer',
         ]);
 
         try {
-            // Crear el usuario con la contraseña cifrada
             $user = User::create([
                 'nombre' => $validatedData['nombre'],
                 'apellido' => $validatedData['apellido'],
@@ -128,26 +128,23 @@ class UserController extends Controller
                 'nombreUsuario' => $validatedData['nombreUsuario'],
                 'rol' => $validatedData['rol'],
                 'contrasenia' => Hash::make($validatedData['contrasenia']),
+                'idOptica' => $validatedData['idOptica'],
             ]);
 
-            // Generar un token de acceso
             $token = $user->createToken('MyApp')->accessToken;
 
-            // Preparar la respuesta de éxito
             return response()->json([
                 'success' => [
                     'token' => $token,
                     'nombre' => $user->nombre,
                 ]
-            ], 201); // Código HTTP 201: Creado
+            ], 201);
         } catch (\Exception $e) {
-            // Manejar errores inesperados
-            return response()->json([
-                'error' => 'No se pudo registrar el usuario.',
-                'details' => $e->getMessage(),
-            ], 500); // Código HTTP 500: Error interno del servidor
+            return redirect()->route('opticas');
         }
     }
+
+
 
     /**
      * details api
@@ -279,12 +276,12 @@ class UserController extends Controller
     public function buscarEmpleadoLaravel(Request $request)
     {
         $request->validate([
-            'dni' => 'required|string|max:255',
+            'nombreUsuario' => 'required|string|max:255',
         ]);
 
-        $dni = $request->query('dni');
+        $nombreUsuario = $request->query('nombreUsuario');
 
-        $empleado = DB::table('users')->where('dni', $dni)->first();
+        $empleado = DB::table('users')->where('nombreUsuario', $nombreUsuario)->first();
 
         if ($empleado == null) {
             return response()->json(['message' => 'Empleado no encontrado']);

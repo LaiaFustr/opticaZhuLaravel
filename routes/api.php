@@ -69,6 +69,7 @@ Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCl
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
 Route::get('/citasOptica', [CitaController::class, 'citaOptica'])->name('citasOptica');
 Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('citasOcupadas');
+Route::delete('/borrarCita', [CitaController::class , 'borrarCita'])->name('borrarCita');
 
 //Cambiar por id cuando este el login angular.
 //Route::get('/empleadosOptica/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOptica');
@@ -78,3 +79,5 @@ Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('log
 
 Route::get('/buscarEmpleadoApi', [UserController::class, 'buscarEmpleadoApi'])->name('buscarEmpleadoApi');
 Route::patch('/guardarEmpleadoApi', [UserController::class, 'guardarEmpleadoApi'])->name('guardarEmpleadoApi');
+
+
