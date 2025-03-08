@@ -17,6 +17,15 @@ class OpticaController extends Controller
         $opticas = Optica::all();
 
         return response()->json($opticas);
+        //return view('navbarPro', compact('opticas'));
+    }
+
+    public function indexSelect(Request $request)
+    {
+        $opticas = Optica::all();
+
+        //return response()->json($opticas);
+        return view('navbarPro', compact('opticas'));
     }
 
     //Para mostrar la optica que tenga la ID que digas

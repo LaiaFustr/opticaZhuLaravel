@@ -95,10 +95,10 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli row" method="POST" action="{{url('propietario/insertarCliente')}}">
+                <form id="form-cli row" method="POST" action="{{route('insertarCliente')}}">
                     <div class="col px-2">
+                        @csrf
                         <div class="row my-2">
-                            @csrf
                             <div class="col">
                                 <label class="col-form-label" for="nombre">Nombre</label>
                                 <input class="form-control" type="text" name="nombre" id="nombre" max="20">
@@ -122,15 +122,13 @@
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num. Telf</label>
                                 <input class="form-control" type="text" name="telefono" id="telf" max="9">
-
-                                <input type="hidden" name="idAdmin" value="11">
-                            </div>
+                        </div>
                         </div>
                     </div>
 
             </div>
             <div class="modal-footer border-0">
-                <button type="submit" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal" onclick="location.href='{{ url('propietario/opticas') }}'">Crear</button>
+                <button type="submit" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
             </form>
@@ -157,7 +155,7 @@
                         <div class="row my-2">
                             <div class="col">
                                 <div class="input-group px-3">
-                                    <input class="form-control" type="text" placeholder="Búsqueda por DNI" name="dni">
+                                    <input class="form-control" type="text" placeholder="Búsqueda por DNI" name="nombreUsuario">
                                     <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                 </div>
 
@@ -192,6 +190,18 @@
                 <form id="form-cli row" method="POST" action="{{url('propietario/insertarEmpleado')}}" >
                     @csrf
                     <div class="col px-2">
+                        <div class='row my-2'>
+                        @if(isset($opticas) && count($opticas) > 0)
+                            <label>Elige la Óptica:</label>
+                                <select id="optica" name="idOptica" class="form-select w-auto">
+                            @foreach($opticas as $op)
+                            <option value="{{ $op->id }}">{{ $op->nombre }}</option>
+                            @endforeach
+                                </select>
+                        @else
+                            <p>No hay ópticas disponibles.</p>
+                        @endif
+                        </div>
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="nombre">Nombre</label>

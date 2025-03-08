@@ -122,5 +122,22 @@ class CitaController extends Controller
         return response()->json($clientes);
     }
 
+    public function borrarCita(Request $request){
+        $request->validate([
+            'id' => 'required|string',
+        ]);
+
+        $id= $request->query('id');
+
+        $cita= Cita::find($id);
+        
+        if (!$cita) {
+            return response()->json(['error' => 'Cita no encontrada'], 404);
+        }
+    
+        $cita->delete();
+    
+        return response()->json(['mensaje' => 'Cita eliminada correctamente']);
+    }
 
 }
