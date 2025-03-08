@@ -10,6 +10,18 @@
             <ul class="dropdown-menu">
             </ul>
         </li>
+        <div class="collapse perfilCollapse" id="perfilOpciones">
+            <ul class="list-unstyled d-flex flex-column align-items-centers justify-content-center p-3 m-0">
+                <a class="text-center" href="" routerLink="/perfil">
+                    <li style="font-weight: bolder;">Acceso a perfil</li>
+                </a>
+                <hr>
+                <a class="text-center" href="" (click)="cerrarSesion()">
+                    <li class="" style="font-size: smaller;">
+                        <i class="fa-solid fa-right-from-bracket"></i><span class="ms-2">Cerrar sesión</span></li>
+                </a>
+            </ul>
+        </div>
 
         <li class="nav-item sidebarLi">
             <div class="optionText">

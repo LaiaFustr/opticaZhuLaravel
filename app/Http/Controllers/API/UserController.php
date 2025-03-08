@@ -229,7 +229,8 @@ class UserController extends Controller
             'rol' => session('rol'),
             'nombreUsuario' => session('nombreUsuario'),
             'contrasenia' => session('contrasenia'),
-            //'idOptica' => $optica->id,
+            'activo' => '1',
+            'idOptica' => Optica::orderBy('id', 'desc')->value('id'),
         ]);
 
         $opticas = Optica::all();
