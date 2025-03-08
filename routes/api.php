@@ -78,3 +78,4 @@ Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('ci
 Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('login');
 
 Route::get('/buscarEmpleadoApi', [UserController::class, 'buscarEmpleadoApi'])->name('buscarEmpleadoApi');
+Route::patch('/guardarEmpleadoApi', [UserController::class, 'guardarEmpleadoApi'])->name('guardarEmpleadoApi');
