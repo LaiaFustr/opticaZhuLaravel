@@ -60,11 +60,6 @@ $idEmpleado= $empleado->id;
         </div>
     </div>
 
-    <div class="row mt-4 ">
-        <div class="col-md-11 my-5 d-flex ">
-            <button class="botonOutline" data-bs-toggle="modal" data-bs-target="#">Modificar</button>
-        </div>
-    </div>
     
 
     <div class="row mt-4 ">
@@ -80,7 +75,7 @@ $idEmpleado= $empleado->id;
                 <div class="modal-header border-0">
                     <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
                         <div class="col-auto d-flex align-items-center">
-                            <h5 class="modal-title tituloModal" id="exampleModalLabel">¿Seguro que quieres borrar este Empleado?</h5>
+                            <h5 class="modal-title tituloModal" id="exampleModalLabel">¿Seguro que quieres dar de baja a este Empleado?</h5>
                         </div>
                         <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     </div>

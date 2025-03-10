@@ -107,40 +107,39 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli row" method="POST" action="{{route('insertarCliente')}}">
+                <form id="form-cli " method="POST" action="{{route('insertarCliente')}}">
                     <div class="col px-2">
                         @csrf
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="nombre">Nombre</label>
-                                <input class="form-control" type="text" name="nombre" id="nombre" max="20">
+                                <input class="form-control" type="text" name="nombre" id="nombre" maxlength="20">
                             </div>
                             <div class="col">
-                                <label class="col-form-label" for="" apellido>Apellidos</label>
-                                <input class="form-control" type="text" name="apellido" id="apellido" max="30">
+                                <label class="col-form-label" for="apellido" apellido>Apellidos</label>
+                                <input class="form-control" type="text" name="apellido" id="apellido" maxlength="30">
                             </div>
 
                         </div>
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="dni">DNI</label>
-                                <input class="form-control" type="text" name="dni" id="dni" max="9">
+                                <input class="form-control" type="text" name="dni" id="dni" maxlength="9">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
-
-                                <input class="form-control" type="text" name="codPostal" pattern= /^\d{5}$/ id="cp">
+                                <input class="form-control" type="number" name="codPostal"  id="cp">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num. Telf</label>
-                                <input class="form-control" type="text" name="telefono" id="telf" max="9">
+                                <input class="form-control" type="text" name="telefono" id="telf" maxlength="9">
                         </div>
                         </div>
                     </div>
 
             </div>
             <div class="modal-footer border-0">
-                <button type="submit" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
+                <button type="submit" class="botonFooterModal mx-3 mb-2">Crear</button>
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
             </form>
@@ -167,7 +166,7 @@
                         <div class="row my-2">
                             <div class="col">
                                 <div class="input-group px-3">
-                                    <input class="form-control" type="text" placeholder="Búsqueda por DNI" name="nombreUsuario">
+                                    <input class="form-control" type="text" placeholder="Búsqueda por nombre de usuario" name="nombreUsuario">
                                     <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                 </div>
 
@@ -277,7 +276,7 @@
 
             </div>
             <div class="modal-footer border-0">
-                <button type="submit" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
+                <button type="submit" class="botonFooterModal mx-3 mb-2">Crear</button>
                 <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
             </form>

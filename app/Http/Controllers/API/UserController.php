@@ -233,6 +233,8 @@ class UserController extends Controller
             'idOptica' => Optica::orderBy('id', 'desc')->value('id'),
         ]);
 
+        session();
+
         $opticas = Optica::all();
 
         return view('opticas', compact('opticas'));

@@ -144,7 +144,7 @@
                             <div class="row my-2">
                                 <div class="col">
                                     <div class="input-group px-3">
-                                        <input class="form-control" type="text" placeholder="Búsqueda por Nombre, Apellidos o DNI">
+                                        <input class="form-control" type="text" placeholder="Búsqueda por Nombre de usuario">
                                         <button class="btn btn-primary botonInputModal"><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                     </div>
 
