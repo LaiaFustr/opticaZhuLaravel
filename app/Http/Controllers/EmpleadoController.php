@@ -144,9 +144,9 @@ class EmpleadoController extends Controller
             'contrasenia' => session('contrasenia'),
             //'idOptica' => $optica->id,
         ]);
-        $opticas = Optica::all();
+        //$opticas = Optica::all();
 
-        return view('opticas', compact('opticas'));
+        return redirect('opticas');
     }
 
 
