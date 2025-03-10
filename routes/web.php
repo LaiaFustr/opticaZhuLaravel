@@ -68,7 +68,7 @@ Route::get('opticas/mostrar', [OpticaController::class, 'index']);
 Route::get('/propietario/opticas', [OpticaController::class, 'mostrar'])->name('opticas');
 Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard'])->name('opticasC');
 Route::get('/propietario/opticaSelec/{id}', [OpticaController::class, 'opticaSelect'])->name('opticaSelec');
-Route::get('propietario/opticaSelec/citas', [CitaController::class, 'citaOptica'])->name('citas');
+Route::get('propietario/opticaSelec/citas', [CitaController::class, 'citaOptica'])->name('citasS');
 Route::get('/propietario/opticasS', [OpticaController::class, 'indexSelect'])->name('indexSelect');
 //Route::get('/propietario/empleadosOp/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOp');
 
@@ -78,7 +78,6 @@ Route::get('', [OpticaController::class, 'guardar']);
 
 //Metodos Insertar
 Route::post('/propietario/insertarOptica', [OpticaController::class, 'guardar'])->name('insertarOptica');
-//Route::post('propietario/insertarHorario', [HorarioController::class, 'guardar'])->name('insertarHorario');
 Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion'])->name('opticaSesion');
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
 Route::post('propietario/insertarEmpleado', [UserController::class, 'register'])->name('insertarEmpleado');

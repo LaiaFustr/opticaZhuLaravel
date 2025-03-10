@@ -3,6 +3,7 @@
     --cognac-500: #FF7300;
     --cognac-700: #DA3B00;
     --cognac-800: #AB2E00;
+    --puerto-rico-100: '#D0F7ED';
     --puerto-rico-200: #9FF0DA;
     --puerto-rico-400: #37C8AB;
     --puerto-rico-500: #21AB96;
@@ -117,7 +118,7 @@
 }
 
 .cardInfo {
-    background-color: #9FF0DA;
+    background-color: #D0F7ED;
     border-radius: 7px;
     padding: 1em;
     margin: 1em 0;

@@ -25,20 +25,18 @@ class ClienteController extends Controller
 
     public function guardar(Request $request)
     {
+        //dd($request);
+
         $validateData = $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'dni' => 'required|string|max:255|unique:clientes,dni', // Evita duplicados
+            'dni' => 'required|string|max:255', // Evita duplicados
             'codPostal' => 'required|string|max:10', // Cambiado a string para evitar problemas
             'telefono' => 'required|string|max:20',
         ]);
-    
-        try {
-            Cliente::create($validateData);
-            return redirect()->route('opticas')->with('success', 'Cliente creado correctamente.');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error al crear el cliente: ' . $e->getMessage());
-        }
+        Cliente::create($validateData);
+
+        return redirect()->route('citas');
     }
 
     public function buscarCli(Request $request)
