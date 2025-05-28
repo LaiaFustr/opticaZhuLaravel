@@ -18,33 +18,36 @@ class OpticaSeeder extends Seeder
     {
         $opticas = [
             [
-                'nombre' => 'Óptica Zhu - Centro',
+                'nombre' => 'Optica Zhu - Centro',
                 'telefono' => '934654231',
                 'direccion' => 'Calle Verdadera 2',
                 'correo' => 'opticazhucentro@opticazhu.com',
                 'num_Maquinas' => 2,
                 "horaApertura"=> "10:00:00",
                 "horaCierre"=> "22:00:00",
+                "color"=>"puertocognac",
                 //'idAdmin' => 10,
             ],
             [
-                'nombre' => 'Óptica Zhu - Norte',
+                'nombre' => 'Optica Zhu - Norte',
                 'telefono' => '917654678',
                 'direccion' => 'Calle Falsa 21',
                 'correo' => 'opticazhunorte@opticazhu.com',
                 'num_Maquinas' => 3,
                 "horaApertura"=> "10:00:00",
                 "horaCierre"=> "22:00:00",
+                "color"=>"puertocognac",
                 //'idAdmin' => 11,
             ],
             [
-                'nombre' => 'Óptica Zhu - Sur',
+                'nombre' => 'Optica Zhu - Sur',
                 'telefono' => '923456959',
                 'direccion' => 'Centro Comercial SoyReal, 7',
                 'correo' => 'opticazhusur@opticazhu.com',
                 'num_Maquinas' => 2,
                 "horaApertura"=> "10:00:00",
                 "horaCierre"=> "22:00:00",
+                "color"=>"aftergold",
                 //'idAdmin' => 12,
             ],
         ];
@@ -58,6 +61,7 @@ class OpticaSeeder extends Seeder
                 'num_Maquinas' => $optica['num_Maquinas'],
                 'horaApertura' => $optica['horaApertura'],
                 'horaCierre' => $optica['horaCierre'],
+                'color' => $optica['color'],
                 //'idAdmin' => $optica['idAdmin'],
             ]);
         }

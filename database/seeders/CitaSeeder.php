@@ -25,7 +25,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '2',
                 /* 'idAdmin'=> '9', */
                 'idOptica' => '1',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-06',
@@ -35,7 +35,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '6',
                 /*   'idAdmin'=> '11', */
                 'idOptica' => '2',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-06',
@@ -45,7 +45,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '6',
                 /* 'idAdmin'=> '11', */
                 'idOptica' => '2',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-07',
@@ -55,7 +55,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '1',
                 /* 'idAdmin'=> '10', */
                 'idOptica' => '3',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-07',
@@ -65,7 +65,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '5',
                 /*  'idAdmin'=> '10', */
                 'idOptica' => '3',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-07',
@@ -75,7 +75,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '3',
                 /* 'idAdmin'=> '12', */
                 'idOptica' => '2',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-07',
@@ -85,7 +85,6 @@ class CitaSeeder extends Seeder
                 'idCliente' => '2',
                 /* 'idAdmin'=> '11', */
                 'idOptica' => '1',
-                'atendida' => false,
             ],
             [
                 'fecha' => '2025-03-07',
@@ -95,7 +94,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '4',
                 /* 'idAdmin'=> '9', */
                 'idOptica' => '3',
-                'atendida' => false,
+
             ], //
             [
                 'fecha' => '2025-03-07',
@@ -105,7 +104,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '7',
                 /* 'idAdmin'=> '9', */
                 'idOptica' => '1',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -115,7 +114,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '8',
                 /* 'idAdmin'=> '10', */
                 'idOptica' => '1',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -125,7 +124,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '9',
                 /* 'idAdmin'=> '12', */
                 'idOptica' => '2',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -135,7 +134,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '10',
                 /* 'idAdmin'=> '11', */
                 'idOptica' => '3',
-              'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -145,7 +144,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '11',
                 /* 'idAdmin'=> '9', */
                 'idOptica' => '3',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -155,7 +154,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '12',
                 /* 'idAdmin'=> '10', */
                 'idOptica' => '1',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -165,7 +164,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '13',
                 /* 'idAdmin'=> '12', */
                 'idOptica' => '3',
-               'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -175,7 +174,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '14',
                 /* 'idAdmin'=> '11', */
                 'idOptica' => '1',
-                'atendida' => false,
+
             ],
             [
                 'fecha' => '2025-03-08',
@@ -185,7 +184,7 @@ class CitaSeeder extends Seeder
                 'idCliente' => '15',
                 /* 'idAdmin'=> '9', */
                 'idOptica' => '3',
-                'atendida' => false,
+
             ]
 
         ];
@@ -199,7 +198,7 @@ class CitaSeeder extends Seeder
                 'idOptometrista' => $cita['idOptometrista'],
                 'idCliente' => $cita['idCliente'],
                 'idOptica' => $cita['idOptica'],
-                'atendida' => $cita['atendida'],
+
                 /*  'nombreCliente' => $cliente->nombre,
                 'apellidoCliente' => $cliente->apellido, */
             ]);

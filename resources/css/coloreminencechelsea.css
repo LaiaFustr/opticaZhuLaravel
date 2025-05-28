@@ -1,0 +1,266 @@
+:root {
+    --chelsea-cucumber-100: #AEFF7A;
+    --chelsea-cucumber-500: #B2E393;
+    --chelsea-cucumber-700: #99D076;
+    --chelsea-cucumber-800: #7CA860;
+    --eminence-200: #F0A7F3;
+    --eminence-400: #E386E6;
+    --eminence-500: #9D51A0;
+    --eminence-700: #733B75;
+}
+
+.tituloModal {
+    color: #99D076;
+    font-size: 1.6em;
+    font-weight: 400;
+    /* font-family: Lexend; */
+}
+
+.botonFooterModal {
+    border: 1px solid #99D076;
+    background-color: #99D076;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 2em;
+    transition: all .3s ease;
+}
+
+.botonNuevaCita {
+    border: 1px solid #99D076;
+    background-color: #99D076;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+}
+
+.botonFooterModal:hover,
+.botonNuevaCita:hover {
+    background-color: #B2E393;
+    border: 1px solid #B2E393;
+}
+
+.carta {
+    border: 1px solid #7CA860;
+}
+
+.cartaFooter {
+    background-color: #AEFF7A;
+}
+
+.containerPagina {
+    width: 84vw;
+    margin: 2.5em 1.8em;
+}
+
+.tituloPagina {
+    color: #99D076;
+    font-weight: 600;
+}
+
+.subtituloPagina {
+    color: #99D076;
+    font-weight: 400;
+}
+
+.botonInputModal {
+    background-color: #F0A7F3;
+    border-color: #F0A7F3;
+    color: black;
+    transition: all .3s ease;
+}
+
+.botonInputModal:hover {
+    background-color: #E386E6;
+    border-color: #E386E6;
+    color: black;
+}
+
+.lista {
+    list-style: none;
+}
+
+.lista-horizontal {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-horizontal li {
+    margin-right: 20px;
+}
+
+.breadcrumb-icono {
+    color: #9D51A0;
+}
+
+
+
+
+.menu {
+    margin: 0;
+    width: 170px;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--after-work-50, #FDD2FF);
+    box-shadow: 3px 5px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Estilo del logo principal */
+
+.menu .logo {
+    margin: 5px;
+    height: 50px;
+}
+
+
+/* Estilo para la sección del usuario */
+
+.menu .userLogo {
+    margin: 10px 0px;
+    width: 50px;
+    height: 50px;
+}
+
+.containerUser {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px 0px;
+}
+
+
+/* Estilo para los enlaces de menú */
+
+.menu .optionText {
+    text-decoration: none;
+    width: 100%;
+    padding: 10px;
+    color: black;
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.sidebarLi {
+    margin: 10px auto;
+    ;
+}
+
+.menu .optionText:hover,
+.menu .optionText.active {
+    background-color: #733B75;
+    /*Color de fondo en hover */
+}
+
+.optionText .sidebar-optionA {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.optionText:hover .sidebar-optionA,
+.optionText.active .sidebar-optionA {
+    color: white;
+}
+
+.sidebarUl {
+    list-style: none;
+    padding: 0px;
+    margin: 10px;
+}
+
+.submenu {
+    font-size: 0.9em;
+    margin-top: 3px;
+    border-radius: 7px;
+    background-color: #E386E6;
+    padding: 5px;
+}
+
+.submenu a {
+    color: black;
+    text-decoration: none;
+}
+
+.submenu a:hover {
+    color: #733B75;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.dropdown-menu {
+    position: relative;
+    display: none;
+    /* Ocultamos inicialmente */
+    list-style: none;
+    transition: height .35s ease;
+}
+
+.dropdown-menu.visible {
+    display: table-row;
+    /* Mostramos cuando tiene la clase visible */
+}
+
+
+.tableInfo{
+    background-color: #281A75!important;
+    color: white !important;
+    padding: 5px;
+
+}
+
+.tableDate{
+    background-color: #DBB823 !important;
+    color: white !important;
+
+    border-top-left-radius: 5px;
+}
+
+.tableDateContent{
+    background-color: #E9D994 !important;
+
+    border-bottom: none;
+    border-top: none;
+    padding: 5px;
+}
+
+.tableContent{
+    background-color: #D8D1FF !important;
+
+    border-bottom: none;
+    border-top: none;
+    padding: 5px;
+}
+
+.table-striped tbody tr:nth-of-type(even) .tableContent{
+    background-color: #ffffff !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .tableContent{
+    background-color: #D8D1FF !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) .tableDateContent{
+    background-color: #fef3e2  !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .tableDateContent{
+    background-color: #FFF5CA !important;
+}

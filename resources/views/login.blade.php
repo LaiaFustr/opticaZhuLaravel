@@ -1,11 +1,37 @@
 @extends('layouts.prueba')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<style>#show-hide-passwordLog {
+<style>
+#show-hide-passwordLog {
     background:none;
     border:none;
     font-size:1.2em;
 
-}</style>
+}
+
+.botonNaranja {
+    border: 1px solid #DA3B00 !important;
+    background-color: #DA3B00!important;
+    font-size: .9em!important;
+    font-weight: 600 !important;
+    color: white!important;
+    border-radius: 7px;
+    transition: all .3s ease;
+}
+
+.labelLogin {
+    background-color: #9FF0DA!important;
+    font-size: .8em!important;
+    width: 165px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.cardLogin {
+    background-color: rgb(248, 248, 248)!important;
+    border: 1px solid rgb(240, 240, 240)!important;
+}
+</style>
 <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-6">

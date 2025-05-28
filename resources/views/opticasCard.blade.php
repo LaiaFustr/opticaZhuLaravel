@@ -1,6 +1,24 @@
-@extends('app')
 
-@section('content')
+<head>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- todos los links locales (para quefuncione sin internet) -->
+     <!-- coreui -->
+    <link href="/coreui/coreui.min.css" rel="stylesheet" >
+
+    <!-- Bootstrap -->
+
+    <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/bootstrap.bundle.min.js"></script> 
+
+    <!-- font awesome -->
+    <link href="{{asset('font-awesome/all.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/colordefault.css') }}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    
+</head>
 <div class="container-flex containerPagina">
     <div class="row w-100 mb-4">
         <div class="col-auto me-auto">
@@ -35,16 +53,26 @@
     <div class="row">
     @foreach ($opticas as $op)
         <div class="col-md-4">
-            <div class="card my-3 carta" onclick="window.location='{{route('opticaSelec', $op->id )}}'">
-                <div class="card-body">
+            <div class="card my-3 carta" >
+                <div class="card-body" onclick="window.location='{{route('opticaSelec', $op->id )}}'">
                     <ul class="lista">
                         <li><strong>Nombre:</strong> {{ $op->nombre }}</li>
                         <li><strong>Dirección:</strong> {{ $op->direccion }}</li>
                     </ul>
                 </div>
-                <div class="card-footer cartaFooter">
-                    <h5 style="text-align: center">{{ $op->nombre }}</h5>
+                <div class="card-footer cartaFooter" >
+                    <h5 style="text-align: center" onclick="window.location='{{route('opticaSelec', $op->id )}}'">{{ $op->nombre }}</h5>
+                    <div>
+                        <button type="button" class="btn dropdown" id="opcionesOptica" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{asset('assets/img/dots.png')}}" width="15px" height="15px" class="mt-1">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="opcionesOptica">
+                            <p class="dropdown-item" href="#">Editar</p>
+                            <p class="dropdown-item" href="#">Borrar</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     @endforeach
@@ -64,4 +92,3 @@
         </div>
     </div> --}}
 </div>
-@endsection

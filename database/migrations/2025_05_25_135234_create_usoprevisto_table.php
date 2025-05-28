@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('musculosextraoculares', function (Blueprint $table) {
-            $table->unsignedInteger('idFicha');
+        Schema::create('usoprevisto', function (Blueprint $table) {
+            $table->unsignedInteger("idFicha");
             $table->increments('id');
-           
-            $table->boolean('suaves');
-            $table->boolean('precisos');
-            $table->boolean('extensos');
-            $table->boolean('completos');
-            
-            //$table->primary('idFicha');
+            $table->enum("tiempodeuso", ['ocasional', 'diario', 'prolongado'])->nullable();
+            $table->unsignedInteger('usodiarias')->nullable();
+
             $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
+        
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('musculosextraoculares');
+        Schema::dropIfExists('usoprevisto');
     }
 };

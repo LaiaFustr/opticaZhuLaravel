@@ -27,16 +27,35 @@ class Ficha extends Model
     }
 
     public function anamnesis(){
-        return $this->hasOne(Anamnesis::class);
+        return $this->hasOne(Anamnesis::class, 'idFicha');
     }
     public function graduacionanterior(){
-        return $this->hasOne(GraduacionAnterior::class);
+        return $this->hasOne(GraduacionAnterior::class, 'idFicha');
     }
+    public function avsincorreccion(){
+        return $this->hasOne(AgudezaVisualSinCorreccion::class, 'idFicha');
+    }
+    public function avmonocular(){
+        return $this->hasOne(AVMonocular::class, 'idFicha');
+    } 
+    public function avbinocular(){
+        return $this->hasOne(AVBinocular::class, 'idFicha');
+    } 
     public function reflejopupilar(){
-        return $this->hasOne(ReflejoPupilar::class);
+        return $this->hasOne(ReflejoPupilar::class, 'idFicha');
     }
     public function ishihara(){
-        return $this->hasOne(Ishihara::class);
+        return $this->hasOne(Ishihara::class, 'idFicha');
     }
+    public function superficieocular(){
+        return $this->hasOne(SuperficieOcular::class, 'idFicha');
+    }
+    public function parametros(){
+        return $this->hasOne(Parametros::class, 'idFicha');
+    }
+    public function usoprevisto(){
+        return $this->hasOne(UsoPrevisto::class, 'idFicha');
+    }
+
     
 }

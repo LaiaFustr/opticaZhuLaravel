@@ -36,6 +36,6 @@ class Cita extends Model
 
     public function ficha()
     {
-        return $this->hasOne(Ficha::class);
+        return $this->belongsTo(Ficha::class, 'idCita');
     }
 }

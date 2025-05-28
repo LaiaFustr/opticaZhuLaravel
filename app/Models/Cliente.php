@@ -23,7 +23,7 @@ class Cliente extends Model
     }
 
     public function fichas(){
-        return $this->hasMany(Ficha::class);
+        return $this->hasMany(Ficha::class, "idCliente");
     }
 
 }

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-
+use Validator;
 
 
 class UserController extends Controller
@@ -35,28 +35,33 @@ class UserController extends Controller
             'contrasenia' => 'required'
         ]);
 
-        $credentials = $request->except('_token');
+        //$credentials = $request->except('_token');
 
         $empleado = User::where('nombreUsuario', $request->nombreUsuario)->first();
 
         if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
-            Log::info($request);
             Auth::login($empleado);
             session(['idAdmin' => $empleado->id]);
 
             $logeado = User::find($empleado->id);
-
-
+            
             if ($logeado->rol == 'admin') {
-                $ruta = redirect()->route('opticas');
+                session(['opticaColor' => "puertocognac"]);
+                return redirect()->route('opticas');
             } elseif ($logeado->rol == 'auxiliar' || $logeado->rol == 'optometrista') {
-                $ruta = redirect()->route('home');
+
+                $optica = $empleado->optica()->first();
+
+                //dd($optica->color);
+                session(['opticaColor' => $optica->color]);
+                //dd(session('opticaColor'));
+                return redirect()->route('home');
             }
-            return $ruta;
+            //return $ruta; 
+            //Revisar si esto corrompe la session(OpticaColor), solo ocurre con Auxiliar y Optometrista(?)...
         } else {
-            Log::info("hola");
+            //Log::info("hola");
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
-            echo "no funciona";
             return redirect()->back();
         }
     }
@@ -90,10 +95,11 @@ class UserController extends Controller
                 'optica' => [
                     'id' => $empleado->optica->id ?? 1,
                     'nombre' => $empleado->optica->nombre ?? null,
+                    'color' => $empleado->optica->color ?? null, 
                 ]
             ]);
         } else {
-            return response()->json('message', 'Nombre de usuario o contraseña incorrectos');
+            return response()->json(['message'=> 'Nombre de usuario o contraseña incorrectos'], 401);
         }
     }
 

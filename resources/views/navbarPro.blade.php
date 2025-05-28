@@ -1,28 +1,30 @@
 <div class="menu" id="menu">
-    <div class="logo"><img src="./assets/img/mininaranjiverdeTrayecto.svg" class="logo"></div>
-    <div class="containerUser"><img src="./assets/img/user.svg" class="userLogo">Usuario</div>
+    <div class="logo"><img src="{{asset('assets/img/mini'.(session('opticaColor')).'.svg')}}" class="logo"></div>
+    <div class="containerUser dropdown" > 
+        <button type="button" class="btn dropdown-toggle" id="perfilOpciones" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./assets/img/user.svg" class="userLogo"><br>
+            Usuario
+        </button>
+
+
+        <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="perfilOpciones">   
+            <li>
+                <a class="text-center" href="{{ route('cerrarSesion') }}">
+                <i class="fa-solid fa-right-from-bracket"></i><span class="ms-2">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
     <ul class="sidebarUl">
-        
+        <!-- Opcion Citas -->
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="sidebar-optionA" href="{{url('propietario/citas')}}">Citas</a>
+                <a class="sidebar-optionA" href="{{url('propietario/opticaSelec/'.session('idOptica')) }}">Citas</a>
             </div>
             <ul class="dropdown-menu">
             </ul>
         </li>
-        <div class="collapse perfilCollapse" id="perfilOpciones">
-            <ul class="list-unstyled d-flex flex-column align-items-centers justify-content-center p-3 m-0">
-                <a class="text-center" href="" routerLink="/perfil">
-                    <li style="font-weight: bolder;">Acceso a perfil</li>
-                </a>
-                <hr>
-                <a class="text-center" href="" (click)="cerrarSesion()">
-                    <li class="" style="font-size: smaller;">
-                        <i class="fa-solid fa-right-from-bracket"></i><span class="ms-2">Cerrar sesión</span></li>
-                </a>
-            </ul>
-        </div>
-
+        <!-- Opcion Clientes -->
         <li class="nav-item sidebarLi">
             <div class="optionText">
                 <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#clienteSublist" role="button" aria-expanded="false" aria-controls="clienteSublist">Clientes</a>
@@ -35,6 +37,7 @@
                 </div>
             </ul>
         </li>
+        <!-- Opcion Empleados -->
         <li class="nav-item sidebarLi">
             <div class="optionText">
                 <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#empleadoSublist" role="button" aria-expanded="false" aria-controls="empleadoSublist">Empleados</a>
@@ -47,12 +50,25 @@
                 </div>
             </ul>
         </li>
+        <!-- Opcion Opticas -->
         <li class="nav-item sidebarLi">
             <div class="optionText">
                 <a class="sidebar-optionA" href="{{url('propietario/opticas')}}">Ópticas</a>
             </div>
             <ul class="dropdown-menu">
             </ul>
+        </li>
+        <!-- Opcion Proveedores -->
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="sidebar-optionA" href="{{route('indexproveedor') }}">Proveedores</a>
+            </div>
+        </li>
+        <!-- Opcion Pedidos -->
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="sidebar-optionA" href="{{route('indexpedidos') }}">Pedidos</a>
+            </div>
         </li>
     </ul>
 </div>
@@ -309,8 +325,6 @@
         </form>
     </div>
 </div>
-
-
 
 <div class="content">
     <router-outlet></router-outlet>

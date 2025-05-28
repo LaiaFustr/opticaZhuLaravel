@@ -58,7 +58,9 @@ class User extends Authenticatable
     }
 
     public function optica(){
-        return $this->belongsTo(Optica::class);
+        //Lo dejo por si acaso peta, quitale el Many y los campos desde asignaropticas
+        //return $this->belongsToMany(Optica::class, "asignaropticas", "idEmpleado", "idOptica");
+        return $this->belongsTo(Optica::class, "idOptica");
     }
 
     public function auxiliar(){

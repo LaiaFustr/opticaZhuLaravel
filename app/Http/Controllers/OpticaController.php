@@ -37,13 +37,25 @@ class OpticaController extends Controller
     public function opticaSelect($id){
         session(['idOptica' => $id]);
 
-        $citas=Cita::where('idOptica', $id)->get();
+        $citas=Cita::where('idOptica', $id)->with('cliente')->get();
+        
+        $optica=Optica::find($id);
 
         //dump(session('idOptica'));
+        session(['opticaColor' => $optica->color]);
 
-        return view('citas', compact('citas'));
+        return view('citas', compact('citas', 'optica'));
     }
 
+    public function cargarEdicion($id){
+        $optica =Optica::find($id);
+        $allOptica=Optica::all();
+        return view('editarOptica', compact('optica', 'allOptica'));
+    }
+
+    public function guardarCambios(){
+        
+    }
 
     public function empleadosOptica($id){
         session(['idOptica' => $id]);
@@ -81,7 +93,7 @@ class OpticaController extends Controller
 
     public function guardar(Request $request)
     {
-
+        //aja
         $validateData = $request->validate([
             'nombre' => 'required|string|max:255',
             'telefono' => 'required|integer',
@@ -124,5 +136,33 @@ class OpticaController extends Controller
         ]);
         return redirect()->route('configEmpleado');
     }
+
+    public function guardarSesionEdit(Request $request, $id){
+
+        $datos=$request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'required|integer',
+            'direccion' => 'required|string|max:255',
+            'correo' => 'required|string|max:255',
+            'num_Maquinas' => 'integer',
+            'horaApertura' => 'required|date_format:H:i',
+            'horaCierre' => 'required|date_format:H:i',
+            'color' => 'required',
+            //'idAdmin'=>session(['idAdmin']),
+        ]);
+        //dd($datos);
+        //dd($id);
+        try{
+            $opt = Optica::findOrFail($id);
+            $opt->update($datos);
+
+            return redirect()->route('opticas');
+        }catch(\Exception $e){
+            return redirect()->back();
+        }
+
+
+
+        }
 
 }

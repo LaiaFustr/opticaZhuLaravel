@@ -1,0 +1,266 @@
+:root {
+    --sand-dune-100: #E2DAB9;
+    --sand-dune-500: #C8C1A6;
+    --sand-dune-700: #9F9A86;
+    --sand-dune-800: #787566;
+    --blue-berry-200: #CCCBF8;
+    --blue-berry-400: #9E9DEB;
+    --blue-berry-500: #6E6CC8;
+    --blue-berry-700: #4542B3;
+}
+
+.tituloModal {
+    color: #9F9A86;
+    font-size: 1.6em;
+    font-weight: 400;
+    /* font-family: Lexend; */
+}
+
+.botonFooterModal {
+    border: 1px solid #9F9A86;
+    background-color: #9F9A86;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 2em;
+    transition: all .3s ease;
+}
+
+.botonNuevaCita {
+    border: 1px solid #9F9A86;
+    background-color: #9F9A86;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+}
+
+.botonFooterModal:hover,
+.botonNuevaCita:hover {
+    background-color: #C8C1A6;
+    border: 1px solid #C8C1A6;
+}
+
+.carta {
+    border: 1px solid #787566;
+}
+
+.cartaFooter {
+    background-color: #FFF5CA;
+}
+
+.containerPagina {
+    width: 84vw;
+    margin: 2.5em 1.8em;
+}
+
+.tituloPagina {
+    color: #9F9A86;
+    font-weight: 600;
+}
+
+.subtituloPagina {
+    color: #9F9A86;
+    font-weight: 400;
+}
+
+.botonInputModal {
+    background-color: #CCCBF8;
+    border-color: #CCCBF8;
+    color: black;
+    transition: all .3s ease;
+}
+
+.botonInputModal:hover {
+    background-color: #9E9DEB;
+    border-color: #9E9DEB;
+    color: black;
+}
+
+.lista {
+    list-style: none;
+}
+
+.lista-horizontal {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-horizontal li {
+    margin-right: 20px;
+}
+
+.breadcrumb-icono {
+    color: #6E6CC8;
+}
+
+
+
+
+.menu {
+    margin: 0;
+    width: 170px;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DBDBFF;
+    box-shadow: 3px 5px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Estilo del logo principal */
+
+.menu .logo {
+    margin: 5px;
+    height: 50px;
+}
+
+
+/* Estilo para la sección del usuario */
+
+.menu .userLogo {
+    margin: 10px 0px;
+    width: 50px;
+    height: 50px;
+}
+
+.containerUser {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px 0px;
+}
+
+
+/* Estilo para los enlaces de menú */
+
+.menu .optionText {
+    text-decoration: none;
+    width: 100%;
+    padding: 10px;
+    color: black;
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.sidebarLi {
+    margin: 10px auto;
+    ;
+}
+
+.menu .optionText:hover,
+.menu .optionText.active {
+    background-color: #1e2061;
+    /*Color de fondo en hover */
+}
+
+.optionText .sidebar-optionA {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.optionText:hover .sidebar-optionA,
+.optionText.active .sidebar-optionA {
+    color: white;
+}
+
+.sidebarUl {
+    list-style: none;
+    padding: 0px;
+    margin: 10px;
+}
+
+.submenu {
+    font-size: 0.9em;
+    margin-top: 3px;
+    border-radius: 7px;
+    background-color: var(--blue-berry-100, #bbb3e9);
+    padding: 5px;
+}
+
+.submenu a {
+    color: black;
+    text-decoration: none;
+}
+
+.submenu a:hover {
+    color: #4542B3;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.dropdown-menu {
+    position: relative;
+    display: none;
+    /* Ocultamos inicialmente */
+    list-style: none;
+    transition: height .35s ease;
+}
+
+.dropdown-menu.visible {
+    display: table-row;
+    /* Mostramos cuando tiene la clase visible */
+}
+
+
+.tableInfo{
+    background-color: #281A75!important;
+    color: white !important;
+    padding: 5px;
+
+}
+
+.tableDate{
+    background-color: #DBB823 !important;
+    color: white !important;
+
+    border-top-left-radius: 5px;
+}
+
+.tableDateContent{
+    background-color: #E9D994 !important;
+
+    border-bottom: none;
+    border-top: none;
+    padding: 5px;
+}
+
+.tableContent{
+    background-color: #D8D1FF !important;
+
+    border-bottom: none;
+    border-top: none;
+    padding: 5px;
+}
+
+.table-striped tbody tr:nth-of-type(even) .tableContent{
+    background-color: #ffffff !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .tableContent{
+    background-color: #D8D1FF !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) .tableDateContent{
+    background-color: #fef3e2  !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .tableDateContent{
+    background-color: #FFF5CA !important;
+}

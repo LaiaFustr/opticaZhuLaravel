@@ -1,3 +1,15 @@
+<head>
+<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/bootstrap.min.css') }}">
+<script language="javascript" type="text/javascript" src="{{asset('bootstrap/bootstrap.bundle.min.js') }}"></script>
+<link href="{{ asset('Font-Awesome/css/all.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}"> -->
+<!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/card.css') }}"> -->
+</head>
 @extends('app')
 
 @section('content')
@@ -17,41 +29,47 @@
 
 
     </div>
-    <form action="">
-        <div class="row">
-            <div class="col-auto col-2">
-                <select class="form-select form-select-sm" name="Cambiar vista" id="">
-                    <option value="" selected disabled>Cambiar vista</option>
-                </select>
-            </div>
-        </div>
-    </form>
 
-    <table class="table table-striped">
+
+    <table class="table table-striped " id="citasTable">
         <thead>
             <tr>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Cliente</th>
+                <th hidden>hola</th>
+                <th class="tableDate">Fecha</th>
+                <th class="tableInfo">Hora</th>
+                <th class="tableInfo">Datos del cliente</th>
+                <th class="tableInfo ">Descripcion</th>
+                <th class="tableInfo" style="border-top-right-radius: 5px">Atendida</th>
             </tr>
         </thead>
         <tbody>
             @forelse($citas as $cit)
             <tr>
-                <td>
-                    <a class="nav-link" href="{{ route('ficha', $cit->id) }}">
+                <td hidden>{{ $cit->id }}</td>
+                <td class="tableDateContent">
+                    <a class="nav-link" onclick="modalFicha({{ $cit->id }})">
                         {{ $cit->fecha }}</a>
                 </td>
-                <td><a class="nav-link"
-
-                        href="{{ route('ficha', $cit->id) }}">{{ $cit->hora }}</a></td>
-                <td><a class="nav-link"
-
-                        href="{{ route('ficha', $cit->id) }}">{{ $cit->descripcion }}</a></td>
+                <td class="tableContent">
+                    <a class="nav-link" onclick="modalFicha({{ $cit->id }})">
+                        {{ $cit->hora }}</a>
+                </td>
+                <td class="tableContent">
+                    <a class="nav-link" onclick="modalFicha({{ $cit->id }})">
+                        {{ $cit->cliente->nombre }}&nbsp;{{ $cit->cliente->apellido }}</a>
+                </td>
+                <td class="tableContent">
+                    <a class="nav-link" onclick="modalFicha({{ $cit->id }})">
+                        {{ $cit->descripcion }}</a>
+                </td>
+                <td class="tableContent">
+                    <a class="nav-link" onclick="modalFicha({{ $cit->id }})">
+                        {{ $cit->atendida }}</a> 
+                </td>
             </tr>
             @empty
             <tr>
-                <td colspan="3">No hay citas para esta óptica.</td>
+                <td>No hay</td><td> citas para</td><td> esta</td><td> optica.</td>
             </tr>
             @endforelse
         </tbody>
@@ -62,40 +80,58 @@
 </div>
 
 
-<!-- modal buscar cliente -->
-<div class="modal  fade" id="buscarCliModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal para preguntar el tipo de ficha que se quiere -->
+<div class="modal  fade" id="elejirficha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
-                    <div class="col-auto d-flex align-items-center">
-                        <h5 class="modal-title tituloModal" id="exampleModalLabel">Seleccione el cliente para asignar la cita</h5>
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                        <div class="col-auto d-flex align-items-center">
+                            <h5 class="modal-title tituloModal" id="crearArtiModalLabel">Elije el tipo de ficha</h5>
+                        </div>
+                        <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     </div>
-                    <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                </div>
+                <div class="modal-body mt-2 mb-3">
+                    <form id="form-arti row" method="POST" action="{{url('eleccionFicha')}}">
+                        @csrf
+                        <input type="hidden" id="idCita" name="id" value="">
+                        <div class="col px-2">
+                            <div class="row my-2">
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="submit" id="fichaGafas" name="tipo" value="gafa" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Gafas</button>
+                            <button type="submit" id="fichaLentillas" name="tipo" value="lentilla" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Lentillas</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="modal-body mt-2 mb-3">
-                <form class="form-cli row" method="GET" action="{{url('propietario/buscarCli')}}">
-                    <div class="col px-2">
-                        <div class="row my-2">
-                            <div class="col">
-
-                                <div class="input-group px-3">
-                                    <input class="form-control" type="text" placeholder="Búsqueda por Nombre, Apellidos o DNI" id="dni" name="dni">
-                                    <button class="btn btn-primary botonInputModal" type="submit"><i class="fa-solid fa-angle-right fa-2x"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-
         </div>
-    </div>
-</div>
+</div> 
 
 
 @endsection
 
 
+<script>
+    $(document).ready(function(){
+        $('#citasTable').DataTable({
+            processing: true,
+
+            lengthChange: false, 
+            pageLength: 10,
+            language: {
+                    url: '/js/es-ES.json'
+            },
+            info: false,
+            searchable: true,
+            stripeClasses: [],
+       })
+    });
+
+    function modalFicha(id){
+        $("#idCita").val(id);
+        $("#elejirficha").modal("show");
+    }
+
+</script>

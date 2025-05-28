@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Cita;
 use App\Models\Optica;
 use App\Http\Resources\CitasResource;
+use DataTables;
 
 class CitaController extends Controller
 {
@@ -48,14 +49,35 @@ class CitaController extends Controller
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
             ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
+    
+    public function getCitas(){
+        $citas = Citas::query();
 
-    public function indexCitas()
-    {
-        //$citas = Cita::all();//consulta
-        $citas = Cita::with(['cliente', 'optometrista'])->get();
+        return DataTables::eloquent($citas)
+        ->addColumn('fecha', function($cit){
+            return '<a class="nav-link" href="' . route('ficha', $cit->id). '">' . $cit->fecha . '</a>';
+        })
+        ->addColumn('hora', function($cit){
+            return '<a class="nav-link" href="' . route('ficha', $cit->id). '">' . $cit->hora . '</a>';
+        })
+        ->addColumn('cliente', function($cit){
+            return '<a class="nav-link" href="' . route('ficha', $cit->id). '">' . $cit->cliente->nombre . '</a>';
+        })
+        ->addColumn('descripcion', function($cit){
+            return '<a class="nav-link" href="' . route('ficha', $cit->id). '">' . $cit->descripcion . '</a>';
+        })
+        ->toJson();
+    }
 
-        return view('/citas', ['citas'=> CitasResource::collection($citas)]);
+    public function eleccionFicha(Request $request){
+        $idCita = $request->input("id");
+        $tipo = $request->input("tipo");
 
+        if($tipo == 'gafa'){
+            return redirect()->route("ficha",['idCita' => $idCita]);            
+        }else if($tipo == 'lentilla'){
+            return redirect()->route("fichalentilla",['idCita' => $idCita]);     
+        }
     }
 
     public function ficha($idCita){
@@ -63,19 +85,40 @@ class CitaController extends Controller
 
         return view('ficha', ['cita'=>$cita]);
     }
+    
+    public function fichalentilla($idCita){
+        $cita = Cita::findOrFail($idCita);
+
+        return view('fichalentilla', ['cita'=>$cita]);
+    }
+
+    public function indexCitas(){
+
+        Log::info('COLOR DESDE SESSION EN CITAS: ' , session()->all());
+        //dd(session('opticaColor'));
+        //Al llegar aqui la opticaColor se vuelve null.
+        //$citas = Cita::all();//consulta
+        $citas = Cita::with(['cliente', 'optometrista'])->get();
+        
+
+        return view('citas', ['citas'=> CitasResource::collection($citas)]);
+
+    }
+
+
 
     public function citaOptica(Request $request){
 
         $request->validate([
-            'idOptica' => 'required|string|max:255',
+            'idOptica' => 'required|integer',
         ]);
 
         $idOptica=$request->query('idOptica');
 
-        $citas = Cita::where('idOptica', $idOptica)->get();
+        $citas = Cita::with('cliente')->where('idOptica', $idOptica)->get();
 
-        if($citas==null){
-            return response()->json(['message' => 'Citas no encontrado'])
+        if($citas->isEmpty()){
+            return response()->json(['message' => 'Citas no encontradas'])
             ->header('Access-Control-Allow-Origin', '*')
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
             ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');

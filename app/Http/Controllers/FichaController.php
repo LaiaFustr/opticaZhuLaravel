@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use App\Models\Cliente;
 use App\Models\Cita;
 use App\Models\Ficha;
 use App\Models\Anamnesis;
@@ -13,8 +15,13 @@ use App\Models\ReflejoPupilar;
 use App\Models\Ishihara;
 use App\Models\AVMonocular;
 use App\Models\AVBinocular;
+use App\Models\UsoPrevisto;
+use App\Models\SuperficieOcular;
+use App\Models\Parametros;
 use Exception;
 use PhpParser\Node\Stmt\Catch_;
+use Dompdf\Dompdf;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class FichaController extends Controller
 {
@@ -22,8 +29,6 @@ class FichaController extends Controller
 
     public function creaFicha(Request $request)
     {
-
-
 
         $request->validate([
             'idCita' => 'required|integer',
@@ -33,16 +38,6 @@ class FichaController extends Controller
             'hora' => 'required|date_format:H:i:s',
             'descripcion' => 'required|string',
         ]);
-
-
-
-        //Ficha::create($datosFicha);
-
-        /* try {
-            Ficha::create($datosFicha);
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        } */
 
         Ficha::create([
             'idCita' =>  $request->idCita,
@@ -68,6 +63,7 @@ class FichaController extends Controller
 
         $anamnesisId = 0;
 
+        //dd($request->all());
         //dd($request['anamnesis']);
         if ($request->has('anamnesisCheck')) { // campos de anamnesis 
             //dd($request['anamnesis']);
@@ -145,7 +141,7 @@ class FichaController extends Controller
                 //'graduacionAnt.ga_oi' => 'nullable|string',
                 'avSinCorr.esf_oi' => 'nullable|string',
                 'avSinCorr.cil_oi' => 'nullable|string',
-                'avSinCorr.av_oi' => 'nullable|string',
+                'avSinCorr.av_oi' => 'nullable|s    tring',
 
                 'avSinCorr.ga_av' => 'nullable|string',
                 'avSinCorr.ga_ad' => 'nullable|string',
@@ -261,7 +257,75 @@ class FichaController extends Controller
             ]);
         }
 
+        if($request->has('superficieOcularCheck')){
+            $request->validate([
+                'superficie.cornea_od' => 'nullable|string',
+                'superficie.parpados_od' => 'nullable|string',
+                'superficie.tincion_od' => 'nullable|string',
 
+                'superficie.cornea_oi' => 'nullable|string',
+                'superficie.parpados_oi' => 'nullable|string',
+                'superficie.tincion_oi' => 'nullable|string',
+                
+            ]);
+
+            SuperficieOcular::create([
+                'idFicha' => $ultimo->id,
+
+                'estadocornea_od' => $request->input('superficie.cornea_od'),
+                'peliculalagrimal_od' => $request->input('superficie.parpados_od'),
+                'tincion_od' => $request->input('superficie.tincion_od'),
+
+                'estadocornea_oi' => $request->input('superficie.cornea_oi'),
+                'peliculalagrimal_oi' => $request->input('superficie.parpados_oi'),
+                'tincion_oi' => $request->input('superficie.tincion_oi'),
+
+            ]);
+        }
+
+        if($request->has('parametrosCheck')){
+            $request->validate([
+                'parametros.curvabase_od' => 'nullable|string',
+                'parametros.diametro_od' => 'nullable|string',
+                'parametros.potencia_od' => 'nullable|string',
+                'parametros.eje_od' => 'nullable|string',
+
+                'parametros.curvabase_oi' => 'nullable|string',
+                'parametros.diametro_oi' => 'nullable|string',
+                'parametros.potencia_oi' => 'nullable|string',
+                'parametros.eje_oi' => 'nullable|string',
+            ]);
+
+            Parametros::create([
+                'idFicha' => $ultimo->id,
+                'curvabase_od' => $request->input('parametros.curvabase_od'),
+                'diametro_od' => $request->input('parametros.diametro_od'),
+                'potencia_od' => $request->input('parametros.potencia_od'),
+                'eje_od' => $request->input('parametros.eje_od'),
+
+                'curvabase_oi' => $request->input('parametros.curvabase_oi'),
+                'diametro_oi' => $request->input('parametros.diametros_oi'),
+                'potencia_oi' => $request->input('parametros.potencia_oi'),
+                'eje_oi' => $request->input('parametros.eje_oi'),
+            ]);
+        }
+
+        if($request->has('usoPrevistoCheck')){
+
+            $request->validate([
+                'tiempodeuso' => 'nullable|in:ocasional,diario,prolongado',
+                'usodiarias' => 'nullable|integer',
+            ]);
+            UsoPrevisto::create([
+                'idFicha' => $ultimo->id,
+                'tiempodeuso' => $request->input('tiempodeuso'),
+                'usodiarias' => $request->input('usodiarias'),
+            ]);
+        }
+
+        $cita = Cita::where('id', $request->idCita);
+
+        $cita->update(["atendida"=>"atendida"]);
 
         $redirige = redirect()->route('home')->with(session()->flash('success', 'Ficha creada correctamente'));
         return $redirige; //Falta añadir la sweet alert que pille si existe esta session
@@ -276,4 +340,34 @@ class FichaController extends Controller
         $cita = Cita::find($id);
         $datosFicha = request()->validate(['']);
     } */
+
+    public function fichascliente(Request $request){
+        $dni = $request->query('dni');
+        $cliente = Cliente::where('dni', $dni)->first();
+
+        if(!$cliente){
+            return response()->json(['error' => 'Cliente no encontrado'], 404);
+        }
+
+        $fichas = $cliente->fichas()->with(["cita.optica", 'optometrista', 'anamnesis', 'graduacionanterior', 
+            'avsincorreccion', 'reflejopupilar', 'ishihara',  'avmonocular', 'avbinocular', 
+            'superficieocular', 'parametros', 'usoprevisto'])->get();
+        //$fichas = Ficha::where('idCliente', $cliente->dni)->get();
+
+        return response()->json($fichas);
+    }
+
+
+    public function fichadescargarAngular($id){
+
+        $ruta = '<img src="data:img/svg+xtml;base64,' . base64_encode("verdinaranjaTrayecto.svg") . '">';
+
+        $ficha = Ficha::with(["cita.optica",'cliente' ,'optometrista', 'anamnesis', 'graduacionanterior', 
+            'avsincorreccion', 'reflejopupilar', 'ishihara',  'avmonocular', 'avbinocular', 
+            'superficieocular', 'parametros', 'usoprevisto'])->findOrFail($id);
+    
+        $pdf = Pdf::loadView('fichaCliente', compact("ficha"));
+        return $pdf->stream();
+    }
+
 }

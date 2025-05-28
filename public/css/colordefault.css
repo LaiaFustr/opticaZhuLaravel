@@ -1,0 +1,303 @@
+:root {
+    --cognac-50:#ffe8c3;
+    --cognac-100: #FFDA9F ;
+    --cognac-500: #FF7300;
+    --cognac-700: #DA3B00;
+    --cognac-800: #AB2E00;
+    --puerto-rico-200: #9FF0DA;
+    --puerto-rico-400: #37C8AB;
+    --puerto-rico-500: #21AB96;
+    --puerto-rico-700: #176E63;
+}
+
+.tituloModal {
+    color: #DA3B00;
+    font-size: 1.6em;
+    font-weight: 400;
+    /* font-family: Lexend; */
+}
+
+.botonFooterModal {
+    border: 1px solid #DA3B00;
+    background-color: #DA3B00;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 2em;
+    transition: all .3s ease;
+}
+
+.botonNuevaCita {
+    border: 1px solid #DA3B00;
+    background-color: #DA3B00;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+}
+
+.botonFooterModal:hover,
+.botonNuevaCita:hover {
+    background-color: #FF7300;
+    border: 1px solid #FF7300;
+}
+
+.carta {
+    border: 1px solid #DA3B00;
+}
+
+.cartaFooter {
+    background-color: #FFDA9F;
+}
+
+.containerPagina {
+    width: 84vw;
+    margin: 2.5em 1.8em;
+}
+
+#color {
+  color: black;
+  background-color: white;
+  transition: 0.3s;
+}
+
+#color:hover {
+  background-color: #004d26;
+  color: white;
+}
+
+.tituloPagina {
+    color: #DA3B00;
+    font-weight: 600;
+}
+
+.subtituloPagina {
+    color: #DA3B00;
+    font-weight: 400;
+}
+
+.botonInputModal {
+    background-color: #9FF0DA;
+    border: 1px solid #9FF0DA;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+}
+
+.botonInputModal:hover {
+    background-color: #37C8AB;
+    border-color: #37C8AB;
+    color: black;
+}
+
+.lista {
+    list-style: none;
+}
+
+.lista-horizontal {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-horizontal li {
+    margin-right: 20px;
+}
+
+.breadcrumb-icono {
+    color: #21AB96;
+}
+
+
+/* Seccion del menu --*/
+
+.menu {
+    margin: 0;
+    width: 170px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--Puerto-Rico-50, #F1FCF9);
+    box-shadow: 3px 5px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Estilo del logo principal */
+
+.menu .logo {
+    margin: 5px;
+    height: 50px;
+}
+
+
+/* Estilo para la sección del usuario */
+
+.menu .userLogo {
+    margin: 10px 0px;
+    width: 50px;
+    height: 50px;
+}
+
+.containerUser {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px 0px;
+}
+
+
+/* Estilo para los enlaces de menú */
+
+.menu .optionText {
+    text-decoration: none;
+    width: 100%;
+    padding: 10px;
+    color: black;
+    width: 100%;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.sidebarLi {
+    margin: 10px auto;
+    
+}
+
+.menu .optionText:hover,
+.menu .optionText.active {
+    background-color: #004d26;
+    /*Color de fondo en hover */
+}
+
+.optionText .sidebar-optionA {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.optionText:hover .sidebar-optionA,
+.optionText.active .sidebar-optionA {
+    color: white;
+}
+
+.sidebarUl {
+    list-style: none;
+    padding: 0px;
+    margin: 10px;
+}
+
+.submenu {
+    font-size: 0.9em;
+    margin-top: 3px;
+    border-radius: 7px;
+    background-color: var(--Puerto-Rico-100, #CFF8EC);
+    padding: 5px;
+}
+
+.submenu a {
+    color: black;
+    text-decoration: none;
+}
+
+.submenu a:hover {
+    color: var(--Puerto-Rico-700, #166F61);
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.dropdown-menu {
+    position: relative;
+    display: none;
+    /* Ocultamos inicialmente */
+    list-style: none;
+    transition: height .35s ease;
+}
+
+.dropdown-menu.visible {
+    display: table-row;
+    /* Mostramos cuando tiene la clase visible */
+}
+
+.tableInfo{
+    background-color: #176E63 !important;
+    color: white !important;
+    padding: 5px;
+
+}
+
+.tableContent{
+    border-bottom: none;
+    border-top: none;
+    padding: 5px;
+}
+
+
+.tableDate{
+    background-color: #DA3B00 !important;
+    color: white !important;
+    border-top-left-radius: 5px;
+}
+
+.tableDateContent{
+
+    border-bottom: none;
+    border-top: none;
+    padding: 5px;
+}
+
+
+.table-striped tbody tr:nth-of-type(even) .tableContent{
+    background-color: #ffffff !important;
+    padding: 10px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .tableContent{
+    background-color: rgba(207, 248, 236, 0.6) !important;
+    padding: 10px;
+}
+
+.table-striped tbody tr:nth-of-type(even) .tableDateContent{
+    background-color: #fef3e2  !important;
+    padding: 10px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) .tableDateContent{
+    background-color: rgba(255, 218, 159, 0.5) !important;
+        padding: 10px;
+}
+
+.sweetConfirm{
+    color: #DA3B00 !important;
+    border-color: #DA3B00 !important;
+}
+
+.paginate_button.active .page-link{
+    background-color: #DA3B00 !important;
+    border-color: #DA3B00 !important;
+    color: white !important;
+}
+
+.paginate_button .page-link{
+    background-color: white !important;
+    color: #176E63 !important;
+}
+
+.paginate_button.disabled .page-link{
+    background-color: lightgrey !important;
+    color:  grey !important;
+}

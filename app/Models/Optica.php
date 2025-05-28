@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Optica extends Model
 {
     protected $table='opticas';
-    protected $fillable=['nombre', 'telefono', 'direccion', 'correo', 'num_Maquinas', 'horaApertura', 'horaCierre', 'idAdmin'];
+    protected $fillable=['nombre', 'telefono', 'direccion', 'correo', 'num_Maquinas', 'horaApertura', 'horaCierre', 'color', 'idAdmin'];
 /*     protected $hidden= ['created_at', 'updated_at'];*/
     public $timestamps = false;
 
@@ -21,7 +21,12 @@ class Optica extends Model
     public function empleados(){
         return $this->belongsToMany(Empleado::class, 'asignaropticas', 'idOptica', 'idEmpleado');
     }
+    
+    public function optometrista(){
+        return $this->belongsTo(Optometrista::class, 'asignaropticas', 'idOptica', 'idEmpleado');
+    }
 
-
-
+    public function pedidos(){
+        return $this->hasMany(Pedido::class, 'idOptica');
+    }
 }

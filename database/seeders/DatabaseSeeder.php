@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             FestivosSeeder::class,
             CitaSeeder::class,
             AsignarOpticaSeeder::class,
-
+            AmpliacionSeeder::class,
         ]);
     }
 }

@@ -16,14 +16,14 @@
             <h2>idCita: {{$cita->id}}</h2>
         </div> -->
         <div class="col-auto d-flex justify-content-end ms-auto">
-            <a href=""><i class="fa-solid fa-x fa-lg"></i></a>
+            <a href="{{route('citas')}}"><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
     </div>
 
     <form class="" action="{{route('creaFicha')}}" method="post">
         @csrf
-
         <div class="row">
+            
             <input type="hidden" name="idCita" value="{{ $cita->id }}">
             <?php  /*  dd($cita->id ) */ ?>
             <input type="hidden" name="idCliente" value="{{ $cita->idCliente}}">
@@ -89,10 +89,8 @@
                     </li>
                 </ul>
             </div>
-
-
             <div class="col col-1 d-flex ms-5 d-flex align-items-center">
-                <a href="">Historial</a>
+                <!-- <a href="">Historial</a> -->
             </div>
         </div>
 
@@ -114,7 +112,6 @@
 
                         </div>
                     </div>
-
                     <div class="col-auto border-end">
                         <div class="row d-flex  justify-content-center align-items-center">
                             <div class="col col-auto justify-content-center align-items-center">
@@ -124,23 +121,18 @@
                             <div class="col col-auto">
                                 <input class="form-control form-control-sm" name="anamnesis[ultimarevision]" type="date" id="ultima_revision">
                             </div>
-
                         </div>
                     </div>
-
                     <div class="col-auto border-end">
                         <div class="row d-flex  justify-content-center align-items-center">
                             <div class="col col-auto">
                                 <label for="">Edad:</label>
                             </div>
-
                             <div class="col col-4">
                                 <input class="form-control form-control-sm w-100" name="anamnesis[edad]" type="text" id="usr_edad">
                             </div>
-
                         </div>
                     </div>
-
                     <div class="col">
                         <div class="row d-flex  justify-content-center align-items-center">
                             <div class="col col-auto">
@@ -153,7 +145,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row my-1">
                     <div class="col-auto">
                         <div class="row">
@@ -173,9 +164,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
+        
         <div class="row card p-1 my-1 cardFicha" id="graduacionAnt" style="display:none">
             <div class="col">
                 <div class="row">
@@ -295,13 +286,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
-
-
         <div class="row  my-1 row-auto">
             <div class="col card p-1 cardFicha col-auto me-auto" id="reflejoPupilar" style="display:none">
                 <div class="row">
@@ -356,12 +342,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
         <div class="row card p-1 my-1 cardFicha" id="AVMonocular" style="display:none">
             <div class="col">
                 <div class="row">

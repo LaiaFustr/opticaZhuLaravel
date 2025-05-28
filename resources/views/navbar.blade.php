@@ -1,9 +1,21 @@
-
 <div class="menu" id="menu">
-        <div class="logo"><img src="./assets/img/mininaranjiverdeTrayecto.svg" class="logo"></div>
-        <div class="containerUser"><img src="./assets/img/user.svg" class="userLogo">Usuario
-        </div>
-        <ul class="sidebarUl">
+    <div class="logo"><img src="{{asset('assets/img/mini'.(session('opticaColor')).'.svg')}}" class="logo"></div>
+    <div class="containerUser dropdown" > 
+        <button type="button" class="btn dropdown-toggle" id="perfilOpciones" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./assets/img/user.svg" class="userLogo"><br>
+            Usuario
+        </button>
+
+
+        <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="perfilOpciones">   
+            <li>
+                <a class="text-center" href="{{ route('cerrarSesion') }}">
+                <i class="fa-solid fa-right-from-bracket"></i><span class="ms-2">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>   
+        <ul class="sidebarUl">    
             <li class="nav-item sidebarLi">
                 <div class="optionText">
                     <a class="sidebar-optionA" href="{{url('home/citas')}}">Citas</a>

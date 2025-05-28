@@ -1,0 +1,130 @@
+:root {
+    --cognac-100: #FFDA9F;
+    --cognac-500: #FF7300;
+    --cognac-700: #DA3B00;
+    --cognac-800: #AB2E00;
+    --puerto-rico-100: '#D0F7ED';
+    --puerto-rico-200: #9FF0DA;
+    --puerto-rico-400: #37C8AB;
+    --puerto-rico-500: #21AB96;
+    --puerto-rico-700: #176E63;
+}
+
+.tituloModal {
+    color: #DA3B00;
+    font-size: 1.6em;
+    font-weight: 400;
+    /* font-family: Lexend; */
+}
+
+.botonFooterModal {
+    border: 1px solid #DA3B00;
+    background-color: #DA3B00;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 2em;
+    transition: all .3s ease;
+}
+
+.botonNuevaCita {
+    border: 1px solid #DA3B00;
+    background-color: #DA3B00;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+}
+
+.botonFooterModal:hover,
+.botonNuevaCita:hover {
+    background-color: #FF7300;
+    border: 1px solid #FF7300;
+}
+
+.botonOutline{
+    border: 1px solid #DA3B00;
+    background-color: white;
+    font-weight: bolder;
+    color: #DA3B00;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+
+}
+
+.botonOutline:hover{
+    border: 1px solid #DA3B00;
+    background-color: #DA3B00;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+}
+
+.containerPagina {
+    width: 84vw;
+    margin: 2.5em 1.8em;
+}
+
+.tituloPagina {
+    color: #DA3B00;
+    font-weight: 600;
+}
+
+.subtituloPagina {
+    color: #DA3B00;
+    font-weight: 400;
+}
+
+.botonInputModal {
+    background-color: #9FF0DA;
+    border-color: #9FF0DA;
+    color: black;
+    transition: all .3s ease;
+}
+
+.botonInputModal:hover {
+    background-color: #37C8AB;
+    border-color: #37C8AB;
+    color: black;
+}
+
+.lista {
+    list-style: none;
+}
+
+.lista-horizontal {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-horizontal li {
+    margin-right: 20px;
+}
+
+.breadcrumb-icono {
+    color: #21AB96;
+}
+
+.cardFicha {
+    border-color: #DA3B00;
+}
+
+.content {
+    width: 100vw;
+}
+
+.cardInfo {
+    background-color: #D0F7ED;
+    border-radius: 7px;
+    padding: 1em;
+    margin: 1em 0;
+    width: 60%;
+}
+
+.swal2-popup {
+    border: 1px solid var(--puerto-rico-700);
+}

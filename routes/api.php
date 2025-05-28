@@ -9,6 +9,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AuxiliarController;
 use App\Http\Controllers\OptometristaController;
+use App\Http\Controllers\FichaController;
 use App\Http\Controllers\API\UserController;
 
 
@@ -63,7 +64,8 @@ Route::get('/optometristasoptica/{id}', [OptometristaController::class,'listadoO
 Route::get('/clientes', [ClienteController::class,'index'])->name('clientes');
 Route::get('/citasCliente', [ClienteController::class,'citasCliente'])->name('citasCliente');
 Route::delete('/borrarCliente', [ClienteController::class, 'borrarCli'])->name('borrarCli');
-
+Route::get('/fichascliente', [FichaController::class, 'fichascliente'])->name('fichascliente');
+Route::get('/fichadescargarAngular/{id}', [FichaController::class, 'fichadescargarAngular'])->name('fichasdescargarAngular');
 
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');

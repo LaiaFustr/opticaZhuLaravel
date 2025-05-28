@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
+use App\Models\User;
 use App\Models\Optica;
 use App\Models\Horario;
-use Illuminate\Support\Facades\DB;
-use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use Validator;
+
 
 
 
@@ -51,17 +55,35 @@ class EmpleadoController extends Controller
 
         if ($empleado && Hash::check($request->contrasenia, $empleado->contrasenia)) {
             Auth::login($empleado);
-            return redirect()->route('opticas');
+
+            session(['idAdmin' => $empleado->id]);
+
+            $logeado = User::find($empleado->id);
+            
+            if ($logeado->rol == 'admin') {
+                session(['opticaColor' => "puertocognac"]);
+                return redirect()->route('opticas');
+            } elseif ($logeado->rol == 'auxiliar' || $logeado->rol == 'optometrista') {
+
+                $optica = $empleado->optica()->first();
+
+                //dd($optica->color);
+                session(['opticaColor' => $optica->color]);
+                //dd(session('opticaColor'));
+                return redirect()->route('home');
+            }
+            //return $ruta; 
+            //Revisar si esto corrompe la session(OpticaColor), solo ocurre con Auxiliar y Optometrista(?)...
         } else {
             session()->flash('message', 'Nombre de usuario o contraseña incorrectos');
             return redirect()->back();
         }
     }
 
-    public function logout(Request $request){
-     //   Session::flush();
+    public function logout(){
+
         Auth::logout();
-        return redirect('home');
+        return redirect('login');
     }
 
     public function guardar(Request $request)

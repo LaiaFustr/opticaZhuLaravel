@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @extends('layouts.prueba')
+
 <head>
     <meta charset="utf-8">
     <title>OpticaZhu</title>
