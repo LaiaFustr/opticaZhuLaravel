@@ -121,7 +121,7 @@
                             <div class="row my-2">
                                 <div class="col">
                                     <label class="col-form-label" for="numTarjeta">Numero de tarjeta</label>
-                                    <input class="form-control" type="text" id="numTarjeta" name="tarjeta">
+                                    <input class="form-control" type="text" id="numTarjeta" name="tarjeta" max="16">
                                 </div>
                                 <div class="col">
                                     <label class="col-form-label" for="fechaCaduci">Fecha de caducidad</label>
@@ -139,6 +139,13 @@
                             <button type="submit" id="crearProveedor" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Pagar</button>
                         </div>
                     </form>
+                    @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as  $e)
+                            <p style="color:red">{{ $e }}</p>
+                        @endforeach
+                    </div>
+                    @endif
                 </div>
 
             </div>

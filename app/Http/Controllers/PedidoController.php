@@ -153,46 +153,70 @@ class PedidoController extends Controller{
     }
 
     public function pagarPedido(Request $request){
+        $datos = $request->validate([
+            'datos' => 'required',
+            'direccion' => 'required',
+            'correo'  => 'required',
+            'telefono'  => 'required',
+            'tarjeta'  => 'required',
+            'caducidad'  => 'required',
+            'cvv' => 'required',
+        ], [
+            'datos' => "El titular de la tarjeta es obligatorio",
+            'direccion' => 'La direccion es obligatoria',
+            'correo' => 'El correo es obligatorio',
+            'telefono' => 'El numero de telefono es obligatorio',
+            'tarjeta' => 'El numero de tarjeta es obligatorio',
+            'tarjeta.max' => 'El numero de tarjeta no debe tener mas de 16 caracteres',
+            'caducidad' => 'La fecha de caducidad es obligatoria',
+            'cvv' => 'El CVV es obligatorio',
+        ]);
 
-        $pedido = Pedido::with(['optica', 'proveedor'])->findOrFail($request->input('pedido'));
-        $detalles = DetallePedido::with('articulo')->where('idPedido', $pedido->id)->get();
-        $numFactura = date('Y') . "A". "00" .$pedido->id;
+        try{
+            $pedido = Pedido::with(['optica', 'proveedor'])->findOrFail($request->input('pedido'));
+            $detalles = DetallePedido::with('articulo')->where('idPedido', $pedido->id)->get();
+            $numFactura = date('Y') . "A". "00" .$pedido->id;
 
-        foreach($detalles as $det){
-            $articulo = $det->articulo;
-            $stock = $articulo->stock + $det->cantidad;
-            $articulo->update(['stock' => $stock]);
+            foreach($detalles as $det){
+                $articulo = $det->articulo;
+                $stock = $articulo->stock + $det->cantidad;
+                $articulo->update(['stock' => $stock]);
+            }
+
+            /*
+            $total = $detalles->sum('subtotal');
+            $iva = round($detalles->sum('subtotal') *(21 / 100), 2);
+            $totaliva = round($total + $iva, 2);
+
+            $datosTotal= [
+                'total' => $total,
+                'iva' => $iva,
+                'totaliva' => $totaliva,
+            ];
+            
+            $datosPago = [
+                'datos' => $request->input('datos'),
+                'fecha' => now(), //date('Y')."-".date('m')."-".date('d')
+                'direccion' => $request->input('direccion'),
+                'correo' => $request->input('correo'),
+                'telefono' => $request->input('telefono'),
+                'tarjeta' => $request->input('tarjeta'),
+                'caducidad' => $request->input('caducidad'),
+                'cvv' => $request->input('cvv'),
+            ];*/
+
+            $pedido->update(["estado"=>"pagado"]);
+
+            //$pdf = Pdf::loadView("pdf", compact("detalles", "pedido", "numFactura", "datosTotal"));
+            
+            //return view("pdf");
+            //return $pdf->download("Factura".$numFactura.$pedido->id.".pdf");
+            return redirect()->route("indexpedidos")->with("success", "Pedido pagado");
+        }catch(\Exception $e){
+            console.log($e);
+            return redirect()->back()->withErrors(['error'=>'Fallo al pagar el pedido']);
         }
-
-        /*
-        $total = $detalles->sum('subtotal');
-        $iva = round($detalles->sum('subtotal') *(21 / 100), 2);
-        $totaliva = round($total + $iva, 2);
-
-        $datosTotal= [
-            'total' => $total,
-            'iva' => $iva,
-            'totaliva' => $totaliva,
-        ];
-        
-        $datosPago = [
-            'datos' => $request->input('datos'),
-            'fecha' => now(), //date('Y')."-".date('m')."-".date('d')
-            'direccion' => $request->input('direccion'),
-            'correo' => $request->input('correo'),
-            'telefono' => $request->input('telefono'),
-            'tarjeta' => $request->input('tarjeta'),
-            'caducidad' => $request->input('caducidad'),
-            'cvv' => $request->input('cvv'),
-        ];*/
-
-        $pedido->update(["estado"=>"pagado"]);
-
-        //$pdf = Pdf::loadView("pdf", compact("detalles", "pedido", "numFactura", "datosTotal"));
-        
-        //return view("pdf");
-        //return $pdf->download("Factura".$numFactura.$pedido->id.".pdf");
-        return redirect()->route("indexpedidos")->with("success", "Pedido pagado");
+    
     }
 
     public function pdfpedido($ped){

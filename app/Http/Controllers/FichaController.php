@@ -353,8 +353,12 @@ class FichaController extends Controller
             'avsincorreccion', 'reflejopupilar', 'ishihara',  'avmonocular', 'avbinocular', 
             'superficieocular', 'parametros', 'usoprevisto'])->get();
         //$fichas = Ficha::where('idCliente', $cliente->dni)->get();
+        if(!$fichas->isEmpty()){ //Yeeey
+            return response()->json($fichas);
+        }else{
+            return response()->json(['error' => 'No se encontraron fichas'], 404);
+        }
 
-        return response()->json($fichas);
     }
 
 

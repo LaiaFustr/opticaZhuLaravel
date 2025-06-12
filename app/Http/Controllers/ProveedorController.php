@@ -43,7 +43,7 @@ class ProveedorController extends Controller
                 <button type="button" class="btn dropdown" id="opcionesProveedor" data-bs-toggle="dropdown" aria-expanded="false">
                     ☰
                 </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="opcionesProveedor">
+                <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="opcionesProveedor">
                     <button class="btn btn-sm btn-primary btn-borrar-proveedor botonNuevaCita" data-id="'.$prov->id.'">Borrar</button>
                     <button class="btn btn-sm btn-primary btn-editar-proveedor botonNuevaCita" 
                         data-id="'.$prov->id.'" data-nif="'.$prov->nif.'" data-nombre="'.$prov->nombre.'" 
@@ -72,10 +72,23 @@ class ProveedorController extends Controller
             'correo' => 'required',
             'telefono' => 'required',
             'codPostal' => 'required'
+        ], [
+            'nif.required' => "El NIF es obligatorio",
+            'nif.max' => 'El NIF no puede tener mas de 9 caracteres',
+            'nombre.required' => 'El nombre es obligario',
+            'correo.required' => 'el correo es obligatorio',
+            'telefono.required' => 'El telefono es obligatorio',
+            'codPostal.required' => 'El codigo postal es obligatorio',
         ]);
 
-        Proveedor::create($datos);
-        return redirect()->back();
+        try{
+            Proveedor::create($datos);
+            return redirect()->back()->with("provcreado", "Proveedor creado con exito");;  
+        }catch(\Exception $e){
+            console.log($e);
+            return redirect()->back()->withErrors(['error'=>'Fallo al crear el proveedor']);
+        }
+
     }
 
     public function editarProveedor(Request $request){
@@ -86,15 +99,23 @@ class ProveedorController extends Controller
             'correo' => 'required',
             'telefono' => 'required',
             'codPostal' => 'required'
+        ], [
+            'nif.required' => "El NIF es obligatorio",
+            'nif.max' => 'El NIF no puede tener mas de 9 caracteres',
+            'nombre.required' => 'El nombre es obligario',
+            'direccion.required' => "La direccion es obligatoria",
+            'correo.required' => 'el correo es obligatorio',
+            'telefono.required' => 'El telefono es obligatorio',
+            'codPostal.required' => 'El codigo postal es obligatorio',
         ]);
-
         try{
             $proveedor = Proveedor::findOrFail($request->id);
             $proveedor->update($datos);
 
             return redirect()->back()->with("proveditado", "Proveedor editado con exito");
         }catch(\Exception $e){
-            return redirect()->back();
+            console.log($e);
+            return redirect()->back()->withErrors(['error'=>'Fallo al editar el proveedor']);
         }
     }
 

@@ -18,6 +18,18 @@
     });
     </script>
 @endif
+@if(session("provcreado"))
+    <script>
+        Swal.fire({
+        icon: 'success',
+        background: '#ffffff',
+        title: '¡Hecho!',
+        text: "{{ session('editado') }}",
+        timer: 2000,
+        showConfirmButton: false
+    });
+    </script>
+@endif
 @if(session("eliminado"))
     <script>
         Swal.fire({
@@ -76,14 +88,14 @@
 </div>
 
 
-<!-- Modal para crear un nuevo articulo para ese proveedor -->
+<!-- Modal para crear un nuevo proveedor -->
 <div class="modal  fade" id="crearProveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header border-0">
                     <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
                         <div class="col-auto d-flex align-items-center">
-                            <h5 class="modal-title tituloModal" id="crearArtiModalLabel">Creación de un proveedor</h5>
+                            <h5 class="modal-title tituloModal" id="crearProveeModalLabel">Creación de un proveedor</h5>
                         </div>
                         <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     </div>
@@ -127,6 +139,14 @@
                             <button type="submit" id="crearProveedor" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Crear</button>
                         </div>
                     </form>
+                    @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as  $e)
+                            <p style="color:red">{{ $e }}</p>
+                        @endforeach
+                    </div>
+                    @endif
+
                 </div>
 
             </div>
@@ -180,9 +200,16 @@
                             </div>
                         </div>
                         <div class="modal-footer border-0">
-                            <button type="submit" id="crearProveedor" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Enviar</button>
+                            <button type="submit" id="editarProveedor" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Enviar</button>
                         </div>
                     </form>
+                    @if ($errors->any())
+                    <div>
+                        @foreach ($errors->all() as  $e)
+                            <p style="color:red">{{ $e }}</p>
+                        @endforeach
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -208,6 +235,7 @@
             language: {
                     url: '/js/es-ES.json'
             },
+
 
             lengthChange: false, 
             pageLength: 10,
@@ -260,5 +288,11 @@
 
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+
+    });
+
+</script>
 
 @endsection

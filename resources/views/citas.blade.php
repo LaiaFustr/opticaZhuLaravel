@@ -97,12 +97,14 @@
                         @csrf
                         <input type="hidden" id="idCita" name="id" value="">
                         <div class="col px-2">
-                            <div class="row my-2">
                         </div>
-                        <div class="modal-footer border-0">
-                            <button type="submit" id="fichaGafas" name="tipo" value="gafa" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Gafas</button>
-                            <button type="submit" id="fichaLentillas" name="tipo" value="lentilla" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Lentillas</button>
+                        <div class="modal-footer d-flex justify-content-between border-0">
+
+                                <button type="submit" id="fichaGafas" name="tipo" value="gafa" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Gafas</button>
+                                <button type="submit" id="fichaLentillas" name="tipo" value="lentilla" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Lentillas</button>
+                        
                         </div>
+
                     </form>
                 </div>
             </div>
