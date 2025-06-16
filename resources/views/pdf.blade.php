@@ -17,7 +17,7 @@
             margin-bottom: 20px;
         }
         .columna{
-            width: 50%;
+            width: 100%;
         }
 
         .tableInfo{
@@ -53,22 +53,38 @@
 
     </style>
 </head>
+<div  style="padding: 15px; margin: 4px">
+    <img src="{{ public_path('assets/img/verdinaranjaTrayecto.jpg') }}" style="width: 70px; height:30px; position: absolute; top: 0; left: 0; margin: 4px" >
+</div>
 <h2 class="tituloPagina">Nº FACTURA: {{$numFactura}}</h2>
-<h3>Fecha del pedido: {{ $pedido->fecha }}</h3>
+    <table>
+        <tr><td style="padding: 5px"><b>Fecha del pedido:</b> </td><td style="padding: 5px">{{ $pedido->fecha }}</td></tr>
+        <tr><td style="padding: 5px"><b>Estado del pedido:</b> </td><td style="padding: 5px">{{ $pedido->estado}} </td></tr>
+        @if($pedido->fechapago != null)
+            <tr><td style="padding: 5px"><b>Fecha del pago:</b> </td><td style="padding: 5px">{{ $pedido->fechapago }}</td></tr>
+        @endif
+    </table>
+</div>
 
 <div class="filaDatos">
     <div class="columna">
         <h2>Optica Destinataria</h2>
-        <p>Nombre: {{$pedido->optica->nombre}}</p>
-        <p>Direccion: {{$pedido->optica->direccion}}</p>
-        <p>Telefono: {{$pedido->optica->telefono}}</p>
+        <p><b>Nombre: </b>{{$pedido->optica->nombre}}</p>
+        <p><b>Direccion: </b>{{$pedido->optica->direccion}}</p>
+        <p><b>Telefono: </b>{{$pedido->optica->telefono}}</p>
     </div>
-    <div class="columna">
-        <h2>Proveedor</h2>
-        <p>Nombre: {{$pedido->proveedor->nombre}}</p>
-        <p>Correo: {{$pedido->proveedor->correo}}</p>
-    </div>
+    <hr>
+    <h2>Proveedor</h2>
+    <table>
+        <tr><td style="padding: 5px"><b>CIF:</b> </td><td style="padding: 5px">{{ $pedido->proveedor->nif }}</td>
+            <td style="padding: 5px"><b>Nombre:</b> </td><td style="padding: 5px">{{$pedido->proveedor->nombre}}</td></tr>
+        <tr><td style="padding: 5px"><b>Direccion:</b> </td><td style="padding: 5px">{{$pedido->proveedor->direccion}}</td>
+            <td style="padding: 5px"><b>Codigo Postal:</b></td><td style="padding: 5px">{{$pedido->proveedor->codPostal}}</td></tr>
+        <tr><td style="padding: 5px"><b>Telefono:</b> </td><td style="padding: 5px">{{$pedido->proveedor->telefono}}</td>
+            <td style="padding: 5px"><b>Correo:</b> </td><td style="padding: 5px">{{$pedido->proveedor->correo}}</td></tr>
+    </table>
 </div>
+<hr>
 <h2>Detalles del pedido</h2>
 <table class="table">
 <thead>
@@ -99,6 +115,6 @@
 </tbody>
 </table>
 
-<h3>Total del pedido SIN IVA: {{ $datosTotal['total'] }}€</h3>
+<h3>Subtotal: {{ $datosTotal['total'] }}€</h3>
 <h3>IVA (21%): {{ $datosTotal['iva'] }}€</h3>
 <h3>Total CON IVA: {{ $datosTotal['totaliva'] }}€</h3>

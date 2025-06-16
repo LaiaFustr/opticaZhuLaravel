@@ -11,6 +11,7 @@ use App\Models\Proveedor;
 use DataTables;
 use Dompdf\Dompdf;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 
 class PedidoController extends Controller{
@@ -46,7 +47,7 @@ class PedidoController extends Controller{
             return '<a class="nav-link" href="' . route('detallespedido', $ped->id) . '">' . $ped->optica->nombre . '</a>';
         })
         ->addColumn('pdf', function ($ped) {
-            return '<a class="nav-link" href="' . route('pdfpedido', $ped->id) . '">PDF</a>';
+            return '<a class="nav-link" href="' . route('pdfpedido', $ped->id) . '"><img src="' .asset('assets/img/pdficon.png') .'" style="width: 20%; height:20%;"></a>';
         })
         ->rawColumns(['id', 'fecha', 'estado', 'total', 'proveedor', 'optica', 'pdf'])
         ->toJson();
@@ -204,8 +205,10 @@ class PedidoController extends Controller{
                 'caducidad' => $request->input('caducidad'),
                 'cvv' => $request->input('cvv'),
             ];*/
+            $hoy = now()->toDateString();
 
             $pedido->update(["estado"=>"pagado"]);
+            $pedido->update(["fechapago" => $hoy]);
 
             //$pdf = Pdf::loadView("pdf", compact("detalles", "pedido", "numFactura", "datosTotal"));
             
@@ -224,6 +227,7 @@ class PedidoController extends Controller{
         $detalles = DetallePedido::with('articulo')->where('idPedido', $pedido->id)->get();
         $numFactura = date('Y') . "A". "00" .$pedido->id;
 
+        
         $total = $detalles->sum('subtotal');
         $iva = round($detalles->sum('subtotal') *(21 / 100), 2);
         $totaliva = round($total + $iva, 2);

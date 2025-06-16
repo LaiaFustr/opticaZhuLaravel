@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $table='pedidos';
-    protected $fillable=['fecha', 'estado', 'total', 'idProveedor', 'idOptica'];
+    protected $fillable=['fecha', 'estado', 'total', 'idProveedor', 'idOptica', 'fechapago'];
 
 
     public function proveedor(){

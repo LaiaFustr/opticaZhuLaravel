@@ -29,7 +29,7 @@
 <div>
     <!-- Datos del cliente/optica/ficha -->
     <div>
-                <img src="{{ public_path('assets/img/verdinaranjaTrayecto.jpg') }}" style="width: 70px; height:30px; position: absolute; top: 0; left: 0;" >
+        <img src="{{ public_path('assets/img/verdinaranjaTrayecto.jpg') }}" style="width: 70px; height:30px; position: absolute; top: 0; left: 0;" >
 
         <h2 style="text-align:center; line-height: 60px; margin: 0px">Ficha Optometrica</h2>
         <p>{{ $ficha->cita->optica->nombre}}</p>
@@ -105,7 +105,7 @@
                     <p><b>Cilindro: </b></p>
                 </td>
                 <td >
-                    @if($ficha->graduacionanterior && $ficha->graduacionanterior->ejecilindro_od != null) <p> {{ $ficha->anamnesis->ejecilindro_od }} </p> @else <p>  </p>@endif
+                    @if($ficha->graduacionanterior && $ficha->graduacionanterior->ejecilindro_od != null) <p> {{ $ficha->graduacionanterior->ejecilindro_od }} </p> @else <p>  </p>@endif
                 </td>
                 <td>
                     <p><b>AV: </b></p>

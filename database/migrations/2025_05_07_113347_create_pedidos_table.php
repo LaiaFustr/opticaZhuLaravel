@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('total');
             $table->unsignedInteger("idProveedor");
             $table->unsignedInteger("idOptica");
+            $table->date('fechapago')->nullable();
             $table->timestamps();
 
             $table->foreign("idProveedor")->references("id")->on("proveedores")->onDelete("cascade");
