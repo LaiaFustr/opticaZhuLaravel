@@ -22,4 +22,38 @@ class ArticuloController extends Controller
 
         return response()->json($articulos);
     }
+
+    public function editarArticulo(Request $request){
+        
+        $datos = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'stock' => 'required',
+            'precio' => 'required',
+            'idOptica' => 'required',
+            'idProveedor' => 'required',
+        ], [
+            'nombre.required' => 'El nombre es obligatorio',
+            'stock.required' => 'El stock es obligatorio',
+            'precio.required' => 'El precio es obligatorio',
+            'descripcion.required' => 'La descripcion es obligatoria',
+
+        ]);
+        /*$arti = Articulo::findOrFail($request->editId);
+        dd($arti);*/
+        try{
+            $articulo = Articulo::findOrFail($request->editId);
+            $articulo->update($datos);
+            return redirect()->back()->with("artieditado", "Articulo editado con exito");
+        }catch(\Exception $e){
+             return redirect()->back()->withErrors(['error'=>'Fallo al editar el articulo: '. $e]);
+        }
+    }
+
+    public function borrarArticulo($id){
+        //dd($id);
+        $articulo = Articulo::destroy($id);
+
+        return redirect()->back()->with("eliminado", "Articulo eliminado con exito");
+    }
 }

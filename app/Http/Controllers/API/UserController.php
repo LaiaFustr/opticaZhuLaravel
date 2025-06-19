@@ -44,7 +44,7 @@ class UserController extends Controller
             session(['idAdmin' => $empleado->id]);
 
             $logeado = User::find($empleado->id);
-            
+            //dd($logeado);
             if ($logeado->rol == 'admin') {
                 session(['opticaColor' => "puertocognac"]);
                 return redirect()->route('opticas');

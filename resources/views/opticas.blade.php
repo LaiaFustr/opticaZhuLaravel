@@ -17,7 +17,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-    
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <script>
@@ -79,7 +80,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="opcionesOptica">
                                 <a class="dropdown-item" href="{{route('editarOptica', ['id' =>$op->id]) }}">Editar</a>
-                                <a class="dropdown-item" href="#">Borrar</a>
+                                <button class="dropdown-item btn-borrar-optica" data-id="{{$op->id}}">Borrar</button>
                             </div>
                             </div>
                         </td>
@@ -92,5 +93,29 @@
     </div>
 
 
-    <!--Modal para la confirmacion de eliminacion de optica-->
-    <div class="modal fade" id="borrarOpt" tabindex="-1" aria-labelledby=""
+
+<script>
+    $(document).on("click", ".btn-borrar-optica", function(){
+        let id = $(this).data("id");  
+        let borrandourl = "{{route('borrarOptica',  ['id' => ':id']) }}";
+        console.log(id);
+        Swal.fire({
+        title: "¿Estas seguro?",
+        text: "Esta optica sera TOTALMENTE eliminada",
+        icon: "warning",
+        background: '#ffffff',
+        color: 'black',
+        showCancelButton: true,
+        confirmButtonText: "Confirmar",
+
+        cancelButtonText: "Cancelar",
+        customClass: {
+            confirmButton: "botonFooterModal",
+        },
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = borrandourl.replace(":id", id);
+        }
+        });
+    });
+</script>

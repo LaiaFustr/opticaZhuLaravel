@@ -21,10 +21,10 @@ return new class extends Migration
             $table->unsignedInteger('idOptica')->nullable(); 
             $table->enum('atendida', ['atendida', 'pendiente'])->default("pendiente");
 
-            $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('set null')->onUpdate('cascade');
 
-            $table->foreign('idOptica')->references('id')->on('opticas')->onUpdate('cascade')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idOptica')->references('id')->on('opticas')->onUpdate('restrict')->onDelete('set null');
         });
 
     }

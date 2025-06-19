@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('parametros', function (Blueprint $table) {
-            $table->unsignedInteger('idFicha');
+            $table->unsignedInteger('idFicha')->nullable();
             $table->increments("id");
             $table->string('curvabase_od')->nullable();
             $table->string("diametro_od")->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string("potencia_oi")->nullable();
             $table->string("eje_oi")->nullable();
 
-            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idFicha')->references('id')->on('fichas')->onDelete('set null')->onUpdate('restrict');
         
         });
     }

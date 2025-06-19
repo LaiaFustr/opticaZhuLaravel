@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Articulo extends Model
 {
     protected $table='articulos';
-    protected $fillable =["nombre", 'descripcion', 'stock', 'precio', 'idProveedor', 'idOptica'];
+    protected $fillable = ["nombre", 'descripcion', 'stock', 'precio', 'idProveedor', 'idOptica'];
 
     public function proveedor(){
         return $this->belongsTo(Proveedor::class);

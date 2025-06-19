@@ -72,6 +72,17 @@ class OpticaController extends Controller
         return view('opticas', compact('opticas'));
     }
 
+    public function borrarOptica($id){
+        $optica = Optica::find($id);
+        if(!$optica){
+            return redirect()->back()->with('Error al borrar optica');
+        }
+
+        $optica->delete();
+        return redirect()->back()->with('success', 'Optica borrada con exito');
+
+    }
+
     public function mostrarIDAdmin($idAdmin){
         $optica = Optica::where('idAdmin', $idAdmin)->get();
         return response()->json($optica);

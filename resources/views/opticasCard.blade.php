@@ -18,6 +18,7 @@
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <div class="container-flex containerPagina">
     <div class="row w-100 mb-4">
@@ -61,14 +62,14 @@
                     </ul>
                 </div>
                 <div class="card-footer cartaFooter" >
-                    <h5 style="text-align: center" onclick="window.location='{{route('opticaSelec', $op->id )}}'">{{ $op->nombre }}</h5>
+                    <h5 onclick="window.location='{{route('opticaSelec', $op->id )}}'" style="text-align: center">{{ $op->nombre }}</h5>
                     <div>
-                        <button type="button" class="btn dropdown" id="opcionesOptica" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button  type="button" class="btn dropdown" id="opcionesOptica" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{asset('assets/img/dots.png')}}" width="15px" height="15px" class="mt-1">
                         </button>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="opcionesOptica">
-                            <p class="dropdown-item" href="#">Editar</p>
-                            <p class="dropdown-item" href="#">Borrar</p>
+                            <a class="dropdown-item" href="{{route('editarOptica', ['id' =>$op->id]) }}">Editar</a>
+                            <button class="dropdown-item btn-borrar-optica" data-id="{{$op->id}}">Borrar</button>
                         </div>
                     </div>
                 </div>
@@ -92,3 +93,29 @@
         </div>
     </div> --}}
 </div>
+
+<script>
+    $(document).on("click", ".btn-borrar-optica", function(){
+        let id = $(this).data("id");  
+        let borrandourl = "{{route('borrarOptica',  ['id' => ':id']) }}";
+        console.log(id);
+        Swal.fire({
+        title: "¿Estas seguro?",
+        text: "Esta optica sera TOTALMENTE eliminada",
+        icon: "warning",
+        background: '#ffffff',
+        color: 'black',
+        showCancelButton: true,
+        confirmButtonText: "Confirmar",
+
+        cancelButtonText: "Cancelar",
+        customClass: {
+            confirmButton: "botonFooterModal",
+        },
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = borrandourl.replace(":id", id);
+        }
+        });
+    });
+</script>

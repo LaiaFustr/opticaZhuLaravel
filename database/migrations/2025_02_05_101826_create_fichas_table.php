@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('idOptometrista');
-            $table->unsignedInteger('idCliente');
-            $table->unsignedInteger('idCita');
+            $table->unsignedInteger('idOptometrista')->nullable();
+            $table->unsignedInteger('idCliente')->nullable();
+            $table->unsignedInteger('idCita')->nullable();
             $table->date('fecha');
             $table->time('hora');
             $table->text('descripcion')->nullable();
             
-            $table->foreign('idCita')->references('id')->on('citas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('idCita')->references('id')->on('citas')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('set null')->onUpdate('cascade');
             $table->foreign('idOptometrista')->references('id')->on('optometristas')->onDelete('cascade')->onUpdate('cascade');
         });
     }

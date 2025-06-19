@@ -238,7 +238,7 @@
 
 
             lengthChange: false, 
-            pageLength: 10,
+            pageLength: 7,
             info: false,    
             searchable: true,
             stripeClasses: [],

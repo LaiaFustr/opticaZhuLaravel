@@ -5,10 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Auth;
 
-
-class AdminMiddleware
+class SoloAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,15 +15,6 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        //dd(auth()->user());
-        $usuario = Auth::user();
-        //dd($usuario);
-        if($usuario && $usuario->rol == 'admin'){
-            return $next($request);
-        }else{
-            return redirect()->back();
-        }
-
-        
+        return $next($request);
     }
 }

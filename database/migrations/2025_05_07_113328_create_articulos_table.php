@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->integer("stock")->default(0);
-            $table->decimal('precio', 10, 2);
-            $table->unsignedInteger("idProveedor");
-            $table->unsignedInteger("idOptica");
+            $table->string('nombre')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->integer("stock")->default(0)->nullable();
+            $table->decimal('precio', 10, 2)->nullable();
+            $table->unsignedInteger("idProveedor")->nullable();
+            $table->unsignedInteger("idOptica")->nullable();
             $table->timestamps();
 
             $table->foreign("idProveedor")->references("id")->on("proveedores")->onDelete("cascade")->onUpdate("cascade");

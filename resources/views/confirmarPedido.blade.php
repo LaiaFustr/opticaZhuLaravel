@@ -24,26 +24,24 @@
 
     <form method="POST" action="{{url('propietario/crearPedido')}}">
     @csrf
-        <div class="col-auto ms-auto d-flex ">
-            <button class="botonNuevaCita">Aceptar Pedido</button>
-        </div>
         <div class="container ">
             <div class="row">
                 <div class="col-sm">
                     <div class="d-flex">
-                        <p class="tituloPagina "><strong>Optica destinataria: </strong></p>&nbsp; <p> {{$optica->nombre}} </p>
+                        <p class="tituloPagina "><b>Optica destinataria: </b></p>&nbsp; <p> {{$optica->nombre}} </p>
                     </div>
                     <div class="d-flex">
-                        <p class="tituloPagina "><strong>Proveedor: </strong></p>&nbsp;<p>{{$proveedor->nombre}}</p>
+                        <p class="tituloPagina "><b>Proveedor: </b></p>&nbsp;<p>{{$proveedor->nombre}}</p>
                     </div>    
                     <input type="hidden" name="idOptica" value="{{$optica->id}}">
                     <input type="hidden" name="idProveedor" value="{{$proveedor->id}}">
                 </div>
             </div>
+                <h4><b>Articulos elegidos</b></h4>
             <hr>
             @forelse ($articulos as $arti)
             <div class="mb-3">
-                <p><strong>Articulo: </strong> {{$arti['nombre'] }}</p>
+                <p><strong>Nombre: </strong> {{$arti['nombre'] }}</p>
                     <div style="display: flex; gap: 30px; align-items:center">
                         <div>    
                             <p><strong>Cantidad:</strong> {{ $arti['cantidad'] }}</p>
@@ -69,6 +67,9 @@
             <div class="d-flex">
                 <p><strong>TOTAL:</strong> {{$TOTAL}}</p>
             </div>
+        </div>
+                <div class="col-auto ms-auto d-flex ">
+            <button class="botonNuevaCita">Aceptar Pedido</button>
         </div>
     </form>
 </div>

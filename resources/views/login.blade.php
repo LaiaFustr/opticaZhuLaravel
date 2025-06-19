@@ -41,7 +41,7 @@
             <div class="row p-3">
                 <div class="card cardLogin">
 
-                    <form class="login" method="post" action="{{ route('login') }}">
+                    <form class="login" method="post" action="{{ route('login.custom') }}">
                         @csrf
                         <div class="input-group my-2 p-2">
                             <label class="input-group-text text-center labelLogin">

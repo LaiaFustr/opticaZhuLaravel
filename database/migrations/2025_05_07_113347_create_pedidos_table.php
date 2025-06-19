@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->increments("id");
-            $table->date('fecha');
-            $table->enum('estado', ['pendiente', 'recibido', 'pagado', 'cancelado'])->default("pendiente");
-            $table->decimal('total');
-            $table->unsignedInteger("idProveedor");
-            $table->unsignedInteger("idOptica");
+            $table->date('fecha')->nullable();
+            $table->enum('estado', ['pendiente', 'recibido', 'pagado', 'cancelado'])->default("pendiente")->nullable();
+            $table->decimal('total')->nullable();
+            $table->unsignedInteger("idProveedor")->nullable();
+            $table->unsignedInteger("idOptica")->nullable();;
             $table->date('fechapago')->nullable();
             $table->timestamps();
 
-            $table->foreign("idProveedor")->references("id")->on("proveedores")->onDelete("cascade");
-            $table->foreign("idOptica")->references("id")->on("opticas")->onDelete("cascade")->onUpdate("cascade");
+            $table->foreign("idProveedor")->references("id")->on("proveedores")->onDelete("cascade")->onUpdate('cascade');
+            $table->foreign("idOptica")->references("id")->on("opticas")->onDelete("cascade")->onUpdate("restrict");
 
         });
     }

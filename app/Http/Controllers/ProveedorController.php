@@ -138,6 +138,6 @@ class ProveedorController extends Controller
         ]);
 
         Articulo::create($datos);
-        return redirect()->back();
+        return redirect()->back()->with('articreado', 'Articulo creado con exito');
     }
 }
